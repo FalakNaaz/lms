@@ -1,46 +1,61 @@
-import Card from 'react-bootstrap/Card';
-import React from 'react'
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import '../../App.css'
-import { Link } from 'react-router-dom';
-
+import React from 'react'
+import { Alert, Card, Button, Form } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
+import { useRef, useState } from 'react';
 function Login() {
-    return (<>
-        <br /><br /><br /><br />
-        <Card className="m-auto" style={{ maxWidth: '400px' }}>
-        
-            <Card.Body>
-            <Card.Title className='text-center'>Login In</Card.Title>
-                <Form >
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
-                        <Form.Text className="text-muted">
-                            We'll never share your email with anyone else.
-                        </Form.Text>
-                    </Form.Group>
-
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Remember me" />
-                    </Form.Group>
-                    <Link to="/signup"> Don't have an account? Sign Up</Link>
-                    <div className="col-md-12 text-center">
-                        <Button variant="primary" type="submit" className='text-center'>
-                            Submit
-                        </Button>
-
-                    </div>
-
-                </Form>
-            </Card.Body>
+    const emailRef = useRef();
+    const pwdRef = useRef();
+    // const { login } = useAuth();
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
+  
+    async function handleSubmit(e) {
+      e.preventDefault();
+      try {
+        setError("");
+        setLoading(true);
+        // await login(emailRef.current.value, pwdRef.current.value);
+        navigate("/");
+      } catch (err) {
+        setError("Something went wrong! : " + err.message);
+      }
+      setLoading(false);
+    }
+  
+    return (
+      <>
+        <Card style={{maxWidth: "400px", margin: "auto", marginTop: "30px"}}>
+          <Card.Body>
+            <h2 className="text-center mb-4">Log In </h2>
+             {error && <Alert variant="danger">{error}</Alert>}
+            {loading && <Alert variant='success'>Logging In into your account...</Alert>}
+            <Form onSubmit={handleSubmit}>
+              <Form.Group id="email">
+                <Form.Label>Email</Form.Label>
+                <Form.Control type="email" ref={emailRef} required />
+              </Form.Group>
+              <Form.Group id="password">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" ref={pwdRef} required />
+              </Form.Group>
+              <br />
+              <Button disabled={loading} className="w-100" type="submit">
+                Log In
+              </Button>
+            </Form>
+            <div className="w-100 text-center mt-3">
+              <Link to="/forgot-password" style={{ textDecoration: "none" }}>
+                Forgot Password?
+              </Link>
+            </div>
+          </Card.Body>
         </Card>
-    </>
-    )
-}
-
-export default Login
+        <div className="w-100 text-center mt-2 btm-txt">
+          Not having an account?<Link to="/signup" style={{ textDecoration: "none" }}> Sign up Here!</Link>
+        </div>
+      </>
+    );
+  }
+  export default Login;
