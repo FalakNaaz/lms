@@ -72,7 +72,7 @@ function SignUp() {
             </Card.Body>
         </Card>
     </>
-    )
+  );
 }
 
-export default SignUp
+export default Signup;
