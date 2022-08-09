@@ -5,22 +5,25 @@ const initialState = {
     user: [],
     error: '',
 }
-const Reducer = (state = initialState, action) => {
+const UserReducer = (state = initialState, action) => {
     switch (action.type) {
         case ActionTypes.USER_SIGNUP:
             return {
                 users: action.payload,
                 loading: true,
+                ...state
             }
 
         case ActionTypes.USER_LOGIN:
             return {
-
+                ...state
             }
 
         case ActionTypes.USER_SUCCESS:
             return {
                 loading:false,
+                ...state
             }
     }
 }
+export default UserReducer;
