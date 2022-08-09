@@ -2,7 +2,7 @@ import Card from 'react-bootstrap/Card';
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import '../App.css'
+import '../../App.css'
 import { Link } from 'react-router-dom';
 
 function SignUp() {

@@ -4,8 +4,8 @@ import NotFound from './pages/404NotFound/NotFound';
 import Header from './components/Header/Header';
 import Login from './pages/Login/Login';
 import Dashboard from './pages/Dashboard/Dashboard';
-import Login from './components/Login';
-import SignUp from './components/SignUp';
+import SignUp from './pages/Signup/SignUp';
+
 
 const Routing = () => {
   return (
