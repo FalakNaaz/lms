@@ -24,6 +24,8 @@ const UserReducer = (state = initialState, action) => {
                 loading:false,
                 ...state
             }
+        default:
+            return state;
     }
 }
 export default UserReducer;
