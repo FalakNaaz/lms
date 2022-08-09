@@ -1,3 +1,4 @@
+import { ReduceCapacitySharp } from "@mui/icons-material";
 import { ActionTypes } from "../constants/action-types";
 
 const initialState = {
@@ -21,6 +22,9 @@ const Reducer = (state = initialState, action) => {
         case ActionTypes.USER_SUCCESS:
             return {
                 loading:false,
+                error:''
             }
     }
 }
+
+export default ReduceCapacitySharp;
