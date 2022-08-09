@@ -1,0 +1,6 @@
+export const ActionTypes = {
+    USER_LOGIN:'USER_LOGIN',
+    USER_SIGNUP:'USER_SIGNUP',
+    USER_SUCCESS:'USER_SUCCESS',
+    USER_FAILURE:'USER_FAILURE',
+}
