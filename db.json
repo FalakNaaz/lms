@@ -1,0 +1,17 @@
+{
+  "users": [
+    {
+      "email": "nazfalaknaz5@gmail.com",
+      "username": "nazfalaknaz5",
+      "role": "student",
+      "id": 1
+    },
+    {
+      "email": "pranshu@GL.com",
+      "username": "pranshu",
+      "role": "Student",
+      "id": 2
+    }
+  ],
+  "courses": []
+}

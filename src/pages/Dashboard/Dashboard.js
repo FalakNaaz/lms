@@ -9,6 +9,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import { useDispatch, useSelector } from 'react-redux';
 import { Logout } from '../../redux/actions/LogoutActions'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 function Dashboard() {
   const getData = useSelector(state => state.user);
@@ -22,7 +23,11 @@ function Dashboard() {
   }
   
   useEffect(()=>{
-    console.log(getData);
+   const getData2 = async () => {
+    const data = await axios.get('http://localhost:3000/users');
+    console.log(data);
+   }
+    getData2();
   },[getData])
 
   return (
@@ -34,7 +39,7 @@ function Dashboard() {
         <Sidebar Icon={MessageIcon} title="Messages" />
         <Sidebar
           Icon={SettingsApplicationsIcon}
-          title="Preferences"
+          title="Courses"
         />
         <div onClick={handleLogout}>
           <Sidebar Icon={ExitToAppIcon} title="Logout" />
