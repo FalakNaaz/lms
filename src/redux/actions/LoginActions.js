@@ -18,13 +18,9 @@ const LoginFailureAction = () => {
 export const Signin = (email, password) => async dispatch => {
     try{
         await auth.signInWithEmailAndPassword(email,password)
-        .then(()=>{
             const userData={email,password}
             dispatch(LoginAction(userData));
-        })
-        .catch(()=>{
-            dispatch(LoginFailureAction());
-        })
+        
     } catch (err) {
         dispatch(LoginFailureAction());
     }
