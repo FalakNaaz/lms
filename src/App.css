@@ -1,11 +1,17 @@
 .App {
   text-align: center;
 }
-.center {
-  /* display: flex; */
+.courseDiv{
+  display: inline-flex;
+  flex-wrap: wrap;
+  /* justify-content: space-around; */
+}
+.courseCard{
+  width: 40vh;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height:100vh;  
+  margin-top: 3vh;
 }
-
 
