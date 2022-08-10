@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Sidebar from '../../components/Sidebar/SidebarComponent'
 import DashboardIcon from '@material-ui/icons/Dashboard'
 import PersonIcon from '@material-ui/icons/Person'
@@ -8,17 +8,22 @@ import SettingsApplicationsIcon from '@material-ui/icons/SettingsApplications'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import { useDispatch, useSelector } from 'react-redux';
 import { Logout } from '../../Redux/actions/LogoutActions'
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function Dashboard() {
-  const getData = useSelector(state=>state.user);
+  const getData = useSelector(state => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // const handleLogout = () => {
-  //   dispatch(Logout());
-  //   navigate('/login');
-  // }
+  const handleLogout = () => {
+    dispatch(Logout());
+    console.warn("Logged out", getData)
+    navigate('/login');
+  }
+  
+  useEffect(()=>{
+    console.log(getData);
+  },[getData])
 
   return (
     <div>
@@ -31,9 +36,10 @@ function Dashboard() {
           Icon={SettingsApplicationsIcon}
           title="Preferences"
         />
+        <div onClick={handleLogout}>
           <Sidebar Icon={ExitToAppIcon} title="Logout" />
+        </div>
       </div>
-      {/* <h2>{getData}</h2> */}
     </div>
   )
 }

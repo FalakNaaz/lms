@@ -17,7 +17,7 @@ const LogoutFailureAction = (error) => {
 
 export const Logout = () => async dispatch => {
     try{
-        auth.signOut()
+         await auth.signOut()
         .then(()=>{
             dispatch(LogoutAction());
         })

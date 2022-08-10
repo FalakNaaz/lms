@@ -24,7 +24,7 @@ const SignupFailureAction = () => {
 
 export const Signup = (email, password) => async dispatch => {
     try {
-        auth.createUserWithEmailAndPassword(email, password).then(dataBeforeEmail => {
+        await auth.createUserWithEmailAndPassword(email, password).then(dataBeforeEmail => {
             auth.onAuthStateChanged(function (user) {
                 user.sendEmailVerification();
             });
