@@ -24,23 +24,17 @@ const SignupFailureAction = () => {
 
 export const Signup = (email, password) => async dispatch => {
     try {
-        await auth.createUserWithEmailAndPassword(email, password).then(dataBeforeEmail => {
-            auth.onAuthStateChanged(function (user) {
-                user.sendEmailVerification();
-            });
-        })
-            .then(dataBeforeEmail => {
-                auth.onAuthStateChanged(function (user) {
-                    if (user.emailVerified) {
-                        dispatch(SignupSuccessAction())
-                    } else {
-                        dispatch(SignupFailureAction())
-                    }
-                })
-            })
-            .catch(function (err) {
+        await auth.createUserWithEmailAndPassword(email, password)
+        auth.onAuthStateChanged(function (user) {
+            user.sendEmailVerification();
+        });
+        auth.onAuthStateChanged(function (user) {
+            if (user.emailVerified) {
+                dispatch(SignupSuccessAction())
+            } else {
                 dispatch(SignupFailureAction())
-            })
+            }
+        })
     }
     catch (err) {
         dispatch(SignupFailureAction())
