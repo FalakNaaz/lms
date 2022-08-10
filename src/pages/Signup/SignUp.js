@@ -8,9 +8,12 @@ import { auth } from "../../firebase/firebase";
 import { Alert } from 'react-bootstrap';
 import { Signup } from '../../redux/actions/SignupActions';
 import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
 
 function SignUp() {
     const emailRef = useRef();
+    const usernameRef = useRef();
+    const roleRef = useRef();
     const passwordRef = useRef();
     const confirmPasswordRef = useRef();
     const [error, setError] = useState();
@@ -21,6 +24,11 @@ function SignUp() {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
+        const userData = {
+            "email": emailRef.current.value,
+            "username": usernameRef.current.value,
+            "role": roleRef.current.value
+        }
         if(passwordRef.current.value !== confirmPasswordRef.current.value){
             return setError('Passwords do not match');
         }
@@ -29,6 +37,7 @@ function SignUp() {
             setLoading(true);
             //await auth.createUserWithEmailAndPassword(emailRef.current.value, passwordRef.current.value);
             dispatch(Signup(emailRef.current.value, passwordRef.current.value));
+            await axios.post('http://localhost:3000/users', userData)
             navigate("/login");
 
         }catch(e){
@@ -53,14 +62,26 @@ function SignUp() {
                         </Form.Text>
                     </Form.Group>
 
+                    <Form.Group className="mb-3" controlId="formBasicUsername">
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control type="text" placeholder="Enter username" ref={usernameRef}/>
+                       
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formBasicRole">
+                        <Form.Label>Role</Form.Label>
+                        <Form.Control type="text" placeholder="Enter role" ref={roleRef}/>
+                       
+                    </Form.Group>
+
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Password" ref={passwordRef}/>
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword2">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="confirmPassword" placeholder="Confirm Password" ref={confirmPasswordRef}/>
+                        <Form.Label>Confirm Password</Form.Label>
+                        <Form.Control type="password" placeholder="Confirm Password" ref={confirmPasswordRef}/>
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">

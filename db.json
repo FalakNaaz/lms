@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "email": "nazfalaknaz5@gmail.com",
+      "username": "nazfalaknaz5",
+      "role": "student",
+      "id": 1
+    }
+  ],
+  "courses": []
+}
