@@ -6,7 +6,7 @@ import '../../App.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from "../../firebase/firebase";
 import { Alert } from 'react-bootstrap';
-import { Signup } from '../../Redux/actions/SignupActions';
+import { Signup } from '../../redux/actions/SignupActions';
 import { useSelector, useDispatch } from 'react-redux';
 
 function SignUp() {

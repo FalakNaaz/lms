@@ -7,7 +7,7 @@ import MessageIcon from '@material-ui/icons/Message'
 import SettingsApplicationsIcon from '@material-ui/icons/SettingsApplications'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import { useDispatch, useSelector } from 'react-redux';
-import { Logout } from '../../Redux/actions/LogoutActions'
+import { Logout } from '../../redux/actions/LogoutActions'
 import { useNavigate } from 'react-router-dom'
 
 function Dashboard() {
