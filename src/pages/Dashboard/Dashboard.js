@@ -24,7 +24,7 @@ function Dashboard() {
   
   useEffect(()=>{
    const getData2 = async () => {
-    const data = await axios.get('http://localhost:3000/posts');
+    const data = await axios.get('http://localhost:3000/users');
     console.log(data);
    }
     getData2();
