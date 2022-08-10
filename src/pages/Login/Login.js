@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { Alert, Card, Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useRef, useState } from 'react';
-import { Signin } from '../../redux/actions/SigninActions';
+import { Signin } from '../../redux/actions/LoginActions';
 import { useSelector, useDispatch } from 'react-redux';
 
 function Login() {
