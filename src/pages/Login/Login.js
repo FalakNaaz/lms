@@ -3,6 +3,9 @@ import React from 'react'
 import { Alert, Card, Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useRef, useState } from 'react';
+import { Signin } from '../../Redux/actions/SigninActions';
+import { useSelector, useDispatch } from 'react-redux';
+
 function Login() {
     const emailRef = useRef();
     const pwdRef = useRef();
@@ -10,6 +13,8 @@ function Login() {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const getData = useSelector(state=>state.user);
   
     async function handleSubmit(e) {
       e.preventDefault();
@@ -17,7 +22,9 @@ function Login() {
         setError("");
         setLoading(true);
         // await login(emailRef.current.value, pwdRef.current.value);
+        dispatch(Signin(emailRef.current.value,pwdRef.current.value))
         navigate("/");
+        console.log(getData);
       } catch (err) {
         setError("Something went wrong! : " + err.message);
       }

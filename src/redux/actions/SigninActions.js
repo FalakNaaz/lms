@@ -1,25 +1,26 @@
 import { ActionTypes } from "../constants/action-types"
 import { auth } from "../../firebase/firebase"
 
-export const LoginAction = () => {
+const LoginAction = (userData) => {
     return {
-        type: ActionTypes.USER_LOGIN_SUCCESS
+        type: ActionTypes.USER_LOGIN_SUCCESS,
+        payload:userData,
     }
 }
 
-export const LoginFailureAction = () => {
+const LoginFailureAction = () => {
     return {
         type : ActionTypes.USER_LOGIN_FAILURE,
         payload:'Invalid login credentials',
     }
 }
 
-export const Signin = (email, password, callback) => async dispatch => {
+export const Signin = (email, password) => async dispatch => {
     try{
         auth.signInWithEmailAndPassword(email,password)
         .then(()=>{
-            dispatch(LoginAction());
-            callback();
+            const userData={email,password}
+            dispatch(LoginAction(userData));
         })
         .catch(()=>{
             dispatch(LoginFailureAction());

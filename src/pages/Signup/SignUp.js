@@ -6,7 +6,8 @@ import '../../App.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from "../../firebase/firebase";
 import { Alert } from 'react-bootstrap';
-
+import { Signup } from '../../Redux/actions/SignupActions';
+import { useSelector, useDispatch } from 'react-redux';
 
 function SignUp() {
     const emailRef = useRef();
@@ -15,6 +16,9 @@ function SignUp() {
     const [error, setError] = useState();
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+
     const handleSubmit = async(e) => {
         e.preventDefault();
         if(passwordRef.current.value !== confirmPasswordRef.current.value){
@@ -23,8 +27,9 @@ function SignUp() {
         try{
             setError("");
             setLoading(true);
-            await auth.createUserWithEmailAndPassword(emailRef.current.value, passwordRef.current.value);
-            navigate("/");
+            //await auth.createUserWithEmailAndPassword(emailRef.current.value, passwordRef.current.value);
+            dispatch(Signup(emailRef.current.value, passwordRef.current.value));
+            navigate("/login");
 
         }catch(e){
             setError("error from firebase: ", e.message)
