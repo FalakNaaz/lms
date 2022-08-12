@@ -22,6 +22,7 @@ const Routing = () => {
       <Route path="/admin-dashboard" element={<AdminDashboard />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
+        <Route path='/allcourses' element={<AllCourses/>}/>
     </Routes>
 
   )

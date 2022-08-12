@@ -75,7 +75,7 @@ const Header = () => {
               <Link onClick={toggleClose} to="/">Profile</Link>
             </li>
             <li>
-              <NavLink onClick={toggleClose} to="/">All Courses</NavLink>
+              <NavLink onClick={toggleClose} to="/allcourses">All Courses</NavLink>
             </li>
 
             {
