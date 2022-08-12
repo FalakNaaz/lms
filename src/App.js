@@ -6,16 +6,22 @@ import Login from './pages/Login/Login';
 import Dashboard from './pages/Dashboard/Dashboard';
 import SignUp from './pages/Signup/SignUp';
 import { useEffect } from 'react';
-
+import AdminDashboard from './pages/Dashboard/Admin Dashboard/AdminDashboard';
+import StudentRoute from './components/PrivateRoute/StudentRoute';
 
 const Routing = () => {
   return (
     <Routes>
-      <Route path="/Login" element={<Login />} />
-      <Route path="/" element={<Dashboard />} />
+      <Route path="/"
+        element={
+          <StudentRoute>
+            <Dashboard />
+          </StudentRoute>
+        } />
       <Route path="*" element={<NotFound />} />
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/signup" element={<SignUp/>}/>
+      <Route path="/admin-dashboard" element={<AdminDashboard />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<SignUp />} />
     </Routes>
 
   )

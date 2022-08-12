@@ -16,7 +16,8 @@ function Dashboard() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
+  const handleLogout = (e) => {
+    e.preventDefault();
     dispatch(Logout());
     console.warn("Logged out", getData)
     navigate('/login');

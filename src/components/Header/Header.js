@@ -22,10 +22,6 @@ const Header = () => {
     <div className="header">
       <div className="left__header">
         <Link to="/">
-          <img
-            src="https://lms.bup.edu.bd/pluginfile.php/1/theme_edumy/headerlogo2/1618037325/bup-icon.png"
-            alt=""
-          />
           <h4>LMS</h4>
         </Link>
       </div>

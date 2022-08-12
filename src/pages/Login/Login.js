@@ -21,8 +21,7 @@ function Login() {
     try {
       setError("");
       setLoading(true);
-      // await login(emailRef.current.value, pwdRef.current.value);
-      dispatch(Signin(emailRef.current.value, pwdRef.current.value))
+      await dispatch(Signin(emailRef.current.value, pwdRef.current.value))
       navigate("/");
     } catch (err) {
       setError("Something went wrong! : " + err.message);
