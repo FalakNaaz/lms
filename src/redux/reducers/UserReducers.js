@@ -18,8 +18,7 @@ const UserReducer = (state = initialState, action) => {
             return {
                 loading: false,
                 user:action.payload,
-                error: '',
-                ...state
+                error: ''
             }
         
         case ActionTypes.USER_LOGIN_FAILURE:

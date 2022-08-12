@@ -8,6 +8,7 @@ import SignUp from './pages/Signup/SignUp';
 import { useEffect } from 'react';
 import AdminDashboard from './pages/Dashboard/Admin Dashboard/AdminDashboard';
 import StudentRoute from './components/PrivateRoute/StudentRoute';
+import AllCourses from './pages/AllCourses/AllCourses';
 
 const Routing = () => {
   return (

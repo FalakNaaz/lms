@@ -47,7 +47,7 @@ function AllCourses() {
               <Card.Title>{item.title.slice(0, 18).concat("...")}</Card.Title>
               <p> {item.name}</p>
               <div>
-                <Button variant="primary" onClick={""}>
+                <Button variant="primary" >
                   Enroll
                 </Button>
               </div>

@@ -20,6 +20,7 @@ export const Signin = (email, password) => async dispatch => {
         await auth.signInWithEmailAndPassword(email,password)
             const userData={email,password}
             dispatch(LoginAction(userData));
+            console.log("User sign in successfully",userData);
         
     } catch (err) {
         dispatch(LoginFailureAction());
