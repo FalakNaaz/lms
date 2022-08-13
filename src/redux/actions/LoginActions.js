@@ -27,12 +27,8 @@ export const login = (email, password) => async dispatch => {
     try{
         await auth.signInWithEmailAndPassword(email,password)
         localStorage.setItem("currUser", email)
-        // await auth.onAuthStateChanged((user)=>{
-        //     userData = user
-        // })
         const userData={email,password}
         dispatch(LoginSuccessAction(userData));
-        console.log("User sign in successfully",userData);
     } catch (err) {
         dispatch(LoginFailureAction(err.message));
     }

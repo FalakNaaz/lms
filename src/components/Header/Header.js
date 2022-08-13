@@ -1,23 +1,22 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { Avatar, Button, IconButton } from "@material-ui/core";
+import "./Header.css";
+import SettingsIcon from "@material-ui/icons/Settings";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 import ChatIcon from "@material-ui/icons/Chat";
-import SettingsIcon from "@material-ui/icons/Settings";
-import { Avatar, Button, IconButton } from "@material-ui/core";
-import "./Header.css";
 import ClearIcon from "@material-ui/icons/Clear";
 import NotesIcon from "@material-ui/icons/Notes";
-
+import PersonIcon from '@material-ui/icons/Person';
 const Header = () => {
   const [toggle, setToggle] = useState(false);
   const user = {
-    role:'Teacher',
+    role: "Teacher",
   };
-  const toggleClose=()=>{
-    setToggle(false)
-    
-  }
+  const toggleClose = () => {
+    setToggle(false);
+  };
   return (
     <div className="header">
       <div className="left__header">
@@ -32,68 +31,81 @@ const Header = () => {
       >
         {user && (
           <ul>
-            {
-              user.role==="Teacher" && <> <li>
-              <NavLink onClick={toggleClose} to="/">Dashboard</NavLink>
-            </li>
-            
-           
+            {user.role === "Teacher" && (
+              <>
+                {" "}
+                <li>
+                  <NavLink onClick={toggleClose} to="/">
+                    Dashboard
+                  </NavLink>
+                </li>
+              </>
+            )}
+            {user.role === "Admin" && (
+              <>
+                {" "}
+                <li>
+                  <NavLink onClick={toggleClose} to="/">
+                    Dashboard
+                  </NavLink>
+                </li>
+                <li className="admin__toggle__menu">
+                  <NavLink onClick={toggleClose} to="/">
+                    Course-Info
+                  </NavLink>
+                </li>
+                <li className="admin__toggle__menu">
+                  <NavLink onClick={toggleClose} to="/">
+                    Student-Info
+                  </NavLink>
+                </li>
+                <li className="admin__toggle__menu">
+                  <NavLink onClick={toggleClose} to="/">
+                    Teacher-Info
+                  </NavLink>
+                </li>
+              </>
+            )}
+            {user.role === "Student" && (
+              <>
+                <li>
+                  <NavLink onClick={toggleClose} to="/">
+                    Dashboard
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink onClick={toggleClose} to="/">
+                    UCAM
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink onClick={toggleClose} to="/">
+                    LIBRARY
+                  </NavLink>
+                </li>{" "}
+              </>
+            )}
 
-            </>
-            
-            }
-            {
-              user.role==="Admin" && <> <li >
-              <NavLink onClick={toggleClose} to="/">Dashboard</NavLink>
-            </li>
-            <li className="admin__toggle__menu">
-              <NavLink onClick={toggleClose} to="/">Course-Info</NavLink>
-            </li>
-            <li className="admin__toggle__menu">
-              <NavLink onClick={toggleClose} to="/">Student-Info</NavLink>
-            </li>
-            <li className="admin__toggle__menu">
-              <NavLink onClick={toggleClose} to="/">Teacher-Info</NavLink>
-            </li>
-            
-            </>
-            }
-            {
-              user.role==="Student" &&<><li>
-              <NavLink onClick={toggleClose} to="/">Dashboard</NavLink>
+            <li>
+              <Link onClick={toggleClose} to="/">
+                Profile
+              </Link>
             </li>
             <li>
-              <NavLink onClick={toggleClose} to="/">UCAM</NavLink>
+              <NavLink onClick={toggleClose} to="/allcourses">
+                All Courses
+              </NavLink>
             </li>
 
-            <li>
-              <NavLink onClick={toggleClose} to="/">LIBRARY</NavLink>
-            </li> </> 
-            }
-            
-            <li>
-              <Link onClick={toggleClose} to="/">Profile</Link>
-            </li>
-            <li>
-              <NavLink onClick={toggleClose} to="/allcourses">All Courses</NavLink>
-            </li>
-
-            {
-              user.role==="Teacher" ?   <li className="">
-              <Button>
-                Logout
-              </Button>
-            </li> :  <li className="logout__button">
-              <Button>
-                Logout
-              </Button>
-            </li>
-
-            }
-           
-           
-
-           
+            {user.role === "Teacher" ? (
+              <li className="">
+                <Button>Logout</Button>
+              </li>
+            ) : (
+              <li className="logout__button">
+                <Button>Logout</Button>
+              </li>
+            )}
           </ul>
         )}
       </div>
@@ -112,7 +124,11 @@ const Header = () => {
             <SettingsIcon />
           </IconButton>
           <Link to="/profile">
-            <Avatar>R</Avatar>
+            <Avatar>
+              {localStorage.getItem("currUser")?.charAt(0).toUpperCase() ?? (
+                <PersonIcon />
+              )}
+            </Avatar>
           </Link>
         </div>
       ) : (

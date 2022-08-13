@@ -29,6 +29,12 @@
       "username": "johndoe",
       "role": "Student",
       "id": 5
+    },
+    {
+      "email": "henryrobertson@gmail.com",
+      "username": "henry_robertson",
+      "role": "Student",
+      "id": 6
     }
   ],
   "courses": [

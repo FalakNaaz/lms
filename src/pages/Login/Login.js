@@ -27,11 +27,7 @@ function Login() {
     }
     setLoading(false);
   }
-
-  useEffect(() => {
-    console.warn(getData);
-  }, [getData])
-
+  
   return (
     <>
       <Card style={{ maxWidth: "400px", margin: "auto", marginTop: "30px" }}>
