@@ -18,8 +18,9 @@ const LogoutFailureAction = (error) => {
 export const Logout = () => async dispatch => {
     try {
         await auth.signOut()
+        localStorage.removeItem("currUser");
         dispatch(LogoutAction());
-    } catch (error) {
-        dispatch(LogoutFailureAction(error.message));
+    } catch (err) {
+        dispatch(LogoutFailureAction(err.message));
     }
 }
