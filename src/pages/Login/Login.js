@@ -3,13 +3,12 @@ import React, { useEffect } from 'react'
 import { Alert, Card, Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useRef, useState } from 'react';
-import { Signin } from '../../redux/actions/LoginActions';
+import { login } from '../../redux/actions/LoginActions';
 import { useSelector, useDispatch } from 'react-redux';
 
 function Login() {
   const emailRef = useRef();
   const pwdRef = useRef();
-  // const { login } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -21,7 +20,7 @@ function Login() {
     try {
       setError("");
       setLoading(true);
-      await dispatch(Signin(emailRef.current.value, pwdRef.current.value))
+      await dispatch(login(emailRef.current.value, pwdRef.current.value))
       navigate("/");
     } catch (err) {
       setError("Something went wrong! : " + err.message);
@@ -32,7 +31,6 @@ function Login() {
   useEffect(() => {
     console.warn(getData);
   }, [getData])
-
 
   return (
     <>

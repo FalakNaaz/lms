@@ -5,7 +5,6 @@ import Header from './components/Header/Header';
 import Login from './pages/Login/Login';
 import Dashboard from './pages/Dashboard/Dashboard';
 import SignUp from './pages/Signup/SignUp';
-import { useEffect } from 'react';
 import AdminDashboard from './pages/Dashboard/Admin Dashboard/AdminDashboard';
 import StudentRoute from './components/PrivateRoute/StudentRoute';
 import AllCourses from './pages/AllCourses/AllCourses';

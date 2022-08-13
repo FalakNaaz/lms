@@ -1,10 +1,13 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
 function StudentRoute({ children }) {
-    const data = useSelector((state) => state.user);
-    if (data.user.email)
+    
+    // const data = useSelector((state) => state.userLogin);
+    const currUser = localStorage.getItem("currUser");
+    console.log('in student route ', currUser)
+    if (currUser)
     {
         return children
     }

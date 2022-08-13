@@ -4,39 +4,44 @@ import { auth } from '../../firebase/firebase'
 const SignupAction = () => {
     return {
         type: ActionTypes.USER_SIGNUP,
-        payload: "User successfully Signed up.",
+        payload: true,
     }
 }
 
 const SignupSuccessAction = () => {
     return {
         type: ActionTypes.USER_SIGNUP_SUCCESS,
-        payload: 'Your account was successfully created! Now you need to verify your e-mail address, please go check your inbox.'
+        payload: "User Signup Successfully! Now you can Login!"
     }
 }
 
-const SignupFailureAction = () => {
+const SignupFailureAction = (errMsg) => {
     return {
         type: ActionTypes.USER_SIGNUP_FAILURE,
-        payload: "Something went wrong, we couldn't create your account. Please try again.",
+        payload: errMsg
     }
 }
 
-export const Signup = (email, password) => async dispatch => {
-    try {
-        await auth.createUserWithEmailAndPassword(email, password)
-        auth.onAuthStateChanged(function (user) {
-            user.sendEmailVerification();
-        });
-        auth.onAuthStateChanged(function (user) {
-            if (user.emailVerified) {
-                dispatch(SignupSuccessAction())
-            } else {
-                dispatch(SignupFailureAction())
-            }
-        })
-    }
-    catch (err) {
-        dispatch(SignupFailureAction())
+export const Signup = (email, password) =>{
+    return async(dispatch) => {
+        dispatch(SignupAction())
+        try {
+            await auth.createUserWithEmailAndPassword(email, password)
+            dispatch(SignupSuccessAction())
+    
+            // auth.onAuthStateChanged(function (user) {
+            //     user.sendEmailVerification();
+            // });
+            // auth.onAuthStateChanged(function (user) {
+            //     if (user.emailVerified) {
+            //         dispatch(SignupSuccessAction())
+            //     } else {
+            //         dispatch(SignupFailureAction())
+            //     }
+            // })
+        }
+        catch (err) {
+            dispatch(SignupFailureAction(err.message))
+        }
     }
 }

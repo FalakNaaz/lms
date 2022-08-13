@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+// import React, { useEffect } from 'react'
 import Sidebar from '../../components/Sidebar/SidebarComponent'
 import DashboardIcon from '@material-ui/icons/Dashboard'
 import PersonIcon from '@material-ui/icons/Person'
@@ -9,7 +10,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import { useDispatch, useSelector } from 'react-redux';
 import { Logout } from '../../redux/actions/LogoutActions'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+// import axios from 'axios'
 
 function Dashboard() {
   const getData = useSelector(state => state.user);
@@ -23,13 +24,13 @@ function Dashboard() {
     navigate('/login');
   }
   
-  useEffect(()=>{
-   const getData2 = async () => {
-    const data = await axios.get('http://localhost:3000/users');
-    console.log(data);
-   }
-    getData2();
-  },[getData])
+  // useEffect(()=>{
+  //  const getData2 = async () => {
+  //   const data = await axios.get('http://localhost:3000/users');
+  //   console.log(data);
+  //  }
+  //   getData2();
+  // },[getData])
 
   return (
     <div>
