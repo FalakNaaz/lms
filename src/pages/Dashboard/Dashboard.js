@@ -17,15 +17,8 @@ function Dashboard() {
   const handleLogout = (e) => {
     dispatch(Logout());
     navigate('/login');
+    window.location.reload();
   }
-  
-  // useEffect(()=>{
-  //  const getData2 = async () => {
-  //   const data = await axios.get('http://localhost:3000/users');
-  //   console.log(data);
-  //  }
-  //   getData2();
-  // },[getData])
 
   return (
     <div>

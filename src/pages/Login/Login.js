@@ -1,10 +1,10 @@
 import '../../App.css'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Alert, Card, Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import { login } from '../../redux/actions/LoginActions';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 function Login() {
   const emailRef = useRef();
@@ -13,7 +13,6 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const getData = useSelector(state => state.user);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -22,6 +21,7 @@ function Login() {
       setLoading(true);
       await dispatch(login(emailRef.current.value, pwdRef.current.value))
       navigate("/");
+      window.location.reload();
     } catch (err) {
       setError("Something went wrong! : " + err.message);
     }
