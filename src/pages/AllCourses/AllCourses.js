@@ -45,8 +45,8 @@ function AllCourses() {
               />
             </Link>
             <Card.Body className="cardBody">
-              <Card.Title>{item.attributes.title}</Card.Title>
-              <p> {item.attributes.name.slice(0, 18).concat("...")}</p>
+              <Card.Title>{item.attributes.name}</Card.Title>
+              <p> {item.attributes.title.slice(0, 18).concat("...")}</p>
               <div>
                 <Button variant="primary" >
                   Enroll
