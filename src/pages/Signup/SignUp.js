@@ -33,22 +33,22 @@ function SignUp() {
     try {
       setError("");
       setLoading(true);
-      //await auth.createUserWithEmailAndPassword(emailRef.current.value, passwordRef.current.value);
-      dispatch(Signup(emailRef.current.value, passwordRef.current.value));
-      // await axios.post("http://localhost:3000/users", userData);
-      axios
-      .post('http://localhost:1337/api/auth/local/register', {
-        username: 'Kapman',
-        email: 'test@test.com',
-        password: 'Password',
-      })
-      .then(response => {
-        console.log('User profile', response.data.user);
-        console.log('User token', response.data.jwt);
-      })
-      .catch(error => {
-        console.log('An error occurred:', error.response);
-      });
+      
+      dispatch(Signup(emailRef.current.value, passwordRef.current.value, usernameRef.current.value));
+      
+      // axios
+      // .post('http://localhost:1337/api/auth/local/register', {
+      //   username: 'Kapman',
+      //   email: 'test@test.com',
+      //   password: 'Password',
+      // })
+      // .then(response => {
+      //   console.log('User profile', response.data.user);
+      //   console.log('User token', response.data.jwt);
+      // })
+      // .catch(error => {
+      //   console.log('An error occurred:', error.response);
+      // });
       navigate("/login");
     } catch (e) {
       setError("error from firebase: ", e.message);
