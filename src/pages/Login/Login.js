@@ -1,10 +1,11 @@
-import '../../App.css'
-import React from 'react'
-import { Alert, Card, Button, Form } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
-import { useRef, useState } from 'react';
-import { login } from '../../redux/actions/LoginActions';
-import { useDispatch } from 'react-redux';
+import "../../App.css";
+import React from "react";
+import { Alert, Card, Button, Form } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import { useRef, useState } from "react";
+import { login } from "../../redux/actions/LoginActions";
+import { useDispatch } from "react-redux";
+import axios from "axios";
 
 function Login() {
   const emailRef = useRef();
@@ -16,25 +17,39 @@ function Login() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    try {
-      setError("");
-      setLoading(true);
-      await dispatch(login(emailRef.current.value, pwdRef.current.value))
-      navigate("/");
-      window.location.reload();
-    } catch (err) {
-      setError("Something went wrong! : " + err.message);
-    }
+    console.log("inside login function");
+    setError("");
+    setLoading(true);
+    dispatch(login(emailRef.current.value, pwdRef.current.value))
+    
+    // axios
+    //   .post("http://localhost:1337/api/auth/local/", {
+    //     identifier: "Kapman",
+    //     password: "Password",
+    //   })
+    //   .then((response) => {
+    //     console.log("User profile", response.data.user);
+    //     console.log("User token", response.data.jwt);
+    //   })
+    //   .catch((error) => {
+    //     console.log("An error occurred:", error.response);
+    //   });
+    navigate("/");
+    setTimeout(() => { window.location.reload()}, 5000)
+   
+
     setLoading(false);
   }
-  
+
   return (
     <>
       <Card style={{ maxWidth: "400px", margin: "auto", marginTop: "30px" }}>
         <Card.Body>
           <h2 className="text-center mb-4">Log In </h2>
           {error && <Alert variant="danger">{error}</Alert>}
-          {loading && <Alert variant='success'>Logging In into your account...</Alert>}
+          {loading && (
+            <Alert variant="success">Logging In into your account...</Alert>
+          )}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
@@ -57,7 +72,11 @@ function Login() {
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2 btm-txt">
-        Not having an account?<Link to="/signup" style={{ textDecoration: "none" }}> Sign up Here!</Link>
+        Not having an account?
+        <Link to="/signup" style={{ textDecoration: "none" }}>
+          {" "}
+          Sign up Here!
+        </Link>
       </div>
     </>
   );
