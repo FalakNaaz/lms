@@ -35,7 +35,7 @@ function Login() {
     //     console.log("An error occurred:", error.response);
     //   });
     navigate("/");
-    setTimeout(() => { window.location.reload()}, 5000)
+    // setTimeout(() => { window.location.reload()}, 5000)
    
 
     setLoading(false);
