@@ -20,12 +20,7 @@ function AllCourses() {
     };
     getCourses();
   }, []);
-
-  setTimeout(()=>{
-    console.log("courses are: ",courses)
-  },3000)
-  
-
+  console.log("courses are: ", courses)
   return (
     <div
       className="courseDiv"
@@ -50,8 +45,8 @@ function AllCourses() {
               />
             </Link>
             <Card.Body className="cardBody">
-              <Card.Title>{item.title}</Card.Title>
-              <p> {item.name}</p>
+              <Card.Title>{item.attributes.title}</Card.Title>
+              <p> {item.attributes.name.slice(0, 18).concat("...")}</p>
               <div>
                 <Button variant="primary" >
                   Enroll

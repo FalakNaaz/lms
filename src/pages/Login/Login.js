@@ -34,8 +34,8 @@ function Login() {
     //   .catch((error) => {
     //     console.log("An error occurred:", error.response);
     //   });
-    navigate("/");
-    setTimeout(() => { window.location.reload()}, 5000)
+    navigate("/admin-dashboard");
+    // setTimeout(() => { window.location.reload()}, 5000)
    
 
     setLoading(false);
