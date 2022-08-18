@@ -68,7 +68,6 @@ function Dashboard() {
         <img
           src={props.item.imgSrc}
           alt=""
-          srcset=""
           style={{width: "96.3vw", height: "50vh"}}
         />
 
