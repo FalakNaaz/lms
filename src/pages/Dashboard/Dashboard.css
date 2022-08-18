@@ -1,0 +1,140 @@
+.dropdown__style {
+  width: 60px;
+  height: 40px;
+  background-color: #6c757d;
+  color: white;
+  border-radius: 7px;
+  border: none;
+}
+
+.dropdown__style:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid gray;
+  transition: all 0.3s ease-in;
+}
+.course__Card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  cursor: pointer;
+  padding: 20px 0px;
+}
+
+.container {
+  position: relative;
+  width: 50%;
+}
+.image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  padding: 15px 20px;
+  border-radius: 25px;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.452);
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  transform: scale(0);
+  transition: 0.3s ease;
+  padding: 20px;
+}
+.container:hover .overlay {
+  transform: scale(0.88);
+  overflow: hidden;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.text {
+  color: white;
+  font-size: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border: 2px solid white;
+  padding: 8px 30px;
+  border-radius: 30px;
+}
+
+.course__content > span {
+  color: gray;
+}
+
+.course__Card:hover {
+  background-color: transparent;
+}
+
+@media screen and (max-width: 768px) {
+  .course__Card {
+    display: flex;
+    flex-direction: column !important;
+  }
+  .container {
+    position: relative;
+    width: 100%;
+  }
+  .image {
+    width: 50%;
+    height:50%;
+  }
+
+  .container:hover .overlay {
+    transform: scale(0.92);
+  }
+  .course__content {
+    padding: 0px 20px;
+  }
+}
+
+.dashboard {
+  display: flex;
+  background-color: #f7f7f7;
+}
+
+.left__sidebar__dashboard {
+  padding-top: 40px;
+  flex: 0.2;
+  position: fixed;
+  box-shadow: 0px 5px 22px -13px grey;
+  height: 100vh;
+  width: 200px;
+  background-color: white;
+}
+
+.main__body__dashboard {
+  flex: 1;
+  margin-left: 200px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.right__sidebar__dashboard {
+  flex: 0.2;
+}
+
+@media screen and (max-width: 768px) {
+  .left__sidebar__dashboard {
+    display: none;
+    flex: 0;
+  }
+  .main__body__dashboard {
+    flex: 1;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .right__sidebar__dashboard {
+    flex: 1;
+  }
+}

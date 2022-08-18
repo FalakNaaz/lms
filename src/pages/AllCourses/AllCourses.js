@@ -3,24 +3,37 @@ import React, { useEffect, useState } from "react";
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../../App.css";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAllCourses } from '../../redux/actions/CoursesAction';
 
 function AllCourses() {
-  const [courses, setCourses] = useState([]);
+  // const [courses, setCourses] = useState([]);
+  // useEffect(() => {
+  //   const getCourses = async () => {
+  //     try {
+  //       const res = await axios.get("http://localhost:1337/api/trainings?populate=*");
+  //       //res = Array.from(res);
+  //       setCourses(res.data.data);
+
+  //       console.log("res = ", res.data.data);
+  //     } catch (e) {
+  //       console.log("error:", e.message);
+  //     }
+  //   };
+  //   getCourses();
+  // }, []);
+  // console.log("courses are: ", courses)
+  const dispatch = useDispatch();
+  const courses = useSelector(state => state.courses.courses)
+
   useEffect(() => {
     const getCourses = async () => {
-      try {
-        let res = await axios.get("http://localhost:1337/api/trainings?populate=*");
-        //res = Array.from(res);
-        setCourses(res.data.data);
-
-        console.log("res = ", res.data.data);
-      } catch (e) {
-        console.log("error:", e.message);
-      }
-    };
+      await dispatch(fetchAllCourses());
+    }
     getCourses();
-  }, []);
-  console.log("courses are: ", courses)
+
+  }, [])
+
   return (
     <div
       className="courseDiv"

@@ -12,7 +12,7 @@ import PersonIcon from '@material-ui/icons/Person';
 const Header = () => {
   const [toggle, setToggle] = useState(false);
   const user = {
-    role: "Teacher",
+    role: "Student",
   };
   const toggleClose = () => {
     setToggle(false);
@@ -74,13 +74,10 @@ const Header = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink onClick={toggleClose} to="/">
-                    UCAM
-                  </NavLink>
                 </li>
                 <li>
                   <NavLink onClick={toggleClose} to="/">
-                    LIBRARY
+                    Library
                   </NavLink>
                 </li>{" "}
               </>
