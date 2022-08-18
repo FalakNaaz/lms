@@ -15,7 +15,7 @@
 }
 .course__Card {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   background-color: white;
@@ -111,13 +111,14 @@
   height: 100vh;
   width: 200px;
   background-color: white;
+  z-index:1;
 }
 
 .main__body__dashboard {
   flex: 1;
-  margin-left: 200px;
   padding-right: 20px;
   padding-left: 20px;
+
 }
 
 .right__sidebar__dashboard {
