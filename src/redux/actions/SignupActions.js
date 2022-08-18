@@ -40,6 +40,7 @@ export const Signup = (email, password, username) => {
       console.log("User token", response.data.jwt);
 
       dispatch(SignupSuccessAction());
+     
 
       // auth.onAuthStateChanged(function (user) {
       //     user.sendEmailVerification();

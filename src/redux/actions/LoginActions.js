@@ -32,6 +32,7 @@ export const login = (email, password) => async (dispatch) => {
         localStorage.setItem("currUser", response.data.jwt);
         const userData = { email, password };
         dispatch(LoginSuccessAction(userData));
+       
     } catch (err) {
         dispatch(LoginFailureAction("Invalid Email or Password, Please try again!"));
         alert("Invalid Email or Password, Please try again!");

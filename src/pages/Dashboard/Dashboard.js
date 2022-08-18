@@ -9,17 +9,19 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import { useDispatch } from 'react-redux';
 import { Logout } from '../../redux/actions/LogoutActions'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 function Dashboard() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogout = (e) => {
+   
     dispatch(Logout());
     navigate('/login');
     window.location.reload();
   }
-
+  
   return (
     <div>
       <div style={{ paddingTop: '40px', flex: '0.2', position: 'fixed', width: '200px', height: '100vh', boxShadow: '0px 5px 22px -13px grey', backgroundColor: 'white' }}>
