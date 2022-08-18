@@ -9,7 +9,12 @@ import ChatIcon from "@material-ui/icons/Chat";
 import ClearIcon from "@material-ui/icons/Clear";
 import NotesIcon from "@material-ui/icons/Notes";
 import PersonIcon from '@material-ui/icons/Person';
+import MenuIcon from '@material-ui/icons/Menu';
+import { useDispatch } from "react-redux/es/exports";
+import SidebarAction from "../../redux/actions/SidebarAction";
+
 const Header = () => {
+  const dispatch = useDispatch();
   const [toggle, setToggle] = useState(false);
   const user = {
     role: "Student",
@@ -17,8 +22,15 @@ const Header = () => {
   const toggleClose = () => {
     setToggle(false);
   };
+
+  const sidebarHandler = () =>{
+    dispatch(SidebarAction());
+  }
   return (
     <div className="header">
+      <div >
+          <MenuIcon onClick={sidebarHandler} style={{ fontSize: 40 ,margin: "0px 40px 8px 30px"}}/>
+      </div>
       <div className="left__header">
         <Link to="/">
           <h4>LMS</h4>

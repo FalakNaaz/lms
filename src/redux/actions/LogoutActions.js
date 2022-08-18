@@ -1,5 +1,4 @@
 import { ActionTypes } from "../constants/action-types";
-import { auth } from "../../firebase/firebase";
 
 const LogoutAction = () => {
     return {
@@ -17,8 +16,7 @@ const LogoutFailureAction = (error) => {
 
 export const Logout = () => async dispatch => {
     try {
-        await auth.signOut()
-        localStorage.removeItem("currUser");
+        await localStorage.removeItem("currUser");
         dispatch(LogoutAction());
     } catch (err) {
         dispatch(LogoutFailureAction(err.message));
