@@ -69,8 +69,7 @@ function Dashboard() {
           src={props.item.imgSrc}
           alt=""
           srcset=""
-          width="1480"
-          height="350"
+          style={{width: "96.3vw", height: "50vh"}}
         />
 
         {/* <Button className="CheckButton">Check it out!</Button> */}
