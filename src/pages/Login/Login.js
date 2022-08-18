@@ -1,10 +1,9 @@
 import "../../App.css";
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Alert, Card, Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { useRef, useState } from "react";
 import { login } from "../../redux/actions/LoginActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, } from "react-redux";
 
 function Login() {
   const emailRef = useRef();
@@ -14,16 +13,15 @@ function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
- async function handleSubmit(e) {
-    e.preventDefault();
-    console.log("inside login function");
-    setError("");
-    setLoading(true);
-   await dispatch(login(emailRef.current.value, pwdRef.current.value))
-    setLoading(false);
-    navigate("/");
-  }
-
+   async function handleSubmit(e) {
+      e.preventDefault();
+      console.log("inside login function");
+      setError("");
+      setLoading(true);
+     await dispatch(login(emailRef.current.value, pwdRef.current.value))
+      setLoading(false);
+      navigate("/");
+    }
   return (
     <>
       <Card style={{ maxWidth: "400px", margin: "auto", marginTop: "30px" }}>
