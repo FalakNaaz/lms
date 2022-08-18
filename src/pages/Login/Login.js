@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 import { login } from "../../redux/actions/LoginActions";
 import { useDispatch } from "react-redux";
-import axios from "axios";
 
 function Login() {
   const emailRef = useRef();
@@ -15,30 +14,14 @@ function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  async function handleSubmit(e) {
+ async function handleSubmit(e) {
     e.preventDefault();
     console.log("inside login function");
     setError("");
     setLoading(true);
-    dispatch(login(emailRef.current.value, pwdRef.current.value))
-    
-    // axios
-    //   .post("http://localhost:1337/api/auth/local/", {
-    //     identifier: "Kapman",
-    //     password: "Password",
-    //   })
-    //   .then((response) => {
-    //     console.log("User profile", response.data.user);
-    //     console.log("User token", response.data.jwt);
-    //   })
-    //   .catch((error) => {
-    //     console.log("An error occurred:", error.response);
-    //   });
-    navigate("/");
-    // setTimeout(() => { window.location.reload()}, 5000)
-   
-
+   await dispatch(login(emailRef.current.value, pwdRef.current.value))
     setLoading(false);
+    navigate("/");
   }
 
   return (
@@ -74,7 +57,6 @@ function Login() {
       <div className="w-100 text-center mt-2 btm-txt">
         Not having an account?
         <Link to="/signup" style={{ textDecoration: "none" }}>
-          {" "}
           Sign up Here!
         </Link>
       </div>
