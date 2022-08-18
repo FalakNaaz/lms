@@ -30,12 +30,11 @@ function Dashboard() {
   }, [])
 
   const handleLogout = (e) => {
+   
     dispatch(Logout());
     navigate('/login');
     window.location.reload();
   }
-
-
 
   return (
     <div className='dashboard'>

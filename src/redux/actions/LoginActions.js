@@ -1,5 +1,4 @@
 import { ActionTypes } from "../constants/action-types";
-import { auth } from "../../firebase/firebase";
 import axios from "axios";
 
 const LoginAction = () => {
@@ -26,30 +25,16 @@ const LoginFailureAction = (errMsg) => {
 export const login = (email, password) => async (dispatch) => {
     dispatch(LoginAction);
     try {
-
-        //await auth.signInWithEmailAndPassword(email,password)
-
         const response = await axios.post("http://localhost:1337/api/auth/local/", {
             identifier: email,
-            password: password, //Password for kapman is Password
+            password: password,
         })
-        localStorage.setItem("currUser", email);
-        console.log("User profile", response.data.user);
-        console.log("User token", response.data.jwt);
-
-        //   .then((response) => {
-        //     console.log("User profile", response.data.user);
-        //     console.log("User token", response.data.jwt);
-        //   })
-        //   .catch((error) => {
-        //     console.log("An error occurred:", error.response);
-        //     dispatch(LoginFailureAction(error.message));
-        //   });
+        localStorage.setItem("currUser", response.data.jwt);
         const userData = { email, password };
         dispatch(LoginSuccessAction(userData));
+       
     } catch (err) {
-
-        console.log("An error occurred:hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh", err.response);
-        dispatch(LoginFailureAction(err.message));
+        dispatch(LoginFailureAction("Invalid Email or Password, Please try again!"));
+        alert("Invalid Email or Password, Please try again!");
     }
 };

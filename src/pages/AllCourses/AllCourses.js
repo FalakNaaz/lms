@@ -1,39 +1,33 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Card, Button } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "../../App.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllCourses } from '../../redux/actions/CoursesAction';
 
 function AllCourses() {
-  // const [courses, setCourses] = useState([]);
-  // useEffect(() => {
-  //   const getCourses = async () => {
-  //     try {
-  //       const res = await axios.get("http://localhost:1337/api/trainings?populate=*");
-  //       //res = Array.from(res);
-  //       setCourses(res.data.data);
-
-  //       console.log("res = ", res.data.data);
-  //     } catch (e) {
-  //       console.log("error:", e.message);
-  //     }
-  //   };
-  //   getCourses();
-  // }, []);
-  // console.log("courses are: ", courses)
-  const dispatch = useDispatch();
-  const courses = useSelector(state => state.courses.courses)
-
+  const [courses, setCourses] = useState([]);
   useEffect(() => {
     const getCourses = async () => {
       await dispatch(fetchAllCourses());
     }
     getCourses();
-
-  }, [])
-
+    const checkEmail = (e) => {
+      return currEmail === e.email;
+    } 
+    const getRole = async() => {
+      const res = await axios.get(
+        "http://localhost:1337/api/users?populate=*"
+      );
+      const user = res.data.filter(checkEmail)
+      setRole(user[0].role.name);
+      
+    }
+   getRole();
+  }, []);
+ 
   return (
     <div
       className="courseDiv"
@@ -64,6 +58,11 @@ function AllCourses() {
                 <Button variant="primary" >
                   Enroll
                 </Button>
+                <Button variant="primary" >
+                  {role === "Trainer" ? 
+                  <a style={{color: "white", textDecoration: "None"}} target= "_blank" href = "https://docs.google.com/spreadsheets/d/11kjkzy842rNGzf8cKjDMW0oza3ZTNTPHM6g3tvlRVJQ/edit?usp=sharing"> Curriculum</a> :
+                  <a style={{color: "white", textDecoration: "None"}} target= "_blank" href = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS4JIQyWYpWfuVBJRL57Bmlm4I7BP5EILG8NoUOvBWP2dxvwG-u-e5R93FH8Qx_wg5JJxjnkRlz5zlu/pubhtml"> Curriculum</a>
+        }</Button>
               </div>
             </Card.Body>
           </Card>
