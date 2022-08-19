@@ -23,11 +23,10 @@ const Routing = () => {
         }
       />
       <Route path="*" element={<NotFound />} />
-      <Route path="/admin-dashboard" element={<AdminDashboard />} />
+      <Route path="/student-details" element={<StudentDetails />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
-      <Route path="/allcourses" element={<AllCourses />} />
-      <Route path="/allcourses/:id" element={<Course />} />
+        <Route path='/allcourses' element={<AllCourses/>}/>
     </Routes>
   );
 };
