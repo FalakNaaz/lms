@@ -10,12 +10,13 @@ function AllCourses() {
   const [role, setRole] = useState('Learner');
   const dispatch = useDispatch();
   const courses = useSelector(state => state.courses.courses)
+  const linkForTrainer = 'https://docs.google.com/spreadsheets/d/11kjkzy842rNGzf8cKjDMW0oza3ZTNTPHM6g3tvlRVJQ/edit?usp=sharing';
   useEffect(() => {
     const getCourses = async () => {
       await dispatch(fetchAllCourses());
     }
     getCourses();
-    const currEmail = localStorage.getItem("currUser")
+    const currEmail = localStorage.getItem("currUserEmail")
     const checkEmail = (e) => {
       return currEmail === e.email;
     }
@@ -29,6 +30,7 @@ function AllCourses() {
     }
     getRole();
   }, []);
+  console.log("role = ", role)
 
   return (
     <div
@@ -68,8 +70,8 @@ function AllCourses() {
                 </Button>
                 <Button variant="primary" style={{marginLeft:'2vw'}}>
                   {role === "Trainer" ?
-                    <a style={{ color: "white", textDecoration: "None" }} target="_blank" href="https://docs.google.com/spreadsheets/d/11kjkzy842rNGzf8cKjDMW0oza3ZTNTPHM6g3tvlRVJQ/edit?usp=sharing"> Curriculum</a> :
-                    <a style={{ color: "white", textDecoration: "None"  }} target="_blank" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vS4JIQyWYpWfuVBJRL57Bmlm4I7BP5EILG8NoUOvBWP2dxvwG-u-e5R93FH8Qx_wg5JJxjnkRlz5zlu/pubhtml"> Curriculum</a>
+                    <a style={{ color: "white", textDecoration: "None" }} target="_blank" href={linkForTrainer}> Curriculum</a> :
+                    <a style={{ color: "white", textDecoration: "None" }} target="_blank" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vS4JIQyWYpWfuVBJRL57Bmlm4I7BP5EILG8NoUOvBWP2dxvwG-u-e5R93FH8Qx_wg5JJxjnkRlz5zlu/pubhtml"> Curriculum</a>
                   }</Button>
               </div>
             </Card.Body>
