@@ -16,8 +16,7 @@ function Login() {
   const [role, setRole] = useState("Learner");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
- 
+
   async function handleSubmit(e) {
     e.preventDefault();
     console.log("inside login function");
@@ -26,39 +25,38 @@ function Login() {
     await dispatch(login(emailRef.current.value, pwdRef.current.value));
     setLoading(false);
 
-    const res =await  axios.get("http://localhost:1337/api/users?populate=*")
-      // .then((res) => {
-      //   const user = res.data.filter(checkEmail);
-      //   console.log("res = ", res)
-      //   setRole(user[0].role.name)
-      //   // console.log("Fetched role from the api " , typeof user[0].role.name);
-      // })
-      // .catch((error) => {
-      //   console.log("There was some error while fetching role!", error.message);
-      // });
-      console.log("res = ", res)
-      const user = res.data.filter(checkEmail);
-      
-      setRole(user[0].role.name)
-      if(user[0].role.name === "Learner")
-      
-      setToast(true);
-      setTimeout(()=>{
-        navigate("/");
-      else
-      navigate("/admin-dashboard");
-      },1000);
+    const res = await axios.get("http://localhost:1337/api/users?populate=*");
+    // .then((res) => {
+    //   const user = res.data.filter(checkEmail);
+    //   console.log("res = ", res)
+    //   setRole(user[0].role.name)
+    //   // console.log("Fetched role from the api " , typeof user[0].role.name);
+    // })
+    // .catch((error) => {
+    //   console.log("There was some error while fetching role!", error.message);
+    // });
+    console.log("res = ", res);
+    const user = res.data.filter(checkEmail);
+
+    setRole(user[0].role.name);
+
+    setToast(true);
+    setTimeout(() => {
+      user[0].role.name === "Learner"
+        ? navigate("/")
+        : navigate("/trainer-dashboard");
+    }, 1000);
   }
   const checkEmail = (e) => {
     return emailRef.current.value === e.email;
   };
   return (
     <>
-    <ToastComponent
-          setToast={setToast}
-          renderToast={toast}
-          msg="Login Success"
-        />
+      <ToastComponent
+        setToast={setToast}
+        renderToast={toast}
+        msg="Login Success"
+      />
       <Card style={{ maxWidth: "400px", margin: "auto", marginTop: "30px" }}>
         <Card.Body>
           <h2 className="text-center mb-4">Log In </h2>
