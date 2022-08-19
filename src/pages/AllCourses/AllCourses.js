@@ -51,50 +51,38 @@ function AllCourses() {
         }}
       >
         {courses &&
-          courses.map((item, index) => (
-            <Card
-              key={index}
-              className="mx-2 mt-4 pt-2 courseCard"
-              style={{ textAlign: "center" }}
-            >
-              <Link to="/">
-                <Card.Img
-                  variant="top"
-                  src={item.attributes.Image.data.attributes.name}
-                  style={{ height: "35vh", width: "28vh" }}
+          courses.map((val) => (
+            <div className="course__Card" key={val.id}>
+              <Link to={`/course`} className="container">
+                <img
+                  className="image"
+                  src={val.attributes.Image.data.attributes.name}
+                  alt=""
                 />
-              </Link>
-              <Card.Body className="cardBody">
-                <Card.Title>
-                  {item.attributes.name.length > 18
-                    ? item.attributes.name.slice(0, 18).concat("...")
-                    : item.attributes.name}
-                </Card.Title>
-                <p> {item.attributes.title}</p>
-                <div style={{ display: "flex", justifyContent: "center" }}>
-                  <Button variant="primary">Enroll</Button>
-                  <Button variant="primary" style={{ marginLeft: "2vw" }}>
-                    {role === "Trainer" ? (
-                      <a
-                        style={{ color: "white", textDecoration: "None" }}
-                        target="_blank"
-                        href={linkForTrainer}
-                      >
-                        Curriculum
-                      </a>
-                    ) : (
-                      <a
-                        style={{ color: "white", textDecoration: "None" }}
-                        target="_blank"
-                        href="https://docs.google.com/spreadsheets/d/e/2PACX-1vS4JIQyWYpWfuVBJRL57Bmlm4I7BP5EILG8NoUOvBWP2dxvwG-u-e5R93FH8Qx_wg5JJxjnkRlz5zlu/pubhtml"
-                      >
-                        Curriculum
-                      </a>
-                    )}
-                  </Button>
+                <div className="overlay">
+                  <p className="text">View</p>
                 </div>
-              </Card.Body>
-            </Card>
+              </Link>
+
+              <div className="course__content">
+                <h5>
+                  {val.attributes.name.length > 18
+                    ?
+                    val.attributes.name.slice(0, 18).concat("...")
+                    :
+                    val.attributes.name}
+                </h5>
+                <p>{val.attributes.title}</p>
+                <Button color="primary" variant="contained">
+                  Enroll
+                </Button>
+                <Button variant="primary" style={{ marginLeft: '2vw' }}>
+                  {role === "Trainer" ?
+                    <a style={{ color: "white", textDecoration: "None" }} target="_blank" href={linkForTrainer}> Curriculum</a> :
+                    <a style={{ color: "white", textDecoration: "None" }} target="_blank" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vS4JIQyWYpWfuVBJRL57Bmlm4I7BP5EILG8NoUOvBWP2dxvwG-u-e5R93FH8Qx_wg5JJxjnkRlz5zlu/pubhtml"> Curriculum</a>
+                  }</Button>
+              </div>
+            </div>
           ))}
       </div>
     </>
