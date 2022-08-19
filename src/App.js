@@ -5,11 +5,12 @@ import Header from './components/Header/Header';
 import Login from './pages/Login/Login';
 import Dashboard from './pages/Dashboard/Dashboard';
 import SignUp from './pages/Signup/SignUp';
-import AdminDashboard from './pages/Dashboard/Admin Dashboard/AdminDashboard';
+import StudentDetails from './pages/Dashboard/Trainer Dashboard/StudentDetails';
 import StudentRoute from './components/PrivateRoute/StudentRoute';
 import AllCourses from './pages/AllCourses/AllCourses';
 import Footer from './components/Footer/Footer';
 import Quiz from './pages/Assessment/Assessment';
+import TrainerDashboard from './pages/Dashboard/Trainer Dashboard/TrainerDashboard';
 const Routing = () => {
   return (
     <Routes>
@@ -20,10 +21,11 @@ const Routing = () => {
           </StudentRoute>
         } />
       <Route path="*" element={<NotFound />} />
-      <Route path="/admin-dashboard" element={<AdminDashboard />} />
+      <Route path="/student-details" element={<StudentDetails />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
-        <Route path='/allcourses' element={<AllCourses/>}/>
+      <Route path='/allcourses' element={<AllCourses />} />
+      <Route path='/trainer-dashboard' element={<TrainerDashboard />} />
         <Route path='/assessment' element={<Quiz/>}/>
     </Routes>
 

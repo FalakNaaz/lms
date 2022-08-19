@@ -48,6 +48,7 @@ function AllCourses() {
           display: "flex",
           justifyContent: "space-around",
           flexWrap: "wrap",
+          textAlign:'center'
         }}
       >
         {courses &&

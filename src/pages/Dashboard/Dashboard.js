@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Logout } from "../../redux/actions/LogoutActions";
 import { useNavigate } from "react-router-dom";
@@ -9,15 +9,21 @@ import { Link } from "react-router-dom";
 import "./Dashboard.css";
 import SidebarCom from "../../components/Sidebar/SidebarCom";
 import Carousel from "react-material-ui-carousel";
+import ToastComponent from "../../components/Toast/ToastComponent";
 function Dashboard() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const courses = useSelector((state) => state.courses.courses);
   const sidebarToggle = useSelector((state) => state.sidebar);
+  const [toast, setToast] = useState(false);
 
   useEffect(() => {
     const getCourses = async () => {
       await dispatch(fetchAllCourses());
+      setToast(true);
+      setTimeout(()=>{
+        setToast(false)
+      },1000)
     };
     getCourses();
   }, []);
@@ -66,6 +72,11 @@ function Dashboard() {
   }
   return (
     <div className="dashboard">
+      <ToastComponent
+          setToast={setToast}
+          renderToast={toast}
+          msg="Welcome !"
+        />
       {sidebarToggle ? <SidebarCom /> : null}
       <div className="main__body__dashboard">
         <Carousel>

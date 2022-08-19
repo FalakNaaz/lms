@@ -5,12 +5,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../redux/actions/LoginActions";
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import ToastComponent from "../../components/Toast/ToastComponent";
 
 function Login() {
   const emailRef = useRef();
   const pwdRef = useRef();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [toast, setToast] = useState(false);
   const [role, setRole] = useState("Learner");
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -39,15 +41,24 @@ function Login() {
       
       setRole(user[0].role.name)
       if(user[0].role.name === "Learner")
-      navigate("/");
+      
+      setToast(true);
+      setTimeout(()=>{
+        navigate("/");
       else
       navigate("/admin-dashboard");
+      },1000);
   }
   const checkEmail = (e) => {
     return emailRef.current.value === e.email;
   };
   return (
     <>
+    <ToastComponent
+          setToast={setToast}
+          renderToast={toast}
+          msg="Login Success"
+        />
       <Card style={{ maxWidth: "400px", margin: "auto", marginTop: "30px" }}>
         <Card.Body>
           <h2 className="text-center mb-4">Log In </h2>
