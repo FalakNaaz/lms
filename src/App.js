@@ -10,7 +10,7 @@ import StudentRoute from "./components/PrivateRoute/StudentRoute";
 import AllCourses from "./pages/AllCourses/AllCourses";
 import Course from "./pages/Course/Course";
 import Footer from "./components/Footer/Footer";
-
+import StudentDetails from "./pages/Dashboard/Trainer Dashboard/StudentDetails";
 const Routing = () => {
   return (
     <Routes>
