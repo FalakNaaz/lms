@@ -31,7 +31,7 @@ const Header = () => {
       </div>
       <div className="left__header">
         <Link to="/">
-          <h4>LMS</h4>
+          <h4>LearniGo.com</h4>
         </Link>
       </div>
       <div
@@ -115,7 +115,7 @@ const Header = () => {
           </IconButton>
           <Link className="mx-4" to="/profile">
             <Avatar>
-              {localStorage.getItem("currUser")?.charAt(0).toUpperCase() ?? (
+              {localStorage.getItem("currUserEmail")?.charAt(0).toUpperCase() ?? (
                 <PersonIcon />
               )}
             </Avatar>
