@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Sidebar from "../../components/Sidebar/SidebarComponent";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import PersonIcon from "@material-ui/icons/Person";
@@ -16,7 +16,6 @@ import { Link } from "react-router-dom";
 import "./Dashboard.css";
 import Carousel from "react-material-ui-carousel";
 function Dashboard() {
-  const [pageValue, setPageValue] = useState(5);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const courses = useSelector((state) => state.courses.courses);
@@ -103,7 +102,7 @@ function Dashboard() {
           <Divider />
           <div style={{ display: 'flex', justifyContent:'space-between' }}>
             {courses.length > 0 &&
-              courses.slice(0, pageValue).map((val) => {
+              courses.slice(0, 5).map((val) => {
                 return (
                   <div className="course__Card" key={val.id}>
                     <Link to={`/course`} className="container">
