@@ -53,7 +53,7 @@ function AllCourses() {
         {courses &&
           courses.map((val) => (
             <div className="course__Card" key={val.id}>
-              <Link to={`/course`} className="container">
+              <Link to={`/allcourses/${val.id}`} className="container">
                 <img
                   className="image"
                   src={val.attributes.Image.data.attributes.name}
