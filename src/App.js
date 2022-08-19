@@ -8,7 +8,7 @@ import SignUp from './pages/Signup/SignUp';
 import AdminDashboard from './pages/Dashboard/Admin Dashboard/AdminDashboard';
 import StudentRoute from './components/PrivateRoute/StudentRoute';
 import AllCourses from './pages/AllCourses/AllCourses';
-
+import Footer from './components/Footer/Footer';
 const Routing = () => {
   return (
     <Routes>
@@ -35,6 +35,7 @@ function App() {
       <Router>
         <Header />
         <Routing />
+        <Footer />
       </Router>
     </div>
   );

@@ -15,3 +15,15 @@
   margin-top: 3vh;
 }
 
+#footer {
+  border-top: 1px solid #212519;
+  border-bottom: 2px solid #212519;
+  margin-top: 40px;
+  width: 100%;
+  bottom: 0px;
+  padding: 20px 0px;
+  height: 65px;
+  color: #212519;
+  background-color: white;
+  text-align: center;
+}
