@@ -9,6 +9,7 @@ import AdminDashboard from './pages/Dashboard/Admin Dashboard/AdminDashboard';
 import StudentRoute from './components/PrivateRoute/StudentRoute';
 import AllCourses from './pages/AllCourses/AllCourses';
 import Footer from './components/Footer/Footer';
+import Quiz from './pages/Assessment/Assessment';
 const Routing = () => {
   return (
     <Routes>
@@ -23,6 +24,7 @@ const Routing = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
         <Route path='/allcourses' element={<AllCourses/>}/>
+        <Route path='/assessment' element={<Quiz/>}/>
     </Routes>
 
   )

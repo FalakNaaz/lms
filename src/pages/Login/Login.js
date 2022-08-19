@@ -3,25 +3,49 @@ import React, { useRef, useState } from "react";
 import { Alert, Card, Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../redux/actions/LoginActions";
-import { useDispatch, } from "react-redux";
+import { useDispatch } from "react-redux";
+import axios from "axios";
 
 function Login() {
   const emailRef = useRef();
   const pwdRef = useRef();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [role, setRole] = useState("Learner");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  
+ 
+  async function handleSubmit(e) {
+    e.preventDefault();
+    console.log("inside login function");
+    setError("");
+    setLoading(true);
+    await dispatch(login(emailRef.current.value, pwdRef.current.value));
+    setLoading(false);
 
-   async function handleSubmit(e) {
-      e.preventDefault();
-      console.log("inside login function");
-      setError("");
-      setLoading(true);
-     await dispatch(login(emailRef.current.value, pwdRef.current.value))
-      setLoading(false);
+    const res =await  axios.get("http://localhost:1337/api/users?populate=*")
+      // .then((res) => {
+      //   const user = res.data.filter(checkEmail);
+      //   console.log("res = ", res)
+      //   setRole(user[0].role.name)
+      //   // console.log("Fetched role from the api " , typeof user[0].role.name);
+      // })
+      // .catch((error) => {
+      //   console.log("There was some error while fetching role!", error.message);
+      // });
+      console.log("res = ", res)
+      const user = res.data.filter(checkEmail);
+      
+      setRole(user[0].role.name)
+      if(user[0].role.name === "Learner")
       navigate("/");
-    }
+      else
+      navigate("/admin-dashboard");
+  }
+  const checkEmail = (e) => {
+    return emailRef.current.value === e.email;
+  };
   return (
     <>
       <Card style={{ maxWidth: "400px", margin: "auto", marginTop: "30px" }}>
