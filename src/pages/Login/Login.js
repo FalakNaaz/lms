@@ -4,12 +4,14 @@ import { Alert, Card, Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../redux/actions/LoginActions";
 import { useDispatch, } from "react-redux";
+import ToastComponent from "../../components/Toast/ToastComponent";
 
 function Login() {
   const emailRef = useRef();
   const pwdRef = useRef();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [toast, setToast] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -20,10 +22,19 @@ function Login() {
       setLoading(true);
      await dispatch(login(emailRef.current.value, pwdRef.current.value))
       setLoading(false);
-      navigate("/");
+      
+      setToast(true);
+      setTimeout(()=>{
+        navigate("/");
+      },1000);
     }
   return (
     <>
+    <ToastComponent
+          setToast={setToast}
+          renderToast={toast}
+          msg="Login Success"
+        />
       <Card style={{ maxWidth: "400px", margin: "auto", marginTop: "30px" }}>
         <Card.Body>
           <h2 className="text-center mb-4">Log In </h2>
