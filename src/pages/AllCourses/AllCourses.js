@@ -65,7 +65,7 @@ function AllCourses() {
                     <a
                       style={{ color: "white", textDecoration: "None" }}
                       target="_blank"
-                      href={linkForTrainer}
+                      href={item.attributes.toc_link_edit}
                     >
                       Curriculum
                     </a>
@@ -73,17 +73,13 @@ function AllCourses() {
                     <a
                       style={{ color: "white", textDecoration: "None" }}
                       target="_blank"
-                      href="https://docs.google.com/spreadsheets/d/e/2PACX-1vS4JIQyWYpWfuVBJRL57Bmlm4I7BP5EILG8NoUOvBWP2dxvwG-u-e5R93FH8Qx_wg5JJxjnkRlz5zlu/pubhtml"
+                      href={item.attributes.toc_link_view}
                     >
                       Curriculum
                     </a>
                   )}
                 </Button>
-                <Button variant="primary" >
-                  {role === "Trainer" ?
-                    <a style={{ color: "white", textDecoration: "None" }} target="_blank" href={item.attributes.toc_link_edit}> Curriculum</a> :
-                    <a style={{ color: "white", textDecoration: "None" }} target="_blank" href={item.attributes.toc_link_view}> Curriculum</a>
-                  }</Button>
+               
               </div>
             </Card.Body>
           </Card>
