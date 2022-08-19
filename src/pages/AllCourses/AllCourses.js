@@ -78,8 +78,8 @@ function AllCourses() {
                 </Button>
                 <Button variant="primary" style={{ marginLeft: '2vw' }}>
                   {role === "Trainer" ?
-                    <a style={{ color: "white", textDecoration: "None" }} target="_blank" href={linkForTrainer}> Curriculum</a> :
-                    <a style={{ color: "white", textDecoration: "None" }} target="_blank" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vS4JIQyWYpWfuVBJRL57Bmlm4I7BP5EILG8NoUOvBWP2dxvwG-u-e5R93FH8Qx_wg5JJxjnkRlz5zlu/pubhtml"> Curriculum</a>
+                    <a style={{ color: "white", textDecoration: "None" }} target="_blank" href={val.attributes.toc_link_edit}> Curriculum</a> :
+                    <a style={{ color: "white", textDecoration: "None" }} target="_blank" href={val.attributes.toc_link_view}> Curriculum</a>
                   }</Button>
               </div>
             </div>
