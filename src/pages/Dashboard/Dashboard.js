@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Logout } from "../../redux/actions/LogoutActions";
 import { useNavigate } from "react-router-dom";
 import { Divider, Typography, Paper, Button } from "@material-ui/core";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { fetchAllCourses } from "../../redux/actions/CoursesAction";
 import { Link } from "react-router-dom";
 import "./Dashboard.css";
@@ -48,7 +48,7 @@ function Dashboard() {
     },
     {
       name: "Corporate Required trainings",
-      description: "A great place for the corporate partners to make their employee skilful",
+      description: "A great place for the corporate partners to make their employee skillful",
       imgSrc:
         "https://theyellowspot.com/wp-content/uploads/2019/07/corporate-training.jpg",
     },
@@ -63,13 +63,12 @@ function Dashboard() {
   function Item(props) {
     return (
       <Paper>
-        <h2 style={{textAlign: "center"}}>{props.item.name}</h2>
-        <p style={{textAlign: "center"}}>{props.item.description}</p>
+        <h2 style={{ textAlign: "center" }}>{props.item.name}</h2>
+        <p style={{ textAlign: "center" }}>{props.item.description}</p>
         <img
           src={props.item.imgSrc}
           alt=""
-          srcset=""
-          style={{width: "96.3vw", height: "50vh"}}
+          style={{ width: "96.3vw", height: "50vh" }}
         />
 
         {/* <Button className="CheckButton">Check it out!</Button> */}
@@ -97,70 +96,44 @@ function Dashboard() {
             <Item key={i} item={item} />
           ))}
         </Carousel>
-        <Container fluid>
-          <Row>
-            <Col md={9} xs={12} sm={12}>
-              <Container className="mt-5">
-                <Paper className="d-flex justify-content-between align-items-center p-4">
-                  <Typography variant="h6">Popular Courses</Typography>
-                </Paper>
-                <Divider />
-
-                {courses.length > 0 &&
-                  courses.slice(0, pageValue).map((val) => {
-                    return (
-                      // <CourseCard
-                      //   key={Math.random(2) * 10}
-                      //   title={val.courseDescription}
-                      //   name={val.courseName}
-                      //   id={val._id}
-                      //   img={val.courseThumbnail}
-                      // />
-                      <div className="course__Card" key={val.id}>
-                        <Link to={`/course`} className="container">
-                          <img
-                            className="image"
-                            src={val.attributes.Image.data.attributes.name}
-                            alt=""
-                          />
-                          <div className="overlay">
-                            <p className="text">View</p>
-                          </div>
-                        </Link>
-
-                        <div className="course__content">
-                          <span>{val.attributes.startDate}</span>
-                          <h5>{val.attributes.name}</h5>
-                          <h5>{val.attributes.title}</h5>
-                          <Button color="primary" variant="contained">
-                            Enroll
-                          </Button>
-                          <br />
-                          <span>
-                            This is a course template which is to be used as the
-                            course kit for the teachers.
-                          </span>
-                        </div>
+        <Container fluid className="mt-5" style={{ width: '96vw', textAlign: 'center' }} >
+          <Paper className="d-flex align-items-center p-4 mb-2" style={{width:'94.5vw'}}>
+            <Typography variant="h6" style={{textAlign: 'center' }}>Popular Courses</Typography>
+          </Paper>
+          <Divider />
+          <div style={{ display: 'flex', justifyContent:'space-between' }}>
+            {courses.length > 0 &&
+              courses.slice(0, pageValue).map((val) => {
+                return (
+                  <div className="course__Card" key={val.id}>
+                    <Link to={`/course`} className="container">
+                      <img
+                        className="image"
+                        src={val.attributes.Image.data.attributes.name}
+                        alt=""
+                      />
+                      <div className="overlay">
+                        <p className="text">View</p>
                       </div>
-                    );
-                  })}
+                    </Link>
 
-                <div className=" d-flex align-items-center my-2">
-                  <Typography className="mr-3" variant="subtitle1">
-                    Show
-                  </Typography>
-                  <select
-                    className="dropdown__style"
-                    onChange={(e) => setPageValue(e.target.value)}
-                  >
-                    {[5, 10, 20, "All"].map((val) => {
-                      return <option key={val}>{val}</option>;
-                    })}
-                  </select>
-                </div>
-              </Container>
-            </Col>
-          </Row>
+                    <div className="course__content">
+                      <h5>
+                        {val.attributes.name.length > 18
+                          ?
+                          val.attributes.name.slice(0, 18).concat("...")
+                          :
+                          val.attributes.name}
+                      </h5>
+                      <p>{val.attributes.title}</p>
+                      <Button color="primary" variant="contained">
+                        Enroll
+                      </Button>
+                    </div>
+                  </div>
+                );
+              })}
+          </div>
         </Container>
       </div>
     </div>

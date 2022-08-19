@@ -54,16 +54,22 @@ function AllCourses() {
               />
             </Link>
             <Card.Body className="cardBody">
-              <Card.Title>{item.attributes.name}</Card.Title>
-              <p> {item.attributes.title.slice(0, 18).concat("...")}</p>
-              <div>
+              <Card.Title>
+                {item.attributes.name.length>18
+                ?
+                item.attributes.name.slice(0, 18).concat("...")
+                :
+                item.attributes.name}
+                </Card.Title>
+              <p> {item.attributes.title}</p>
+              <div style={{display:'flex', justifyContent:'center'}} >
                 <Button variant="primary" >
                   Enroll
                 </Button>
-                <Button variant="primary" >
+                <Button variant="primary" style={{marginLeft:'2vw'}}>
                   {role === "Trainer" ?
                     <a style={{ color: "white", textDecoration: "None" }} target="_blank" href="https://docs.google.com/spreadsheets/d/11kjkzy842rNGzf8cKjDMW0oza3ZTNTPHM6g3tvlRVJQ/edit?usp=sharing"> Curriculum</a> :
-                    <a style={{ color: "white", textDecoration: "None" }} target="_blank" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vS4JIQyWYpWfuVBJRL57Bmlm4I7BP5EILG8NoUOvBWP2dxvwG-u-e5R93FH8Qx_wg5JJxjnkRlz5zlu/pubhtml"> Curriculum</a>
+                    <a style={{ color: "white", textDecoration: "None"  }} target="_blank" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vS4JIQyWYpWfuVBJRL57Bmlm4I7BP5EILG8NoUOvBWP2dxvwG-u-e5R93FH8Qx_wg5JJxjnkRlz5zlu/pubhtml"> Curriculum</a>
                   }</Button>
               </div>
             </Card.Body>
