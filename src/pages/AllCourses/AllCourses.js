@@ -14,6 +14,7 @@ function AllCourses() {
   const sidebarToggle = useSelector((state) => state.sidebar);
   const dispatch = useDispatch();
   const courses = useSelector(state => state.courses.courses)
+  const linkForTrainer = 'https://docs.google.com/spreadsheets/d/11kjkzy842rNGzf8cKjDMW0oza3ZTNTPHM6g3tvlRVJQ/edit?usp=sharing';
   useEffect(() => {
     const getCourses = async () => {
       await dispatch(fetchAllCourses());
