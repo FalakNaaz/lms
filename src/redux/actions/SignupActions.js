@@ -1,5 +1,4 @@
 import { ActionTypes } from "../constants/action-types";
-import { auth } from "../../firebase/firebase";
 import axios from "axios";
 
 const SignupAction = () => {
@@ -27,7 +26,6 @@ export const Signup = (email, password, username) => {
   return async (dispatch) => {
     dispatch(SignupAction());
     try {
-      //await auth.createUserWithEmailAndPassword(email, password);
       const response = await axios.post(
         "http://localhost:1337/api/auth/local/register",
         {
@@ -40,18 +38,6 @@ export const Signup = (email, password, username) => {
       console.log("User token", response.data.jwt);
 
       dispatch(SignupSuccessAction());
-     
-
-      // auth.onAuthStateChanged(function (user) {
-      //     user.sendEmailVerification();
-      // });
-      // auth.onAuthStateChanged(function (user) {
-      //     if (user.emailVerified) {
-      //         dispatch(SignupSuccessAction())
-      //     } else {
-      //         dispatch(SignupFailureAction())
-      //     }
-      // })
     } catch (err) {
       console.log("An error occurred:", err.response);
       dispatch(SignupFailureAction(err.message));

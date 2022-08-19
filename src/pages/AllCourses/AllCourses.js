@@ -8,30 +8,28 @@ import { fetchAllCourses } from '../../redux/actions/CoursesAction';
 import './AllCourses.css'
 
 function AllCourses() {
-  const [role, setRole] = useState('Learner');
+  const [role, setRole] = useState("Learner");
   const dispatch = useDispatch();
-  const courses = useSelector(state => state.courses.courses)
-  const linkForTrainer = 'https://docs.google.com/spreadsheets/d/11kjkzy842rNGzf8cKjDMW0oza3ZTNTPHM6g3tvlRVJQ/edit?usp=sharing';
+  const courses = useSelector((state) => state.courses.courses);
+  const linkForTrainer =
+    "https://docs.google.com/spreadsheets/d/11kjkzy842rNGzf8cKjDMW0oza3ZTNTPHM6g3tvlRVJQ/edit?usp=sharing";
   useEffect(() => {
     const getCourses = async () => {
       await dispatch(fetchAllCourses());
-    }
+    };
     getCourses();
-    const currEmail = localStorage.getItem("currUserEmail")
+    const currEmail = localStorage.getItem("currUserEmail");
     const checkEmail = (e) => {
       return currEmail === e.email;
-    }
+    };
     const getRole = async () => {
-      const res = await axios.get(
-        "http://localhost:1337/api/users?populate=*"
-      );
-      const user = res.data.filter(checkEmail)
+      const res = await axios.get("http://localhost:1337/api/users?populate=*");
+      const user = res.data.filter(checkEmail);
       setRole(user[0].role.name);
-
-    }
+    };
     getRole();
   }, []);
-  console.log("role = ", role)
+  console.log("role = ", role);
 
   return (
     <div
@@ -77,9 +75,6 @@ function AllCourses() {
                 src={val.attributes.Image.data.attributes.name}
                 alt=""
               />
-              <div className="overlay">
-                <p className="text">View</p>
-              </div>
             </Link>
 
             <div className="course__content">

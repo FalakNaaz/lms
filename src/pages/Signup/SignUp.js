@@ -7,7 +7,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { Alert } from "react-bootstrap";
 import { Signup } from "../../redux/actions/SignupActions";
 import {useDispatch } from "react-redux";
-import axios from "axios";
 
 function SignUp() {
   const emailRef = useRef();
@@ -22,11 +21,6 @@ function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const userData = {
-      email: emailRef.current.value,
-      username: usernameRef.current.value,
-      role: val,
-    };
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
       return setError("Passwords do not match");
     }
@@ -35,20 +29,6 @@ function SignUp() {
       setLoading(true);
       
       dispatch(Signup(emailRef.current.value, passwordRef.current.value, usernameRef.current.value));
-      
-      // axios
-      // .post('http://localhost:1337/api/auth/local/register', {
-      //   username: 'Kapman',
-      //   email: 'test@test.com',
-      //   password: 'Password',
-      // })
-      // .then(response => {
-      //   console.log('User profile', response.data.user);
-      //   console.log('User token', response.data.jwt);
-      // })
-      // .catch(error => {
-      //   console.log('An error occurred:', error.response);
-      // });
       navigate("/login");
     } catch (e) {
       setError("error from firebase: ", e.message);
