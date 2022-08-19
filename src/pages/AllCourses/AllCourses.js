@@ -13,23 +13,24 @@ function AllCourses() {
   // const role = useSelector(state=> state.role.currentRole);
   const sidebarToggle = useSelector((state) => state.sidebar);
   const dispatch = useDispatch();
-  const courses = useSelector((state) => state.courses.courses);
-  const linkForTrainer =
-    "https://docs.google.com/spreadsheets/d/11kjkzy842rNGzf8cKjDMW0oza3ZTNTPHM6g3tvlRVJQ/edit?usp=sharing";
+  const courses = useSelector(state => state.courses.courses)
   useEffect(() => {
     const getCourses = async () => {
       await dispatch(fetchAllCourses());
-    };
+    }
     getCourses();
-    const currEmail = localStorage.getItem("currUserEmail");
+    const currEmail = localStorage.getItem("currUserEmail")
     const checkEmail = (e) => {
       return currEmail === e.email;
-    };
+    }
     const getRole = async () => {
-      const res = await axios.get("http://localhost:1337/api/users?populate=*");
-      const user = res.data.filter(checkEmail);
+      const res = await axios.get(
+        "http://localhost:1337/api/users?populate=*"
+      );
+      const user = res.data.filter(checkEmail)
       setRole(user[0].role.name);
-    };
+
+    }
     getRole();
 
     // dispatch(getRole());
