@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Avatar, Button, IconButton } from "@material-ui/core";
 import "./Header.css";
-import SettingsIcon from "@material-ui/icons/Settings";
-import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 import ChatIcon from "@material-ui/icons/Chat";
 import ClearIcon from "@material-ui/icons/Clear";
@@ -23,13 +21,13 @@ const Header = () => {
     setToggle(false);
   };
 
-  const sidebarHandler = () =>{
+  const sidebarHandler = () => {
     dispatch(SidebarAction());
   }
   return (
     <div className="header">
       <div >
-          <MenuIcon onClick={sidebarHandler} style={{ fontSize: 40 ,margin: "0px 40px 8px 30px"}}/>
+        <MenuIcon onClick={sidebarHandler} style={{ fontSize: 40, margin: "0px 40px 8px 30px" }} />
       </div>
       <div className="left__header">
         <Link to="/">
@@ -37,9 +35,8 @@ const Header = () => {
         </Link>
       </div>
       <div
-        className={`middle__header ${
-          toggle ? `show__sidebar__nav` : `sidebar__nav`
-        }`}
+        className={`middle__header ${toggle ? `show__sidebar__nav` : `sidebar__nav`
+          }`}
       >
         {user && (
           <ul>
@@ -82,24 +79,14 @@ const Header = () => {
               <>
                 <li>
                   <NavLink onClick={toggleClose} to="/">
-                    Dashboard
+                    Home
                   </NavLink>
                 </li>
                 <li>
                 </li>
-                <li>
-                  <NavLink onClick={toggleClose} to="/">
-                    Library
-                  </NavLink>
-                </li>{" "}
               </>
             )}
 
-            <li>
-              <Link onClick={toggleClose} to="/">
-                Profile
-              </Link>
-            </li>
             <li>
               <NavLink onClick={toggleClose} to="/allcourses">
                 All Courses
@@ -120,19 +107,13 @@ const Header = () => {
       </div>
       {user ? (
         <div className="right__header">
-          <IconButton>
-            <VisibilityOffIcon />
-          </IconButton>
-          <IconButton>
+          <IconButton className="mx-2 ">
             <NotificationsActiveIcon />
           </IconButton>
-          <IconButton>
+          <IconButton className="mx-2">
             <ChatIcon />
           </IconButton>
-          <IconButton>
-            <SettingsIcon />
-          </IconButton>
-          <Link to="/profile">
+          <Link className="mx-4" to="/profile">
             <Avatar>
               {localStorage.getItem("currUser")?.charAt(0).toUpperCase() ?? (
                 <PersonIcon />

@@ -1,5 +1,5 @@
 import { ActionTypes } from "../constants/action-types";
-const initialState4 = true;
+const initialState4 = false;
 
 const SidebarReducer = (state = initialState4, action) =>{
     switch (action.type) {
