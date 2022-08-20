@@ -34,6 +34,9 @@ const Routing = () => {
           <AllCourses />
         </StudentRoute>} />
       <Route path='/allcourses/:id' element={<Course Page/>} />
+      <Route path='/allcourses' element={<AllCourses />} />
+      <Route path='/assessment' element={<QuizPage/>}/>
+
     </Routes>
   );
 };
