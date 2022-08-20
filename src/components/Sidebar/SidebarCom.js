@@ -14,9 +14,10 @@ import { Link } from "react-router-dom";
 function SidebarCom({ Icon, title }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleLogout = (e) => {
+  const handleLogout = () => {
     dispatch(Logout());
     navigate("/login");
+    window.location.reload()
   };
   return (
     <div className="left__sidebar__dashboard">

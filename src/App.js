@@ -10,8 +10,9 @@ import StudentRoute from "./components/PrivateRoute/StudentRoute";
 import AllCourses from "./pages/AllCourses/AllCourses";
 import Course from "./pages/Course/Course";
 import Footer from "./components/Footer/Footer";
-import TrainerDashboard from './pages/Dashboard/Trainer Dashboard/TrainerDashboard';
-import QuizPage from './pages/Quiz/QuizPage';
+import TrainerDashboard from "./pages/Dashboard/Trainer Dashboard/TrainerDashboard";
+import QuizPage from "./pages/Quiz/QuizPage";
+import { useEffect } from "react";
 const Routing = () => {
   return (
     <Routes>
@@ -29,25 +30,34 @@ const Routing = () => {
       <Route path="/student-details" element={<StudentDetails />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
-      <Route path='/allcourses' element={
-        <StudentRoute>
-          <AllCourses />
-        </StudentRoute>} />
-      <Route path='/allcourses/:id' element={<Course Page/>} />
-      <Route path='/allcourses' element={<AllCourses />} />
-      <Route path='/assessment' element={<QuizPage/>}/>
-
+      <Route
+        path="/allcourses"
+        element={
+          <StudentRoute>
+            <AllCourses />
+          </StudentRoute>
+        }
+      />
+      <Route path="/allcourses/:id" element={<Course Page />} />
+      <Route path="/allcourses" element={<AllCourses />} />
+      <Route path="/assessment" element={<QuizPage />} />
     </Routes>
   );
 };
 
 function App() {
+  let loggedIn = localStorage.getItem("currUser");
+  // useEffect(() => {
+  //   // window.location.reload()
+    
+  // }, [])
+  
   return (
     <div>
       <Router>
-        <Header />
+        {loggedIn && <Header />}
         <Routing />
-        <Footer />
+        {loggedIn && <Footer />}
       </Router>
     </div>
   );

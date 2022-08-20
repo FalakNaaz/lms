@@ -1,6 +1,5 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Card, Button } from "react-bootstrap";
+import React, { useEffect } from "react";
+import {Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../../App.css";
 import { useDispatch, useSelector } from "react-redux";

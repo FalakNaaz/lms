@@ -36,7 +36,7 @@ function SignUp() {
     setLoading(false);
   };
   return (
-    <Card className="m-auto" style={{ maxWidth: "400px", marginTop: "10px"  }}>
+    <Card style={{ maxWidth: "400px", margin: "auto", marginTop: "40px" }}>
       <Card.Body>
         <Card.Title className="text-center">Sign Up</Card.Title>
         {error && <Alert variant="danger">{error}</Alert>}

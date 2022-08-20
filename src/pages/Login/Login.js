@@ -27,6 +27,8 @@ function Login() {
       role === "Learner"
         ? navigate("/")
         : navigate("/trainer-dashboard");
+    window.location.reload()
+
     }, 1000);
   }
   return (
@@ -36,7 +38,7 @@ function Login() {
         renderToast={toast}
         msg="Login Success"
       />
-      <Card style={{ maxWidth: "400px", margin: "auto", marginTop: "30px" }}>
+      <Card style={{ maxWidth: "400px", margin: "auto", marginTop: "150px" }}>
         <Card.Body>
           <h2 className="text-center mb-4">Log In </h2>
           {loading && (
