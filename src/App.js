@@ -11,6 +11,7 @@ import AllCourses from './pages/AllCourses/AllCourses';
 import Footer from './components/Footer/Footer';
 import Quiz from './pages/Assessment/Assessment';
 import TrainerDashboard from './pages/Dashboard/Trainer Dashboard/TrainerDashboard';
+import QuizPage from './pages/Quiz/QuizPage';
 const Routing = () => {
   return (
     <Routes>
@@ -26,7 +27,7 @@ const Routing = () => {
       <Route path="/signup" element={<SignUp />} />
       <Route path='/allcourses' element={<AllCourses />} />
       <Route path='/trainer-dashboard' element={<TrainerDashboard />} />
-        <Route path='/assessment' element={<Quiz/>}/>
+        <Route path='/assessment' element={<QuizPage/>}/>
     </Routes>
 
   )
