@@ -4,52 +4,31 @@ import { Alert, Card, Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../redux/actions/LoginActions";
 import { useDispatch } from "react-redux";
-import axios from "axios";
 import ToastComponent from "../../components/Toast/ToastComponent";
+import {getRole} from "../../redux/actions/RoleAction";
 
 function Login() {
   const emailRef = useRef();
   const pwdRef = useRef();
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState(false);
-  const [role, setRole] = useState("Learner");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log("inside login function");
-    setError("");
     setLoading(true);
     await dispatch(login(emailRef.current.value, pwdRef.current.value));
     setLoading(false);
-
-    const res = await axios.get("http://localhost:1337/api/users?populate=*");
-    // .then((res) => {
-    //   const user = res.data.filter(checkEmail);
-    //   console.log("res = ", res)
-    //   setRole(user[0].role.name)
-    //   // console.log("Fetched role from the api " , typeof user[0].role.name);
-    // })
-    // .catch((error) => {
-    //   console.log("There was some error while fetching role!", error.message);
-    // });
-    console.log("res = ", res);
-    const user = res.data.filter(checkEmail);
-
-    setRole(user[0].role.name);
-
+    (async()=> await dispatch(getRole()))()
     setToast(true);
     setTimeout(() => {
-      user[0].role.name === "Learner"
+      const role = localStorage.getItem("currUserRole");
+      role === "Learner"
         ? navigate("/")
         : navigate("/trainer-dashboard");
     }, 1000);
   }
-  const checkEmail = (e) => {
-    return emailRef.current.value === e.email;
-  };
   return (
     <>
       <ToastComponent
@@ -60,7 +39,6 @@ function Login() {
       <Card style={{ maxWidth: "400px", margin: "auto", marginTop: "30px" }}>
         <Card.Body>
           <h2 className="text-center mb-4">Log In </h2>
-          {error && <Alert variant="danger">{error}</Alert>}
           {loading && (
             <Alert variant="success">Logging In into your account...</Alert>
           )}

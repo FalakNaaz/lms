@@ -14,7 +14,7 @@ export const getRole = () => dispatch => {
     axios.get("http://localhost:1337/api/users?populate=*").then((res)=>{
         const user = res.data.filter(checkEmail);
         dispatch(RoleAction(user[0].role.name));
-        // console.log("Fetched role from the api " , typeof user[0].role.name);
+        localStorage.setItem("currUserRole", user[0].role.name);
     }).catch((error)=>{
         console.log("There was some error while fetching role!", error)
     })
