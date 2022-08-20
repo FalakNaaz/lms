@@ -5,12 +5,13 @@ import { Link } from "react-router-dom";
 import "../../App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllCourses } from "../../redux/actions/CoursesAction";
-// import {getRole} from "../../redux/actions/RoleAction";
+import {getRole} from "../../redux/actions/RoleAction";
 import SidebarCom from "../../components/Sidebar/SidebarCom";
 
 function AllCourses() {
-  const [role, setRole] = useState("Learner");
+  // const [role, setRole] = useState("Learner");
   // const role = useSelector(state=> state.role.currentRole);
+  const role = localStorage.getItem("currUserRole");
   const sidebarToggle = useSelector((state) => state.sidebar);
   const dispatch = useDispatch();
   const courses = useSelector(state => state.courses.courses)
@@ -20,24 +21,25 @@ function AllCourses() {
       await dispatch(fetchAllCourses());
     }
     getCourses();
-    const currEmail = localStorage.getItem("currUserEmail")
-    const checkEmail = (e) => {
-      return currEmail === e.email;
-    }
-    const getRole = async () => {
-      const res = await axios.get(
-        "http://localhost:1337/api/users?populate=*"
-      );
-      const user = res.data.filter(checkEmail)
-      setRole(user[0].role.name);
+    // const currEmail = localStorage.getItem("currUserEmail")
+    // const checkEmail = (e) => {
+    //   return currEmail === e.email;
+    // }
+    // const getRole = async () => {
+    //   const res = await axios.get(
+    //     "http://localhost:1337/api/users?populate=*"
+    //   );
+    //   const user = res.data.filter(checkEmail)
+    //   setRole(user[0].role.name);
 
-    }
-    getRole();
+    // }
+    // getRole();
 
     // dispatch(getRole());
-    // (async()=> await dispatch(getRole()))()
+    (async()=> await dispatch(getRole()))()
+    // console.log(" current user role = ", role);
   }, []);
-  console.log(" current user role = ", role);
+  console.log(" current user role fromm localStorage= ", role);
 
   return (
     <>
@@ -54,7 +56,7 @@ function AllCourses() {
         {courses &&
           courses.map((val) => (
             <div className="course__Card" key={val.id}>
-              <Link to={`/course`} className="container">
+              <Link to={`/allcourses/${val.id}`} className="container">
                 <img
                   className="image"
                   src={val.attributes.Image.data.attributes.name}

@@ -3,6 +3,7 @@ import {UserLoginReducer, UserLogoutReducer, UserSignupReducer} from "./UserRedu
 import { CoursesReducer } from "./CourseReducer";
 import SidebarReducer from "./SidebarReducer";
 import RoleReducer from "./RoleReducer";
+import { SpecificCoursesReducer } from "./SpecificCourseReducer";
 
 const rootReducer = combineReducers({
     userSingup: UserSignupReducer,
@@ -10,7 +11,8 @@ const rootReducer = combineReducers({
     userLogout: UserLogoutReducer,
     courses: CoursesReducer,
     sidebar: SidebarReducer,
-    role: RoleReducer
+    role: RoleReducer,
+    course: SpecificCoursesReducer
 })
 
 export default rootReducer;

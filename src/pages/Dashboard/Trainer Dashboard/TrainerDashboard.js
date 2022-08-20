@@ -4,9 +4,14 @@ import { IconButton } from '@material-ui/core';
 import PersonIcon from "@material-ui/icons/Person";
 import TouchAppIcon from "@material-ui/icons/TouchApp";
 import './TrainerDashboard.css'
+import { useSelector } from 'react-redux';
+import SidebarCom from '../../../components/Sidebar/SidebarCom';
+
 function TrainerDashboard() {
+    const sidebarToggle = useSelector((state) => state.sidebar);
     return (
         <div className='d-flex' style={{height:'76.65vh'}}>
+            {sidebarToggle ? <SidebarCom /> : null}
             <div className="d-flex flex-wrap justify-content-md-between justify-content-md-end">
                 <Link to={`/student-details`} className="CardBody">
                     <div className="">

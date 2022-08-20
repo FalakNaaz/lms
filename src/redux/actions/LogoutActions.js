@@ -18,6 +18,8 @@ export const Logout = () => async dispatch => {
     try {
      localStorage.removeItem("currUser");
      localStorage.removeItem("currUserEmail");
+     localStorage.removeItem("currUserRole");
+
         dispatch(LogoutAction());
     } catch (err) {
         dispatch(LogoutFailureAction(err.message));
