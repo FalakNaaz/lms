@@ -10,6 +10,7 @@ import StudentRoute from "./components/PrivateRoute/StudentRoute";
 import AllCourses from "./pages/AllCourses/AllCourses";
 import Course from "./pages/Course/Course";
 import Footer from "./components/Footer/Footer";
+import TrainerDashboard from './pages/Dashboard/Trainer Dashboard/TrainerDashboard';
 const Routing = () => {
   return (
     <Routes>
@@ -21,12 +22,17 @@ const Routing = () => {
           </StudentRoute>
         }
       />
+
+      <Route path="/trainer-dashboard" element={<TrainerDashboard />} />
       <Route path="*" element={<NotFound />} />
       <Route path="/student-details" element={<StudentDetails />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
-        <Route path='/allcourses' element={<AllCourses/>}/>
-        <Route path='/allcourses/:id' element={<Course/>}/>
+      <Route path='/allcourses' element={
+        <StudentRoute>
+          <AllCourses />
+        </StudentRoute>} />
+      <Route path='/allcourses/:id' element={<Course />} />
     </Routes>
   );
 };
