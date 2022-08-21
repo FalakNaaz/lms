@@ -13,6 +13,7 @@ import Footer from "./components/Footer/Footer";
 import TrainerDashboard from "./pages/Dashboard/Trainer Dashboard/TrainerDashboard";
 import QuizPage from "./pages/Quiz/QuizPage";
 import { useEffect } from "react";
+import TrainerRoute from "./components/PrivateRoute/TrainerRoute";
 const Routing = () => {
   return (
     <Routes>
@@ -25,9 +26,17 @@ const Routing = () => {
         }
       />
 
-      <Route path="/trainer-dashboard" element={<TrainerDashboard />} />
+      <Route path="/trainer-dashboard" element={
+        <TrainerRoute>
+          <TrainerDashboard />
+        </TrainerRoute>
+      } />
       <Route path="*" element={<NotFound />} />
-      <Route path="/student-details" element={<StudentDetails />} />
+      <Route path="/student-details" element={
+        <TrainerRoute>
+          <StudentDetails />
+        </TrainerRoute>
+      } />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route
@@ -38,9 +47,21 @@ const Routing = () => {
           </StudentRoute>
         }
       />
-      <Route path="/allcourses/:id" element={<Course Page />} />
-      <Route path="/allcourses" element={<AllCourses />} />
-      <Route path="/assessment" element={<QuizPage />} />
+      <Route path="/allcourses/:id" element={
+        <StudentRoute>
+          <Course Page />
+        </StudentRoute>
+      } />
+      <Route path="/allcourses" element={
+        <StudentRoute>
+          <AllCourses />
+        </StudentRoute>
+      } />
+      <Route path="/assessment" element={
+        <StudentRoute>
+          <QuizPage />
+        </StudentRoute>
+      } />
     </Routes>
   );
 };
@@ -49,9 +70,9 @@ function App() {
   let loggedIn = localStorage.getItem("currUser");
   // useEffect(() => {
   //   // window.location.reload()
-    
+
   // }, [])
-  
+
   return (
     <div>
       <Router>

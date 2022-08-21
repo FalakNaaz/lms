@@ -19,13 +19,23 @@ function SidebarCom({ Icon, title }) {
     navigate("/login");
     window.location.reload()
   };
+  const user = {
+    role: localStorage.getItem("currUserRole")
+  }
+
   return (
     <div className="left__sidebar__dashboard">
       <div style={{ display: "flex", padding: "10px 10px" }}>
-        <Link style={{ textDecoration: "none", color: "black" }} to="/">
-          <DashboardIcon style={{ color: "black" }} />
-          Dashboard
-        </Link>
+        {user.role === "Trainer" && (
+          <Link style={{ textDecoration: "none", color: "black" }} to="/trainer-dashboard">
+            <DashboardIcon style={{ color: "black" }} />
+            Dashboard
+          </Link>)}
+        {user.role === "Learner" && (
+          <Link style={{ textDecoration: "none", color: "black" }} to="/">
+            <DashboardIcon style={{ color: "black" }} />
+            Dashboard
+          </Link>)}
       </div>
 
       <div style={{ display: "flex", padding: "10px 10px" }}>
@@ -34,13 +44,14 @@ function SidebarCom({ Icon, title }) {
           Profile
         </Link>
       </div>
-
-      <div style={{ display: "flex", padding: "10px 10px" }}>
-        <Link style={{ textDecoration: "none", color: "black" }} to="/assessment">
-          <TouchAppIcon style={{ color: "black" }} />
-          Grades
-        </Link>
-      </div>
+      {user.role === "Learner" && (
+        <div style={{ display: "flex", padding: "10px 10px" }}>
+          <Link style={{ textDecoration: "none", color: "black" }} to="/assessment">
+            <TouchAppIcon style={{ color: "black" }} />
+            Grades
+          </Link>
+        </div>
+      )}
 
       <div style={{ display: "flex", padding: "10px 10px" }}>
         <Link style={{ textDecoration: "none", color: "black" }} to="">

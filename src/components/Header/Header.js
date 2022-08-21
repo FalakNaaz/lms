@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Avatar, Button, IconButton } from "@material-ui/core";
+import { Avatar, IconButton } from "@material-ui/core";
 import "./Header.css";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 import ChatIcon from "@material-ui/icons/Chat";
@@ -14,12 +14,12 @@ import SidebarAction from "../../redux/actions/SidebarAction";
 const Header = () => {
   const dispatch = useDispatch();
   const [toggle, setToggle] = useState(false);
-  const user = {
-    role: "Student",
-  };
   const toggleClose = () => {
     setToggle(false);
   };
+  const user = {
+    role: localStorage.getItem("currUserRole")
+  }
 
   const sidebarHandler = () => {
     dispatch(SidebarAction());
@@ -30,9 +30,20 @@ const Header = () => {
         <MenuIcon onClick={sidebarHandler} style={{ fontSize: 40, margin: "0px 40px 8px 30px" }} />
       </div>
       <div className="left__header">
-        <Link to="/">
-          <h4>LearniGo.com</h4>
-        </Link>
+        {
+          user.role == 'Learner' && (
+            <Link to="/">
+              <h4>LearniGo.com</h4>
+            </Link>
+          )
+        }
+        {
+          user.role == 'Trainer' && (
+            <Link to="/trainer-dashboard">
+              <h4>LearniGo.com</h4>
+            </Link>
+          )
+        }
       </div>
       <div
         className={`middle__header ${toggle ? `show__sidebar__nav` : `sidebar__nav`
@@ -40,17 +51,18 @@ const Header = () => {
       >
         {user && (
           <ul>
-            {user.role === "Teacher" && (
+            {user.role === "Trainer" && (
               <>
                 {" "}
                 <li>
-                  <NavLink onClick={toggleClose} to="/">
+                  <NavLink onClick={toggleClose} to="/trainer-dashboard">
                     Dashboard
                   </NavLink>
                 </li>
               </>
             )}
-            {user.role === "Admin" && (
+
+            {/* {user.role === "Admin" && (
               <>
                 {" "}
                 <li>
@@ -74,8 +86,9 @@ const Header = () => {
                   </NavLink>
                 </li>
               </>
-            )}
-            {user.role === "Student" && (
+            )} */}
+
+            {user.role === "Learner" && (
               <>
                 <li>
                   <NavLink onClick={toggleClose} to="/">
@@ -86,14 +99,15 @@ const Header = () => {
                 </li>
               </>
             )}
+            {user.role === "Learner" && (
+              <li>
+                <NavLink onClick={toggleClose} to="/allcourses">
+                  All Courses
+                </NavLink>
+              </li>
+            )}
 
-            <li>
-              <NavLink onClick={toggleClose} to="/allcourses">
-                All Courses
-              </NavLink>
-            </li>
-
-            {user.role === "Teacher" ? (
+            {/* {user.role === "Trainer" ? (
               <li className="">
                 <Button>Logout</Button>
               </li>
@@ -101,7 +115,7 @@ const Header = () => {
               <li className="logout__button">
                 <Button>Logout</Button>
               </li>
-            )}
+            )} */}
           </ul>
         )}
       </div>

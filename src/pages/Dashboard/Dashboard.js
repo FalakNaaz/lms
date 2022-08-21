@@ -103,7 +103,7 @@ function Dashboard() {
               courses.slice(0, 5).map((val) => {
                 return (
                   <div className="course__Card" key={val.id}>
-                    <Link to={`/course`} className="container">
+                    <Link to={`/allcourses/${val.id}`} className="container">
                       <img
                         className="image"
                         src={val.attributes.Image.data.attributes.name}
