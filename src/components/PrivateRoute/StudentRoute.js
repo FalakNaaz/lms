@@ -1,11 +1,16 @@
 import React from 'react'
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function StudentRoute({ children }) {
     const user = localStorage.getItem("currUserRole");
+    const navigate = useNavigate();
+
     if (user && user === "Learner") {
         return children
+    }else{
+        setTimeout(()=>{
+            navigate(-1);
+        }, 1)
     }
-    return user ? window.location.reload : <Navigate to='/login' />
 }
 export default StudentRoute
