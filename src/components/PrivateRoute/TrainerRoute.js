@@ -1,13 +1,17 @@
-import React from 'react'
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from "react-router-dom";
 
 function TrainerRoute({ children }) {
-    const user = localStorage.getItem("currUserRole");
-    const navigate = useNavigate();
-    if (user && user === "Trainer") {
-        return children
+  const user = localStorage.getItem("currUserRole");
+  const navigate = useNavigate();
+  if (user) {
+    if (user === "Trainer") {
+      return children;
+    } else {
+      setTimeout(() => {
+        navigate(-1);
+      }, 1);
     }
-    return user?window.location.reload:<Navigate to='/login' />
+  }
+  return <Navigate to="/login"/>
 }
-
-export default TrainerRoute
+export default TrainerRoute;
