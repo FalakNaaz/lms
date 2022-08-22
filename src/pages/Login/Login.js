@@ -27,6 +27,9 @@ function Login() {
       role === "Learner"
         ? navigate("/")
         : navigate("/trainer-dashboard");
+      if(role === "Client") {
+        navigate("/cd")
+      }
     window.location.reload()
 
     }, 1000);
