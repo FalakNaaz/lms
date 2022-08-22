@@ -21,6 +21,13 @@ import CourseDetails from "./pages/Dashboard/CourseDetails";
 const Routing = () => {
   return (
     <Routes>
+      <Route path="*" element={<NotFound />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<SignUp />} />
+
+
+      {/* Routes for Student Role */}
+
       <Route
         path="/"
         element={
@@ -29,20 +36,6 @@ const Routing = () => {
           </StudentRoute>
         }
       />
-
-      <Route path="/trainer-dashboard" element={
-        <TrainerRoute>
-          <TrainerDashboard />
-        </TrainerRoute>
-      } />
-      <Route path="*" element={<NotFound />} />
-      <Route path="/student-details" element={
-        <TrainerRoute>
-          <StudentDetails />
-        </TrainerRoute>
-      } />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<SignUp />} />
       <Route
         path="/allcourses"
         element={
@@ -51,41 +44,67 @@ const Routing = () => {
           </StudentRoute>
         }
       />
-      <Route path="/allcourses/:id" element={
-        <StudentRoute>
-          <Course Page />
-        </StudentRoute>
-      } />
-      <Route path="/allcourses" element={
-        <StudentRoute>
-          <AllCourses />
-        </StudentRoute>
-      } />
-      <Route path="/assessment" element={
-        <StudentRoute>
-          <QuizPage />
-        </StudentRoute>
-      } />
-      <Route path="/cd" element={
-        <ClientRoute>
-          <ClientDashboard />
-        </ClientRoute>
-      } />
-      <Route path="/all-student-details" element={
-        <ClientRoute>
-          <AllStudentDetails />
-        </ClientRoute>
-      } />
-      <Route path="/trainer-details" element={
-        <ClientRoute>
-          <TrainerDetails />
-        </ClientRoute>
-      } />
-      <Route path="/course-details" element={
-        <ClientRoute>
-          <CourseDetails />
-        </ClientRoute>
-      } />
+      <Route path="/allcourses/:id"
+        element={
+          <StudentRoute>
+            <Course />
+          </StudentRoute>
+        } />
+      <Route path="/allcourses"
+        element={
+          <StudentRoute>
+            <AllCourses />
+          </StudentRoute>
+        } />
+      <Route path="/assessment"
+        element={
+          <StudentRoute>
+            <QuizPage />
+          </StudentRoute>
+        } />
+
+      {/* Routes for Trainer Role */}
+
+      <Route path="/trainer-dashboard"
+        element={
+          <TrainerRoute>
+            <TrainerDashboard />
+          </TrainerRoute>
+        } />
+      <Route path="/student-details"
+        element={
+          <TrainerRoute>
+            <StudentDetails />
+          </TrainerRoute>
+        } />
+
+        {/* Routes for Client Role */}
+
+
+      <Route path="/allcourse"
+        element={
+          <ClientRoute>
+            <AllCourses />
+          </ClientRoute>
+        } />
+      <Route path="/cd"
+        element={
+          <ClientRoute>
+            <ClientDashboard />
+          </ClientRoute>
+        } />
+      <Route path="/all-student-details"
+        element={
+          <ClientRoute>
+            <AllStudentDetails />
+          </ClientRoute>
+        } />
+      <Route path="/trainer-details"
+        element={
+          <ClientRoute>
+            <TrainerDetails />
+          </ClientRoute>
+        } />
 
     </Routes>
   );
@@ -93,10 +112,6 @@ const Routing = () => {
 
 function App() {
   let loggedIn = localStorage.getItem("currUser");
-  // useEffect(() => {
-  //   // window.location.reload()
-
-  // }, [])
 
   return (
     <div>

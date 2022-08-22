@@ -37,7 +37,7 @@ function ClientDashboard() {
                 </Link>
             </div>
             <div className="d-flex flex-wrap justify-content-md-between justify-content-md-end">
-                <Link to={`/course-details`} className="CardBody">
+                <Link to={`/allcourse`} className="CardBody">
                     <div className="">
                         <span className='.shortTitle'>Technical</span>
                         <h6>Courses</h6>
