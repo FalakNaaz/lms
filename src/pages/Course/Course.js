@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCourse } from "../../redux/actions/SpecificCourseAction";
 import { Button } from "react-bootstrap";
-import { Container } from "react-bootstrap";
+import NoticeToggle from "./NoticeToggle/NoticeToggle";
+import { Container, Paper, Typography } from "@material-ui/core";
 
 function Course() {
   const { id } = useParams();
@@ -17,14 +18,13 @@ function Course() {
   };
   useEffect(() => {
     (async () => await dispatch(fetchCourse(id)))();
-    
   }, []);
 
   return (
     <>
       {currentCourse && (
         <div>
-          <h6>Course last updated at : {currentCourse?.updatedAt?.slice(0, 10)}</h6>
+          <h6>Course created at : {currentCourse?.createdAt?.slice(0, 10)}</h6>
           <Container
             fluid
             className="mt-5"
@@ -39,7 +39,7 @@ function Course() {
                 />
 
                 <div className="course__content">
-                  <h5>{currentCourse.name}</h5>
+                  <h1>{currentCourse.name}</h1>
                   <p>{currentCourse.title}</p>
                   <p style={{ textAlign: "left", width: "100%" }}>
                     {isReadMore
@@ -53,13 +53,20 @@ function Course() {
                     </span>
                   </p>
                   {role === "Learner" && (
-                    <Button color="primary" style={{ width: "30%" }}>
+                    <Button
+                      color="primary"
+                      style={{ width: "30%", marginTop: "30px" }}
+                    >
                       Enroll to this course
                     </Button>
                   )}
                   <Button
                     variant="primary"
-                    style={{ marginLeft: "2vw", width: "30%" }}
+                    style={{
+                      marginLeft: "2vw",
+                      width: "30%",
+                      marginTop: "30px",
+                    }}
                   >
                     {role === "Trainer" ? (
                       <a
@@ -82,6 +89,33 @@ function Course() {
                 </div>
               </div>
             </div>
+            <Container className="my-5">
+              <Paper className="px-5 py-3">
+                <div>
+                  <div style={{ backgroundColor: "#373B4D", padding: "5px" }}>
+                    <Typography
+                      className="text-light text-center py-5"
+                      variant="h4"
+                    >
+                      {currentCourse.name}
+                    </Typography>
+                  </div>
+                </div>
+                <div className="">
+                  <div className="d-flex justify-content-between align-items-center my-4">
+                    <Typography variant="h6">Course Content</Typography>
+                    <Typography
+                      style={{ color: "GrayText" }}
+                      variant="subtitle2"
+                    >
+                      Course last updated at :
+                      {currentCourse?.updatedAt?.slice(0, 10)}
+                    </Typography>
+                  </div>
+                  <NoticeToggle />
+                </div>
+              </Paper>
+            </Container>
           </Container>
         </div>
       )}
