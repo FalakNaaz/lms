@@ -29,23 +29,8 @@ function AllCourses() {
       users.data.training && setEnableId(users.data.training.id);
     };
     getCourses();
-    // const currEmail = localStorage.getItem("currUserEmail")
-    // const checkEmail = (e) => {
-    //   return currEmail === e.email;
-    // }
-    // const getRole = async () => {
-    //   const res = await axios.get(
-    //     "http://localhost:1337/api/users?populate=*"
-    //   );
-    //   const user = res.data.filter(checkEmail)
-    //   setRole(user[0].role.name);
-
-    // }
-    // getRole();
-
-    // dispatch(getRole());
+    
     (async () => await dispatch(getRole()))();
-    // console.log(" current user role = ", role);
   }, []);
   console.log(" current user role fromm localStorage= ", role);
   

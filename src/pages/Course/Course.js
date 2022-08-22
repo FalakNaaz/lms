@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCourse } from "../../redux/actions/SpecificCourseAction";
-import axios from "axios";
-import { Card, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 
 function Course() {
@@ -12,31 +11,14 @@ function Course() {
   console.log("in (redux) course component ", currentCourse);
   const dispatch = useDispatch();
   const role = localStorage.getItem("currUserRole");
-  // const text = children;
   const [isReadMore, setIsReadMore] = useState(true);
   const toggleReadMore = () => {
     setIsReadMore(!isReadMore);
   };
-  //   const [course, setCourse] = useState();
   useEffect(() => {
     (async () => await dispatch(fetchCourse(id)))();
-    // const fetchingData = async() => {
-    //   const res = await axios.get(`http://localhost:1337/api/trainings/${id}`);
-
-    //   setCourse(res.data.data);
-    // };
-    // fetchingData();
-
-    // axios.get(`http://localhost:1337/api/trainings/${id}`)
-    // .then((res)=>{
-    //     setCourse(res.data.data)
-    // })
-    // .catch(()=>{
-    //     console.log("Error in fetching the courses.")
-    // })
+    
   }, []);
-  //   console.log("in set course component ", course.attributes.name);
-  //   console.log("in set course component ", course);
 
   return (
     <>
