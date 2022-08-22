@@ -1,24 +1,33 @@
-import React, { useEffect } from "react";
-import {Button } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../../App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllCourses } from "../../redux/actions/CoursesAction";
-import {getRole} from "../../redux/actions/RoleAction";
+import { getRole } from "../../redux/actions/RoleAction";
 import SidebarCom from "../../components/Sidebar/SidebarCom";
+import axios from "axios";
 
 function AllCourses() {
-  // const [role, setRole] = useState("Learner");
-  // const role = useSelector(state=> state.role.currentRole);
+  const [enableId, setEnableId] = useState(0);
   const role = localStorage.getItem("currUserRole");
   const sidebarToggle = useSelector((state) => state.sidebar);
   const dispatch = useDispatch();
-  const courses = useSelector(state => state.courses.courses)
-  const linkForTrainer = 'https://docs.google.com/spreadsheets/d/11kjkzy842rNGzf8cKjDMW0oza3ZTNTPHM6g3tvlRVJQ/edit?usp=sharing';
+  const courses = useSelector((state) => state.courses.courses);
+
   useEffect(() => {
     const getCourses = async () => {
       await dispatch(fetchAllCourses());
-    }
+      let users = await axios.get(`http://localhost:1337/api/users`);
+      const currEmail = localStorage.getItem("currUserEmail")
+      const filteredUsers = users.data.filter((user) => user.email === currEmail);
+      users = await axios.get(
+        `http://localhost:1337/api/users/${filteredUsers[0].id}?populate=*`
+      );
+      
+      console.log("users.data.training = ", users.data.training)
+      users.data.training && setEnableId(users.data.training.id);
+    };
     getCourses();
     // const currEmail = localStorage.getItem("currUserEmail")
     // const checkEmail = (e) => {
@@ -35,11 +44,25 @@ function AllCourses() {
     // getRole();
 
     // dispatch(getRole());
-    (async()=> await dispatch(getRole()))()
+    (async () => await dispatch(getRole()))();
     // console.log(" current user role = ", role);
   }, []);
   console.log(" current user role fromm localStorage= ", role);
-
+  
+  
+  const addTraining = async (training) => {
+    const currEmail = localStorage.getItem("currUserEmail")
+    const users = await axios.get(`http://localhost:1337/api/users`);
+    const filteredUsers = users.data.filter((user) => user.email === currEmail);
+    console.log("filteredUsers = ", filteredUsers[0].id);
+    await axios.put(
+      `http://localhost:1337/api/users/${filteredUsers[0].id}?populate=*`,
+      {
+        training: training,
+      }
+    );
+    setEnableId(training.id);
+  };
   return (
     <>
       {sidebarToggle ? <SidebarCom /> : null}
@@ -49,7 +72,7 @@ function AllCourses() {
           display: "flex",
           justifyContent: "space-around",
           flexWrap: "wrap",
-          textAlign:'center'
+          textAlign: "center",
         }}
       >
         {courses &&
@@ -69,20 +92,41 @@ function AllCourses() {
               <div className="course__content">
                 <h5>
                   {val.attributes.name.length > 18
-                    ?
-                    val.attributes.name.slice(0, 18).concat("...")
-                    :
-                    val.attributes.name}
+                    ? val.attributes.name.slice(0, 18).concat("...")
+                    : val.attributes.name}
                 </h5>
                 <p>{val.attributes.title}</p>
-                <Button color="primary" variant="contained">
-                  Enroll
+                <Button
+                  color="primary"
+                  variant="contained"
+                  onClick={() => {
+                    addTraining(val);
+                  }}
+                  disabled={enableId}
+                >
+                  {enableId == val.id ? "Enrolled" : "Enroll"}
                 </Button>
-                <Button variant="primary" style={{ marginLeft: '2vw' }}>
-                  {role === "Trainer" ?
-                    <a style={{ color: "white", textDecoration: "None" }} target="_blank" href={val.attributes.toc_link_edit}> Curriculum</a> :
-                    <a style={{ color: "white", textDecoration: "None" }} target="_blank" href={val.attributes.toc_link_view}> Curriculum</a>
-                  }</Button>
+                <Button variant="primary" style={{ marginLeft: "2vw" }}>
+                  {role === "Trainer" ? (
+                    <a
+                      style={{ color: "white", textDecoration: "None" }}
+                      target="_blank"
+                      href={val.attributes.toc_link_edit}
+                    >
+                      {" "}
+                      Curriculum
+                    </a>
+                  ) : (
+                    <a
+                      style={{ color: "white", textDecoration: "None" }}
+                      target="_blank"
+                      href={val.attributes.toc_link_view}
+                    >
+                      {" "}
+                      Curriculum
+                    </a>
+                  )}
+                </Button>
               </div>
             </div>
           ))}
