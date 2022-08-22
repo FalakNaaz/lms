@@ -12,8 +12,12 @@ import Course from "./pages/Course/Course";
 import Footer from "./components/Footer/Footer";
 import TrainerDashboard from "./pages/Dashboard/Trainer Dashboard/TrainerDashboard";
 import QuizPage from "./pages/Quiz/QuizPage";
-import { useEffect } from "react";
 import TrainerRoute from "./components/PrivateRoute/TrainerRoute";
+import ClientDashboard from "./pages/Dashboard/Client-Dashboard/ClientDashboard";
+import AllStudentDetails from "./pages/Dashboard/Client-Dashboard/AllStudentDetails";
+import TrainerDetails from './pages/Dashboard/TrainerDetails'
+import ClientRoute from "./components/PrivateRoute/ClientRoute";
+import CourseDetails from "./pages/Dashboard/CourseDetails";
 const Routing = () => {
   return (
     <Routes>
@@ -62,6 +66,27 @@ const Routing = () => {
           <QuizPage />
         </StudentRoute>
       } />
+      <Route path="/cd" element={
+        <ClientRoute>
+          <ClientDashboard />
+        </ClientRoute>
+      } />
+      <Route path="/all-student-details" element={
+        <ClientRoute>
+          <AllStudentDetails />
+        </ClientRoute>
+      } />
+      <Route path="/trainer-details" element={
+        <ClientRoute>
+          <TrainerDetails />
+        </ClientRoute>
+      } />
+      <Route path="/course-details" element={
+        <ClientRoute>
+          <CourseDetails />
+        </ClientRoute>
+      } />
+
     </Routes>
   );
 };
