@@ -11,7 +11,12 @@ function Course() {
   const currentCourse = useSelector((state) => state.course.course);
   console.log("in (redux) course component ", currentCourse);
   const dispatch = useDispatch();
-
+  const role = localStorage.getItem("currUserRole");
+  // const text = children;
+  const [isReadMore, setIsReadMore] = useState(true);
+  const toggleReadMore = () => {
+    setIsReadMore(!isReadMore);
+  };
   //   const [course, setCourse] = useState();
   useEffect(() => {
     (async () => await dispatch(fetchCourse(id)))();
@@ -37,6 +42,7 @@ function Course() {
     <>
       {currentCourse && (
         <div>
+          <h6>Course last updated at : {currentCourse?.updatedAt?.slice(0, 10)}</h6>
           <Container
             fluid
             className="mt-5"
@@ -53,8 +59,43 @@ function Course() {
                 <div className="course__content">
                   <h5>{currentCourse.name}</h5>
                   <p>{currentCourse.title}</p>
-                  <Button color="primary" variant="contained">
-                    Enroll
+                  <p style={{ textAlign: "left", width: "100%" }}>
+                    {isReadMore
+                      ? currentCourse?.description?.slice(0, 350)
+                      : currentCourse?.description}
+                    <span
+                      onClick={toggleReadMore}
+                      style={{ color: " rgb(192,192,192)", cursor: "pointer" }}
+                    >
+                      {isReadMore ? "...read more" : " show less"}
+                    </span>
+                  </p>
+                  {role === "Learner" && (
+                    <Button color="primary" style={{ width: "30%" }}>
+                      Enroll to this course
+                    </Button>
+                  )}
+                  <Button
+                    variant="primary"
+                    style={{ marginLeft: "2vw", width: "30%" }}
+                  >
+                    {role === "Trainer" ? (
+                      <a
+                        style={{ color: "white", textDecoration: "None" }}
+                        target="_blank"
+                        href={currentCourse.toc_link_edit}
+                      >
+                        Edit course curriculum
+                      </a>
+                    ) : (
+                      <a
+                        style={{ color: "white", textDecoration: "None" }}
+                        target="_blank"
+                        href={currentCourse.toc_link_view}
+                      >
+                        View course Curriculum
+                      </a>
+                    )}
                   </Button>
                 </div>
               </div>
