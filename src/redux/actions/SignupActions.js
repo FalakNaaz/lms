@@ -22,25 +22,23 @@ const SignupFailureAction = (errMsg) => {
   };
 };
 
-export const Signup = (email, password, username) => {
+export const Signup = (email, password, username,fullName) => {
   return async (dispatch) => {
     dispatch(SignupAction());
     try {
-      console.log("email = ", email, "password = ", password)
       const response = await axios.post(
         "http://localhost:1337/api/auth/local/register",
         {
-          username: username,
-          email: email,
-          password: password,
+          "username": username,
+          "email": email,
+          "password": password,
+          "assessmentScore":0,
+          "fullName":fullName
         }
       );
-      console.log("User profile", response.data.user);
-      console.log("User token", response.data.jwt);
 
       dispatch(SignupSuccessAction());
     } catch (err) {
-      console.log("An error occurred:", err.response);
       dispatch(SignupFailureAction(err.message));
     }
   };
