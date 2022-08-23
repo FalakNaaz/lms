@@ -7,10 +7,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { Alert } from "react-bootstrap";
 import { Signup } from "../../redux/actions/SignupActions";
 import {useDispatch } from "react-redux";
+import axios from "axios";
 
 function SignUp() {
   const emailRef = useRef();
   const usernameRef = useRef();
+  const fullnameRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
   const [error, setError] = useState();
@@ -27,8 +29,15 @@ function SignUp() {
     try {
       setError("");
       setLoading(true);
-      
-      dispatch(Signup(emailRef.current.value, passwordRef.current.value, usernameRef.current.value));
+      await axios.post(
+        "http://localhost:1337/api/auth/local/register",
+        {
+          username: usernameRef.current.value,
+          email: emailRef.current.value,
+          password: passwordRef.current.value,
+        }
+      );
+      // dispatch(Signup(emailRef.current.value, passwordRef.current.value, usernameRef.current.value));
       navigate("/login");
     } catch (e) {
       setError("error from firebase: ", e.message);
@@ -62,19 +71,15 @@ function SignUp() {
             />
           </Form.Group>
 
-          <Form.Group>
-            <Form.Label>Role</Form.Label>
-            <Form.Select
-              aria-label="Default select example"
-              value={val}
-              onChange={(e) => setVal(e.target.value)}
-            >
-              <option value="Student">Student</option>
-              <option value="Trainer">Trainer</option>
-              <option value="Client">Client</option>
-            </Form.Select>
-            <br />
+          <Form.Group className="mb-3" controlId="formBasicFullname">
+            <Form.Label>Full Name</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter full name"
+              ref={fullnameRef}
+            />
           </Form.Group>
+
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
