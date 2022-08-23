@@ -11,7 +11,6 @@ export default function App() {
 	const [showScore, setShowScore] = useState(false);
 	const [score, setScore] = useState(0);
   const [currUser, setCurrUser] = useState();
-  const [enrolledCourse, setEnrolledCourse] = useState();
  const [questions, setQuestions] = useState([]);
 	const handleAnswerOptionClick =  (isCorrect) => {
 		if (isCorrect) {
@@ -44,16 +43,13 @@ export default function App() {
       const response = await axios.get(
         `http://localhost:1337/api/users/${filteredUsers[0].id}?populate=*`
       );
-      console.log("response = ", response.data.training.name)
-      setEnrolledCourse(response.data.training.name)
-      //console.log("hello")
+      
       switch(response.data.training.name){
         
         case 'React':
-        
            setQuestions(reactQuestions)
           break;
-        case 'DotNet':
+        case '.Net':
            setQuestions(dotNetQuestions)
     
       }
@@ -62,16 +58,15 @@ export default function App() {
    
    
   }, [])
-  console.log(" questions from here = ", questions)
+ 
 	return (
 		<div className='app-quiz'>
-			{/* {showScore ? (
+			{showScore ? (
 				<div className='score-section'>
 					You scored {score} out of {questions.length}
 				</div>
 			) : (
 				<>
-
 					<div className='question-section'>
 						<div className='question-count'>
 							<span>Question {currentQuestion + 1}</span>/{questions?.length}
@@ -79,12 +74,12 @@ export default function App() {
 						<div className='question-text'>{questions[currentQuestion]?.questionText}</div>
 					</div>
 					<div className='answer-section'>
-						{questions[currentQuestion].answerOptions.map((answerOption) => (
+						{questions[currentQuestion]?.answerOptions.map((answerOption) => (
 							<button onClick={() => handleAnswerOptionClick(answerOption?.isCorrect)}>{answerOption?.answerText}</button>
 						))}
 					</div>
 				</>
-			)} */}
+			)}
 		</div>
 	);
 }
