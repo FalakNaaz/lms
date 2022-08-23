@@ -18,7 +18,7 @@ import AllStudentDetails from "./pages/Dashboard/Client-Dashboard/AllStudentDeta
 import TrainerDetails from './pages/Dashboard/TrainerDetails'
 import ClientRoute from "./components/PrivateRoute/ClientRoute";
 import CourseDetails from "./pages/Dashboard/CourseDetails";
-import Profile from "./pages/Profile/Profile";
+import Profile from "./pages/Profile/profile";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "./pages/ForgotPassword/ResetPassword";
 const Routing = () => {
