@@ -1,13 +1,16 @@
-.header {
-  display: flex;
-  background-color: white;
-  align-items: center;
-  box-shadow: 0 0 10px 1px rgba(128, 128, 128, 0.185);
-  position: sticky;
-  top: 0%;
-  padding: 10px 10px;
-  font-family: "Poppins", sans-serif;
-  z-index: 100;
+
+
+.header{
+    display: flex;
+    background-color: #002B5B;
+    align-items: center;
+    box-shadow: 0 0 10px 1px rgba(128, 128, 128, 0.185);
+    position: sticky;
+    top: 0%;
+    padding: 10px 10px;
+    z-index: 100;
+    font-weight: 700;
+    color: white;
 }
 
 .admin__toggle__menu {
@@ -26,9 +29,9 @@
   margin: 0px 10px;
 }
 
-.left__header > a {
-  color: black;
-  text-decoration: none;
+.left__header>a{
+    color: white;
+    text-decoration: none;
 }
 
 .middle__header {
@@ -44,18 +47,21 @@
   list-style-type: none;
   margin: 0px 8px;
 }
-.middle__header > ul > li > a {
-  color: black;
-  text-decoration: none;
+.middle__header>ul>li>a{
+    color: white;
+    text-decoration: none;
+    
 }
 .middle__header > ul > li > a:hover {
   border-bottom: 3px solid green;
   text-decoration: none;
   font-family: "Roboto", sans-serif;
 }
-.right__header {
-  display: flex;
-  align-items: center;
+.right__header{
+    
+    display: flex;
+    align-items: center;
+    
 }
 
 .menu__toggle__icon {

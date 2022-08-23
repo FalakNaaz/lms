@@ -79,7 +79,7 @@ function Dashboard() {
         />
       {sidebarToggle ? <SidebarCom /> : null}
       <div className="main__body__dashboard">
-        <Carousel>
+        <Carousel className="mt-4">
           {items.map((item, i) => (
             <Item key={i} item={item} />
           ))}
@@ -90,10 +90,10 @@ function Dashboard() {
           style={{ width: "96vw", textAlign: "center" }}
         >
           <Paper
-            className="d-flex align-items-center p-4 mb-2"
+            className="d-flex align-items-center p-4 mb-4"
             style={{ width: "94.5vw" }}
           >
-            <Typography variant="h6" style={{ textAlign: "center" }}>
+            <Typography variant="h6" style={{ textAlign: "center",fontWeight: 700}}>
               Popular Courses
             </Typography>
           </Paper>
