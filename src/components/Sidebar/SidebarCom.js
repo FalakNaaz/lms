@@ -26,16 +26,16 @@ function SidebarCom({ Icon, title }) {
   return (
     <div className="left__sidebar__dashboard">
       <div style={{ display: "flex", padding: "10px 10px" }}>
-        {user.role === "Trainer" && (
-          <Link style={{ textDecoration: "none", color: "black" }} to="/trainer-dashboard">
-            <DashboardIcon style={{ color: "black" }} />
-            Dashboard
-          </Link>)}
-        {user.role === "Learner" && (
+        <Link style={{ textDecoration: "none", color: "black" }} to="/">
+          <DashboardIcon style={{ color: "black" }} />
+          Dashboard
+        </Link>
+
+        {/* {user.role === "Learner" && (
           <Link style={{ textDecoration: "none", color: "black" }} to="/">
             <DashboardIcon style={{ color: "black" }} />
             Dashboard
-          </Link>)}
+          </Link>)} */}
       </div>
 
       <div style={{ display: "flex", padding: "10px 10px" }}>

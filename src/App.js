@@ -18,12 +18,14 @@ import AllStudentDetails from "./pages/Dashboard/Client-Dashboard/AllStudentDeta
 import TrainerDetails from './pages/Dashboard/TrainerDetails'
 import ClientRoute from "./components/PrivateRoute/ClientRoute";
 import CourseDetails from "./pages/Dashboard/CourseDetails";
+import Profile from "./pages/Profile/profile";
 const Routing = () => {
   return (
     <Routes>
       <Route path="*" element={<NotFound />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
+      <Route path="/profile" element={<Profile />} />
 
 
       {/* Routes for Student Role */}
@@ -31,9 +33,25 @@ const Routing = () => {
       <Route
         path="/"
         element={
-          <StudentRoute>
-            <Dashboard />
-          </StudentRoute>
+          <>
+            {
+              localStorage.getItem("currUserRole") === "Learner"
+                ?
+                <StudentRoute>
+                  <Dashboard />
+                </StudentRoute>
+                :
+                localStorage.getItem("currUserRole") === "Trainer"
+                  ?
+                  <TrainerRoute>
+                    <TrainerDashboard />
+                  </TrainerRoute>
+                  :
+                  <ClientRoute>
+                    <ClientDashboard />
+                  </ClientRoute>
+            }
+          </>
         }
       />
       <Route
@@ -65,12 +83,12 @@ const Routing = () => {
 
       {/* Routes for Trainer Role */}
 
-      <Route path="/trainer-dashboard"
+      {/* <Route path="/trainer-dashboard"
         element={
           <TrainerRoute>
             <TrainerDashboard />
           </TrainerRoute>
-        } />
+        } /> */}
       <Route path="/student-details"
         element={
           <TrainerRoute>
@@ -78,7 +96,7 @@ const Routing = () => {
           </TrainerRoute>
         } />
 
-        {/* Routes for Client Role */}
+      {/* Routes for Client Role */}
 
 
       <Route path="/allcourse"
@@ -87,12 +105,12 @@ const Routing = () => {
             <AllCourses />
           </ClientRoute>
         } />
-      <Route path="/cd"
+      {/* <Route path="/cd"
         element={
           <ClientRoute>
             <ClientDashboard />
           </ClientRoute>
-        } />
+        } /> */}
       <Route path="/all-student-details"
         element={
           <ClientRoute>
