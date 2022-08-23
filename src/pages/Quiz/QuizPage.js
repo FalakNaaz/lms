@@ -44,7 +44,7 @@ export default function App() {
     console.log("score = ", score);
   }
 	return (
-		<div className='app'>
+		<div className='app-quiz'>
 			{showScore ? (
 				<div className='score-section'>
 					You scored {score} out of {questions.length}
