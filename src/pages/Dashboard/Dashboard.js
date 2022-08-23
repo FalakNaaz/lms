@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Logout } from "../../redux/actions/LogoutActions";
-import { useNavigate } from "react-router-dom";
 import { Divider, Typography, Paper, Button } from "@material-ui/core";
 import { Container } from "react-bootstrap";
 import { fetchAllCourses } from "../../redux/actions/CoursesAction";
@@ -13,7 +11,6 @@ import ToastComponent from "../../components/Toast/ToastComponent";
 import { getProfileData } from "../../redux/actions/ProfileAction";
 function Dashboard() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const courses = useSelector((state) => state.courses.courses);
   const sidebarToggle = useSelector((state) => state.sidebar);
   const [toast, setToast] = useState(false);

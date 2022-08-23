@@ -17,8 +17,7 @@ import ClientDashboard from "./pages/Dashboard/Client-Dashboard/ClientDashboard"
 import AllStudentDetails from "./pages/Dashboard/Client-Dashboard/AllStudentDetails";
 import TrainerDetails from './pages/Dashboard/TrainerDetails'
 import ClientRoute from "./components/PrivateRoute/ClientRoute";
-import CourseDetails from "./pages/Dashboard/CourseDetails";
-import Profile from "./pages/Profile/Profile";
+import Profile from "./pages/Profile/profile";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 const Routing = () => {
   return (

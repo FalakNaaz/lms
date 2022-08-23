@@ -27,6 +27,7 @@ function StudentDetails() {
                 console.warn(item);
                 return item;
             }
+            return "";
         }
         ))
     }
@@ -36,6 +37,7 @@ function StudentDetails() {
             if (item.email === localStorage.getItem("currUserEmail")) {
                 setTrainerData(item.training.name);
             }
+            return "";
         })
 
 

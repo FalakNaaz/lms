@@ -26,7 +26,7 @@ export const Signup = (email, password, username,fullName) => {
   return async (dispatch) => {
     dispatch(SignupAction());
     try {
-      const response = await axios.post(
+      await axios.post(
         "http://localhost:1337/api/auth/local/register",
         {
           "username": username,

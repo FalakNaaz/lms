@@ -88,7 +88,7 @@ function AllCourses() {
                   }}
                   disabled={enableId}
                 >
-                  {enableId == val.id ? "Enrolled" : "Enroll"}
+                  {enableId === val.id ? "Enrolled" : "Enroll"}
                 </Button>
                 <Button variant="primary" style={{ marginLeft: "2vw" }}>
                   {role === "Trainer" ? (
