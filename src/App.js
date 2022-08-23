@@ -18,12 +18,14 @@ import AllStudentDetails from "./pages/Dashboard/Client-Dashboard/AllStudentDeta
 import TrainerDetails from './pages/Dashboard/TrainerDetails'
 import ClientRoute from "./components/PrivateRoute/ClientRoute";
 import CourseDetails from "./pages/Dashboard/CourseDetails";
+import Profile from "./pages/Profile/profile";
 const Routing = () => {
   return (
     <Routes>
       <Route path="*" element={<NotFound />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
+      <Route path="/profile" element={<Profile />} />
 
 
       {/* Routes for Student Role */}
