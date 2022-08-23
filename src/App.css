@@ -18,8 +18,11 @@
 
 .score-section {
   display: flex;
-  font-size: 24px;
+  font-size: 40px;
+  padding-top: 100px;
+  justify-content: center;
   align-items: center;
+  color: white;
 }
 
 /* QUESTION/TIMER/LEFT SECTION */
@@ -54,16 +57,24 @@
 
 /* ANSWERS/RIGHT SECTION */
 .answer-section {
+  margin: 10px 0px;
   color: aliceblue;
-  width: 50%;
+  width: 40%;
   margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
+.answer-section button{
+  margin: 10px 0px;
+  padding: 10px 0px;
+  border-radius: 5px;
+  
+}
 
 /* QUIZ SECTION */
 .app-quiz {
   background-color: #3b444b;
-  width: 100vw;
+  padding-top: 70px;
+  
 }
