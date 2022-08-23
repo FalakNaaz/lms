@@ -20,6 +20,14 @@ import ClientRoute from "./components/PrivateRoute/ClientRoute";
 import CourseDetails from "./pages/Dashboard/CourseDetails";
 import Profile from "./pages/Profile/Profile";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+const theme = createTheme({
+  typography: {
+    fontFamily: [
+      "Merriweather"
+    ]
+  }
+})
 const Routing = () => {
   return (
     <Routes>
@@ -134,12 +142,14 @@ function App() {
   let loggedIn = localStorage.getItem("currUser");
 
   return (
-    <div>
+    <div className="App">
+      <ThemeProvider theme={theme}>
       <Router>
-        {loggedIn && <Header />}
+        {loggedIn &&<Header />}
         <Routing />
         {loggedIn && <Footer />}
       </Router>
+    </ThemeProvider>
     </div>
   );
 }
