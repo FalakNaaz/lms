@@ -48,7 +48,7 @@ function SidebarCom({ Icon, title }) {
         <div style={{ display: "flex", padding: "10px 10px" }}>
           <Link style={{ textDecoration: "none", color: "black" }} to="/assessment">
             <TouchAppIcon style={{ color: "black" }} />
-            Grades
+            Assessment
           </Link>
         </div>
       )}

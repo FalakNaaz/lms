@@ -87,10 +87,10 @@ const Header = () => {
       {user ? (
         <div className="right__header">
           <IconButton className="mx-2 ">
-            <NotificationsActiveIcon />
+            <NotificationsActiveIcon  style={{color: "white"}}/>
           </IconButton>
           <IconButton className="mx-2">
-            <ChatIcon />
+            <ChatIcon style={{color: "white"}}/>
           </IconButton>
           <Link className="mx-4" to="/profile">
             <Avatar>

@@ -80,16 +80,30 @@ function AllCourses() {
                     : val.attributes.name}
                 </h5>
                 <p>{val.attributes.title}</p>
-                <Button
-                  color="primary"
-                  variant="contained"
-                  onClick={() => {
-                    addTraining(val);
-                  }}
-                  disabled={enableId}
-                >
-                  {enableId == val.id ? "Enrolled" : "Enroll"}
-                </Button>
+
+                {enableId == val.id ? (
+                  <Button
+                    variant="success"
+                    onClick={() => {
+                      addTraining(val);
+                    }}
+                    disabled={enableId}
+                  >
+                    Enrolled
+                  </Button>
+                ) : (
+                  <Button
+                    variant="primary"
+                    onClick={() => {
+                      addTraining(val);
+                    }}
+                    disabled={enableId}
+                  >
+                    {" "}
+                    Enroll
+                  </Button>
+                )}
+
                 <Button variant="primary" style={{ marginLeft: "2vw" }}>
                   {role === "Trainer" ? (
                     <a
@@ -97,7 +111,6 @@ function AllCourses() {
                       target="_blank"
                       href={val.attributes.toc_link_edit}
                     >
-                      {" "}
                       Curriculum
                     </a>
                   ) : (
@@ -106,7 +119,6 @@ function AllCourses() {
                       target="_blank"
                       href={val.attributes.toc_link_view}
                     >
-                      {" "}
                       Curriculum
                     </a>
                   )}
