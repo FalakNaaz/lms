@@ -5,6 +5,7 @@ import { fetchCourse } from "../../redux/actions/SpecificCourseAction";
 import { Button } from "react-bootstrap";
 import NoticeToggle from "./NoticeToggle/NoticeToggle";
 import { Container, Paper, Typography } from "@material-ui/core";
+import SidebarCom from "../../components/Sidebar/SidebarCom";
 
 function Course() {
   const { id } = useParams();
@@ -16,12 +17,15 @@ function Course() {
   const toggleReadMore = () => {
     setIsReadMore(!isReadMore);
   };
+  const sidebarToggle = useSelector((state) => state.sidebar);
+
   useEffect(() => {
     (async () => await dispatch(fetchCourse(id)))();
-  }, []);
+  }, [sidebarToggle]);
 
   return (
     <>
+    {sidebarToggle ? <SidebarCom /> : null}
       {currentCourse && (
         <div>
           <h6>Course created at : {currentCourse?.createdAt?.slice(0, 10)}</h6>

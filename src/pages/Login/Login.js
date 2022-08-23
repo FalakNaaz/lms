@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../redux/actions/LoginActions";
 import { useDispatch } from "react-redux";
 import ToastComponent from "../../components/Toast/ToastComponent";
-import {getRole} from "../../redux/actions/RoleAction";
+import { getRole } from "../../redux/actions/RoleAction";
 
 function Login() {
   const emailRef = useRef();
@@ -20,17 +20,11 @@ function Login() {
     setLoading(true);
     await dispatch(login(emailRef.current.value, pwdRef.current.value));
     setLoading(false);
-    (async()=> await dispatch(getRole()))()
+    (async () => await dispatch(getRole()))()
     setToast(true);
     setTimeout(() => {
-      const role = localStorage.getItem("currUserRole");
-      role === "Learner"
-        ? navigate("/")
-        : navigate("/trainer-dashboard");
-      if(role === "Client") {
-        navigate("/cd")
-      }
-    window.location.reload()
+      navigate("/");
+      window.location.reload()
 
     }, 1000);
   }
