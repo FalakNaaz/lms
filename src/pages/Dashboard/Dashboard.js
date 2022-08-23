@@ -10,6 +10,7 @@ import "./Dashboard.css";
 import SidebarCom from "../../components/Sidebar/SidebarCom";
 import Carousel from "react-material-ui-carousel";
 import ToastComponent from "../../components/Toast/ToastComponent";
+import { getProfileData } from "../../redux/actions/ProfileAction";
 function Dashboard() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -26,6 +27,8 @@ function Dashboard() {
       },1000)
     };
     getCourses();
+    (async () => await dispatch(getProfileData(localStorage.getItem("currUserId"))))()
+
   }, []);
   var items = [
     {
