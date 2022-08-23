@@ -20,11 +20,12 @@ function Course() {
 
   useEffect(() => {
     (async () => await dispatch(fetchCourse(id)))();
+    /* eslint-disable */
   }, [sidebarToggle]);
 
   return (
     <>
-    {sidebarToggle ? <SidebarCom /> : null}
+      {sidebarToggle ? <SidebarCom /> : null}
       {currentCourse && (
         <div>
           <h6>Course created at : {currentCourse?.createdAt?.slice(0, 10)}</h6>

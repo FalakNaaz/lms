@@ -32,6 +32,7 @@ function AllCourses() {
     getCourses();
 
     (async () => await dispatch(getRole()))();
+    /* eslint-disable */
   }, []);
 
   const addTraining = async (training) => {

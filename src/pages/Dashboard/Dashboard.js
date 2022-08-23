@@ -19,13 +19,14 @@ function Dashboard() {
     const getCourses = async () => {
       await dispatch(fetchAllCourses());
       setToast(true);
-      setTimeout(()=>{
-        setToast(false)
-      },1000)
+      setTimeout(() => {
+        setToast(false);
+      }, 1000);
     };
     getCourses();
-    (async () => await dispatch(getProfileData(localStorage.getItem("currUserId"))))()
-
+    (async () =>
+      await dispatch(getProfileData(localStorage.getItem("currUserId"))))();
+      /* eslint-disable */
   }, []);
   var items = [
     {
@@ -72,11 +73,7 @@ function Dashboard() {
   }
   return (
     <div className="dashboard">
-      <ToastComponent
-          setToast={setToast}
-          renderToast={toast}
-          msg="Welcome !"
-        />
+      <ToastComponent setToast={setToast} renderToast={toast} msg="Welcome !" />
       {sidebarToggle ? <SidebarCom /> : null}
       <div className="main__body__dashboard">
         <Carousel className="mt-4">
@@ -93,7 +90,10 @@ function Dashboard() {
             className="d-flex align-items-center p-4 mb-4"
             style={{ width: "94.5vw" }}
           >
-            <Typography variant="h6" style={{ textAlign: "center",fontWeight: 700}}>
+            <Typography
+              variant="h6"
+              style={{ textAlign: "center", fontWeight: 700 }}
+            >
               Popular Courses
             </Typography>
           </Paper>
