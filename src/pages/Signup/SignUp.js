@@ -29,20 +29,11 @@ function SignUp() {
     try {
       setError("");
       setLoading(true);
-      await axios.post(
-        "http://localhost:1337/api/auth/local/register",
-        {
-          username: usernameRef.current.value,
-          email: emailRef.current.value,
-          password: passwordRef.current.value,
-          fullName: fullnameRef.current.value,
-          assessmentScore: 0
-        }
-      );
-      // dispatch(Signup(emailRef.current.value, passwordRef.current.value, usernameRef.current.value));
+      
+      dispatch(Signup(emailRef.current.value, passwordRef.current.value, usernameRef.current.value, fullnameRef.current.value));
       navigate("/login");
     } catch (e) {
-      setError("error from firebase: ", e.message);
+      setError(e.message);
     }
     setLoading(false);
   };

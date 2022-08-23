@@ -3,7 +3,7 @@ import { ActionTypes } from "../constants/action-types";
 const initialState1 = {
   signupLoading: false,
   signupError: "",
-  singupMsg: "",
+  signupMsg: "",
 };
 
 export const UserSignupReducer = (state = initialState1, action) => {
@@ -15,7 +15,7 @@ export const UserSignupReducer = (state = initialState1, action) => {
       };
     case ActionTypes.USER_SIGNUP_SUCCESS:
       return {
-        singupMsg: action.payload,
+        signupMsg: action.payload,
         ...state,
       };
 

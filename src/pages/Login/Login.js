@@ -6,7 +6,6 @@ import { login } from "../../redux/actions/LoginActions";
 import { useDispatch } from "react-redux";
 import ToastComponent from "../../components/Toast/ToastComponent";
 import { getRole } from "../../redux/actions/RoleAction";
-
 function Login() {
   const emailRef = useRef();
   const pwdRef = useRef();
@@ -25,7 +24,6 @@ function Login() {
     setTimeout(() => {
       navigate("/");
       window.location.reload()
-
     }, 1000);
   }
   return (

@@ -19,24 +19,23 @@ function AllCourses() {
     const getCourses = async () => {
       await dispatch(fetchAllCourses());
       let users = await axios.get(`http://localhost:1337/api/users`);
-      const currEmail = localStorage.getItem("currUserEmail")
-      const filteredUsers = users.data.filter((user) => user.email === currEmail);
+      const currEmail = localStorage.getItem("currUserEmail");
+      const filteredUsers = users.data.filter(
+        (user) => user.email === currEmail
+      );
       users = await axios.get(
         `http://localhost:1337/api/users/${filteredUsers[0].id}?populate=*`
       );
-      
-      console.log("users.data.training = ", users.data.training)
+
       users.data.training && setEnableId(users.data.training.id);
     };
     getCourses();
-    
+
     (async () => await dispatch(getRole()))();
   }, []);
-  console.log(" current user role fromm localStorage= ", role);
-  
-  
+
   const addTraining = async (training) => {
-    const currEmail = localStorage.getItem("currUserEmail")
+    const currEmail = localStorage.getItem("currUserEmail");
     const users = await axios.get(`http://localhost:1337/api/users`);
     const filteredUsers = users.data.filter((user) => user.email === currEmail);
     console.log("filteredUsers = ", filteredUsers[0].id);
