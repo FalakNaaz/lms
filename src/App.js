@@ -19,6 +19,7 @@ import TrainerDetails from './pages/Dashboard/TrainerDetails'
 import ClientRoute from "./components/PrivateRoute/ClientRoute";
 import CourseDetails from "./pages/Dashboard/CourseDetails";
 import Profile from "./pages/Profile/Profile";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 const Routing = () => {
   return (
     <Routes>
@@ -26,6 +27,7 @@ const Routing = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
 
 
       {/* Routes for Student Role */}
