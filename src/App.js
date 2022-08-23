@@ -33,9 +33,25 @@ const Routing = () => {
       <Route
         path="/"
         element={
-          <StudentRoute>
-            <Dashboard />
-          </StudentRoute>
+          <>
+            {
+              localStorage.getItem("currUserRole") === "Learner"
+                ?
+                <StudentRoute>
+                  <Dashboard />
+                </StudentRoute>
+                :
+                localStorage.getItem("currUserRole") === "Trainer"
+                  ?
+                  <TrainerRoute>
+                    <TrainerDashboard />
+                  </TrainerRoute>
+                  :
+                  <ClientRoute>
+                    <ClientDashboard />
+                  </ClientRoute>
+            }
+          </>
         }
       />
       <Route
@@ -67,12 +83,12 @@ const Routing = () => {
 
       {/* Routes for Trainer Role */}
 
-      <Route path="/trainer-dashboard"
+      {/* <Route path="/trainer-dashboard"
         element={
           <TrainerRoute>
             <TrainerDashboard />
           </TrainerRoute>
-        } />
+        } /> */}
       <Route path="/student-details"
         element={
           <TrainerRoute>
@@ -80,7 +96,7 @@ const Routing = () => {
           </TrainerRoute>
         } />
 
-        {/* Routes for Client Role */}
+      {/* Routes for Client Role */}
 
 
       <Route path="/allcourse"
@@ -89,12 +105,12 @@ const Routing = () => {
             <AllCourses />
           </ClientRoute>
         } />
-      <Route path="/cd"
+      {/* <Route path="/cd"
         element={
           <ClientRoute>
             <ClientDashboard />
           </ClientRoute>
-        } />
+        } /> */}
       <Route path="/all-student-details"
         element={
           <ClientRoute>

@@ -31,18 +31,9 @@ const Header = () => {
       </div>
       <div className="left__header">
         {
-          user.role == 'Learner' && (
             <Link to="/">
               <h4>LearniGo.com</h4>
             </Link>
-          )
-        }
-        {
-          user.role == 'Trainer' && (
-            <Link to="/trainer-dashboard">
-              <h4>LearniGo.com</h4>
-            </Link>
-          )
         }
       </div>
       <div
@@ -55,38 +46,12 @@ const Header = () => {
               <>
                 {" "}
                 <li>
-                  <NavLink onClick={toggleClose} to="/trainer-dashboard">
+                  <NavLink onClick={toggleClose} to="/">
                     Dashboard
                   </NavLink>
                 </li>
               </>
             )}
-
-            {/* {user.role === "Admin" && (
-              <>
-                {" "}
-                <li>
-                  <NavLink onClick={toggleClose} to="/">
-                    Dashboard
-                  </NavLink>
-                </li>
-                <li className="admin__toggle__menu">
-                  <NavLink onClick={toggleClose} to="/">
-                    Course-Info
-                  </NavLink>
-                </li>
-                <li className="admin__toggle__menu">
-                  <NavLink onClick={toggleClose} to="/">
-                    Student-Info
-                  </NavLink>
-                </li>
-                <li className="admin__toggle__menu">
-                  <NavLink onClick={toggleClose} to="/">
-                    Teacher-Info
-                  </NavLink>
-                </li>
-              </>
-            )} */}
 
             {user.role === "Learner" && (
               <>
