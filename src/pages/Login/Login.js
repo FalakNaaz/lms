@@ -35,7 +35,7 @@ function Login() {
         renderToast={toast}
         msg="Login Success"
       />
-      <Card style={{ maxWidth: "400px", margin: "auto", marginTop: "150px" }}>
+      <Card style={{ maxWidth: "400px", margin: "auto", marginTop: "150px", backgroundImage: "../../assets/Image" }}>
         <Card.Body>
           <h2 className="text-center mb-4">Log In </h2>
           {loading && (
