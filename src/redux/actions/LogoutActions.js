@@ -19,6 +19,7 @@ export const Logout = () => async dispatch => {
      localStorage.removeItem("currUser");
      localStorage.removeItem("currUserEmail");
      localStorage.removeItem("currUserRole");
+     localStorage.removeItem("currUserId");
 
         dispatch(LogoutAction());
     } catch (err) {

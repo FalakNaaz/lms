@@ -31,6 +31,7 @@ export const login = (email, password) => async (dispatch) => {
         })
         localStorage.setItem("currUser", response.data.jwt);
         localStorage.setItem("currUserEmail", response.data.user.email);
+        localStorage.setItem("currUserId", response.data.user.id);
         const userData = { email, password };
         dispatch(LoginSuccessAction(userData));
        
