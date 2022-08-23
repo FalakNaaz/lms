@@ -65,7 +65,7 @@ export default function App() {
   console.log(" questions from here = ", questions)
 	return (
 		<div className='app-quiz'>
-			{showScore ? (
+			{/* {showScore ? (
 				<div className='score-section'>
 					You scored {score} out of {questions.length}
 				</div>
@@ -84,7 +84,7 @@ export default function App() {
 						))}
 					</div>
 				</>
-			)}
+			)} */}
 		</div>
 	);
 }
