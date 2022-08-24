@@ -69,7 +69,7 @@ function AllCourses() {
               <Link to={`/allcourses/${val.id}`} className="container">
                 <img
                   className="image"
-                  src={val.attributes.Image.data.attributes.name}
+                  src={val?.attributes.Image.data?.attributes.name}
                   alt=""
                 />
                 <div className="overlay">
@@ -95,7 +95,7 @@ function AllCourses() {
                     Enrolled
                   </Button>
                 ) : (
-                  <Button
+                  <Button 
                     variant="primary"
                     onClick={() => {
                       addTraining(val);
@@ -106,7 +106,7 @@ function AllCourses() {
                   </Button>
                 ) : null}
 
-                <Button variant="primary" style={{ marginLeft: "2vw", margin: "auto" }}>
+                <Button variant="primary" style={{marginLeft: "10px"}}> 
                   {role === "Trainer" ? (
                     <a
                       style={{ color: "white", textDecoration: "None" }}
