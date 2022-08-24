@@ -84,8 +84,7 @@ function AllCourses() {
                     : val.attributes.name}
                 </h5>
                 <p>{val.attributes.title}</p>
-
-                {localStorage.getItem(currUserRole === "Learner") ? enableId == val.id ? (
+                {localStorage.getItem("currUserRole") === "Learner" ? enableId == val.id ? (
                   <Button
                     variant="success"
                     onClick={() => {
@@ -103,27 +102,24 @@ function AllCourses() {
                     }}
                     disabled={enableId}
                   >
-                    {" "}
                     Enroll
                   </Button>
                 ) : null}
 
-                <Button variant="primary" style={{ marginLeft: "2vw" }}>
+                <Button variant="primary" style={{ marginLeft: "2vw", margin: "auto" }}>
                   {role === "Trainer" ? (
                     <a
                       style={{ color: "white", textDecoration: "None" }}
                       target="_blank"
                       href={val.attributes.toc_link_edit}
-                    >
-                      Curriculum
+                    >Curriculum
                     </a>
                   ) : (
                     <a
                       style={{ color: "white", textDecoration: "None" }}
                       target="_blank"
                       href={val.attributes.toc_link_view}
-                    >
-                      Curriculum
+                    >Curriculum
                     </a>
                   )}
                 </Button>

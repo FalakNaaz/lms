@@ -26,7 +26,7 @@ function Dashboard() {
     getCourses();
     (async () =>
       await dispatch(getProfileData(localStorage.getItem("currUserId"))))();
-      /* eslint-disable */
+    /* eslint-disable */
   }, []);
   var items = [
     {
@@ -34,15 +34,13 @@ function Dashboard() {
       description:
         "All your favorite course are available at one place, lets take the benefit right now",
       imgSrc:
-      "https://as2.ftcdn.net/v2/jpg/05/18/87/23/1000_F_518872338_ZqBuCYeJ58AIalKfikVfEk6IIYnvpA6S.jpg",
-
-        
+        "https://as2.ftcdn.net/v2/jpg/05/18/87/23/1000_F_518872338_ZqBuCYeJ58AIalKfikVfEk6IIYnvpA6S.jpg",
     },
     {
       name: "Demo Coding courses are available for free!",
       description:
         "All your coding courses which which will make you best developer",
-        imgSrc:
+      imgSrc:
         "https://skillsourcelearning.com/wp-content/uploads/2020/03/Instructor-Led-Training-Classes-01.jpg",
     },
     {
@@ -56,8 +54,8 @@ function Dashboard() {
       name: "Instructor-Led live training",
       description:
         "Take the live training session with our Instructor-Led training facility",
-        imgSrc:"https://as2.ftcdn.net/v2/jpg/04/94/04/53/1000_F_494045336_Z7J94gFOPnrD9vcV4GnGPWR7LWWFpFS2.jpg",
-      
+      imgSrc:
+        "https://as2.ftcdn.net/v2/jpg/04/94/04/53/1000_F_494045336_Z7J94gFOPnrD9vcV4GnGPWR7LWWFpFS2.jpg",
     },
   ];
   function Item(props) {

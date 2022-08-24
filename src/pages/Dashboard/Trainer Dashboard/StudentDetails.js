@@ -10,13 +10,15 @@ import EditIcon from "@material-ui/icons/Edit";
 import Paper from "@material-ui/core/Paper";
 import AddNewCourseModal from "../../../components/Modal/AddNewCourseModal";
 import { Button } from "@material-ui/core";
-
+import { useSelector } from "react-redux";
+import SidebarCom from "../../../components/Sidebar/SidebarCom";
 function StudentDetails() {
   const [studentData, setStudentData] = useState([]);
   const [trainerData, setTrainerData] = useState("");
   const [showEdit, setShowEdit] = useState(false);
   const [item, setItem] = useState(-1);
 
+  const sidebarToggle = useSelector((state) => state.sidebar);
 
   const toggleEdit = () => {
     setShowEdit(!showEdit);
@@ -50,46 +52,55 @@ function StudentDetails() {
     fetchTrainerData();
     fetchStudentData();
     /* eslint-disable */
-  }, [trainerData,studentData]);
+  }, [trainerData, studentData]);
 
   return (
-    <TableContainer component={Paper}>
-      {showEdit && (
-        <AddNewCourseModal showModal={showEdit} toggle={toggleEdit} item={item} />
-      )}
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>Id</TableCell>
-            <TableCell>Email</TableCell>
-            <TableCell>Username</TableCell>
-            <TableCell>Enrolled In</TableCell>
-            <TableCell>Assessment Score</TableCell>
-            <TableCell></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {studentData.map((item, index) => (
-            <TableRow key={item.id}>
-              <TableCell>{index + 1}</TableCell>
-              <TableCell>{item?.email}</TableCell>
-              <TableCell>{item?.username}</TableCell>
-              <TableCell>{item?.training?.name}</TableCell>
-              <TableCell>{item?.assessmentScore}</TableCell>
-              <TableCell>
-                <Button onClick={()=>{
-                  toggleEdit()
-                  setItem(item.id);
-                }
-                  }>
-                  <EditIcon />
-                </Button>
-              </TableCell>
+    <>
+      {sidebarToggle ? <SidebarCom /> : null}
+
+      <TableContainer component={Paper} style={{ minHeight: "70vh" }}>
+        {showEdit && (
+          <AddNewCourseModal
+            showModal={showEdit}
+            toggle={toggleEdit}
+            item={item}
+          />
+        )}
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Id</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Username</TableCell>
+              <TableCell>Enrolled In</TableCell>
+              <TableCell>Assessment Score</TableCell>
+              <TableCell></TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {studentData.map((item, index) => (
+              <TableRow key={item.id}>
+                <TableCell>{index + 1}</TableCell>
+                <TableCell>{item?.email}</TableCell>
+                <TableCell>{item?.username}</TableCell>
+                <TableCell>{item?.training?.name}</TableCell>
+                <TableCell>{item?.assessmentScore}</TableCell>
+                <TableCell>
+                  <Button
+                    onClick={() => {
+                      toggleEdit();
+                      setItem(item.id);
+                    }}
+                  >
+                    <EditIcon />
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </>
   );
 }
 

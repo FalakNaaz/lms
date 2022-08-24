@@ -4,7 +4,6 @@ import "../Profile/Profile.css";
 import { getProfileData } from "../../redux/actions/ProfileAction";
 import SidebarCom from "../../components/Sidebar/SidebarCom";
 
-
 function Profile() {
   const dispatch = useDispatch();
   const sidebarToggle = useSelector((state) => state.sidebar);
@@ -15,14 +14,21 @@ function Profile() {
   useEffect(() => {
     (async () =>
       await dispatch(getProfileData(localStorage.getItem("currUserId"))))();
+    /* eslint-disable */
   }, [sidebarToggle]);
   return (
-    
-    <div className="page-content page-container" id="page-content" style={{height: "90vh"}}>
+    <div
+      className="page-content page-container"
+      id="page-content"
+      style={{ height: "90vh" }}
+    >
       {sidebarToggle ? <SidebarCom /> : null}
       <div className="padding">
         <div className="row container d-flex justify-content-center">
-          <div className="col-xl-6 col-md-12" style={{height: "90vh", width: "80vw"}}>
+          <div
+            className="col-xl-6 col-md-12"
+            style={{ height: "90vh", width: "80vw" }}
+          >
             <div className="card user-card-full">
               <div className="row m-l-0 m-r-0">
                 <div className="col-sm-4 bg-c-lite-green user-profile">
