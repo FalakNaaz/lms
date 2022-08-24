@@ -6,13 +6,16 @@ import { Button } from "react-bootstrap";
 import NoticeToggle from "./NoticeToggle/NoticeToggle";
 import { Container, Paper, Typography } from "@material-ui/core";
 import SidebarCom from "../../components/Sidebar/SidebarCom";
+import axios from "axios";
 
 function Course() {
   const { id } = useParams();
   const currentCourse = useSelector((state) => state.course.course);
   const dispatch = useDispatch();
+  const currUserId  =localStorage.getItem("currUserId")
   const role = localStorage.getItem("currUserRole");
   const [isReadMore, setIsReadMore] = useState(true);
+  const [enableId, setEnableId] = useState(0);
   const toggleReadMore = () => {
     setIsReadMore(!isReadMore);
   };
@@ -20,9 +23,33 @@ function Course() {
 
   useEffect(() => {
     (async () => await dispatch(fetchCourse(id)))();
+
+   const checkForEnrolledCourse = async () => {
+    const  users = await axios.get(
+      `http://localhost:1337/api/users/${currUserId}?populate=*`
+    );
+
+    users.data.training && setEnableId(users.data.training.id);
+   }
+   checkForEnrolledCourse();
+
     /* eslint-disable */
   }, [sidebarToggle]);
 
+
+  
+  const addTraining = async() => {
+    await axios.put(
+      `http://localhost:1337/api/users/${currUserId}?populate=*`,
+      {
+        training: {
+          id: id,
+          attributes: currentCourse
+        }
+      }
+    );
+    setEnableId(id);
+  }
   return (
     <>
       {sidebarToggle ? <SidebarCom /> : null}
@@ -57,12 +84,30 @@ function Course() {
                     </span>
                   </p>
                   {role === "Learner" && (
-                    <Button
-                      color="primary"
-                      style={{ width: "30%", marginTop: "30px" }}
-                    >
-                      Enroll to this course
-                    </Button>
+                      enableId == id ? (
+                        <Button
+                          variant="success"
+                          style={{ width: "30%", marginTop: "30px" }}
+                          onClick={() => {
+                            addTraining();
+                          }}
+                          disabled={enableId}
+                        >
+                          Enrolled in this course
+                        </Button>
+                      ) : (
+                        <Button
+                          variant="primary"
+                          style={{ width: "30%", marginTop: "30px" }}
+                          onClick={() => {
+                            addTraining();
+                          }}
+                          disabled={enableId}
+                        >
+                          {" "}
+                          Enroll to this course
+                        </Button>
+                      )
                   )}
                   <Button
                     variant="primary"

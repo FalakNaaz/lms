@@ -28,8 +28,10 @@ function AllCourses() {
       );
 
       users.data.training && setEnableId(users.data.training.id);
+     
     };
     getCourses();
+    console.log("courses = ", courses);
 
     (async () => await dispatch(getRole()))();
     /* eslint-disable */
@@ -40,6 +42,7 @@ function AllCourses() {
     const users = await axios.get(`http://localhost:1337/api/users`);
     const filteredUsers = users.data.filter((user) => user.email === currEmail);
     console.log("filteredUsers = ", filteredUsers[0].id);
+    console.log("training = ", training)
     await axios.put(
       `http://localhost:1337/api/users/${filteredUsers[0].id}?populate=*`,
       {
