@@ -29,8 +29,8 @@ function ForgotPassword() {
     setLoading(false);
   }
   return (
-    <>
-      <Card style={{ maxWidth: "400px", margin: "auto", marginTop: "150px" }}>
+    <div className="loginBackground">
+      <Card style={{ maxWidth: "400px", margin: "auto" }}>
         <Card.Body>
           <h2 className="text-center mb-4">Forgot Password</h2>
           {error && <Alert variant="danger">{error}</Alert>}
@@ -41,13 +41,13 @@ function ForgotPassword() {
               <Form.Control type="email" ref={emailRef} required />
             </Form.Group>
             <br />
-            <Button disabled={loading} className="w-100" type="submit">
+            <Button disabled={loading} className="w-100" type="submit" variant="success">
               Forgot Password
             </Button>
           </Form>
         </Card.Body>
       </Card>
-    </>
+    </div>
   );
 }
 export default ForgotPassword;

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital@1&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital@1&display=swap");
 .App {
   font-family: "Merriweather", serif;
 }
@@ -65,16 +65,22 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.answer-section button{
+.answer-section button {
   margin: 10px 0px;
   padding: 10px 0px;
   border-radius: 5px;
-  
 }
 
 /* QUIZ SECTION */
 .app-quiz {
   background-color: #3b444b;
   padding-top: 70px;
-  
+}
+
+.loginBackground {
+  height: 100vh;
+  padding-top: 25vh;
+  background-image: url("https://images.unsplash.com/photo-1519751138087-5bf79df62d5b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80");
+  background-repeat: no-repeat ;
+  background-size: cover;
 }

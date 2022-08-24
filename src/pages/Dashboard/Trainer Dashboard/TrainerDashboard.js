@@ -24,7 +24,7 @@ function TrainerDashboard() {
                     </IconButton>
                 </Link>
             </div>
-            <div className="d-flex flex-wrap justify-content-md-between justify-content-md-end">
+            {/* <div className="d-flex flex-wrap justify-content-md-between justify-content-md-end">
                 <Link to={``} className="CardBody">
                     <div className="">
                         <span className='.shortTitle'>Enrolled</span>
@@ -35,7 +35,7 @@ function TrainerDashboard() {
                         <TouchAppIcon fontSize="large" className='icon_style_card' />
                     </IconButton>
                 </Link>
-            </div>
+            </div> */}
         </div>
     )
 }

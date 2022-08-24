@@ -123,9 +123,9 @@ function Dashboard() {
                           : val.attributes.name}
                       </h5>
                       <p>{val.attributes.title}</p>
-                      <Button color="primary" variant="contained">
+                      {/* <Button color="primary" variant="contained">
                         Enroll
-                      </Button>
+                      </Button> */}
                     </div>
                   </div>
                 );
