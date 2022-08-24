@@ -37,6 +37,7 @@ const Routing = () => {
       <Route path="/profile" element={<Profile />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/allcourses/:id" element={<Course />} />
 
       {/* Routes for Student Role */}
 
@@ -72,12 +73,7 @@ const Routing = () => {
           </StudentRoute>
         }
       />
-      <Route path="/allcourses/:id"
-        element={
-          <StudentRoute>
-            <Course />
-          </StudentRoute>
-        } />
+      
       <Route path="/assessment"
         element={
           <StudentRoute>
@@ -138,12 +134,12 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-      <Router>
-        {loggedIn &&<Header />}
-        <Routing />
-        {loggedIn && <Footer />}
-      </Router>
-    </ThemeProvider>
+        <Router>
+          {loggedIn && <Header />}
+          <Routing />
+          {loggedIn && <Footer />}
+        </Router>
+      </ThemeProvider>
     </div>
   );
 }
