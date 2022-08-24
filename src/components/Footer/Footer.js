@@ -6,10 +6,14 @@ function Footer() {
       <div className="footer-content">
         <h3>LearniGo.com</h3>
         <p>
-          LearniGo.com is a platform where the corporate organization engage with us to make their employee skillful in the trending and latest technology so that they can start early start their career with the project deployment.
+          LearniGo.com is a platform where the corporate organization engage
+          with us to make their employee skillful in the trending and latest
+          technology so that they can start early start their career with the
+          project deployment.
         </p>
         <ul className="socials">
           <li>
+          {/* eslint-disable */}
             <a href="#">
               <i className="fa fa-facebook"></i>
             </a>
