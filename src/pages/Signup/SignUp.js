@@ -95,8 +95,8 @@ function SignUp() {
               <Form.Check type="checkbox" label="Remember me" />
             </Form.Group>
             <div className="col-md-12 text-center">
-              <Button disabled={loading} variant="success" type="submit" className="text-center">
-                Submit
+              <Button disabled={loading} type="submit" className="text-center"  id="btnColor">
+                Signin
               </Button>
             </div>
             <div style={{ textAlign: "center", marginTop: "10px" }}>

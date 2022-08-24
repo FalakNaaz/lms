@@ -55,7 +55,7 @@ function ResetPassword() {
               <Form.Control type="text" ref={code} required />
             </Form.Group>
             <br />
-            <Button disabled={loading} className="w-100 mb-4" type="submit" variant="success">
+            <Button disabled={loading} className="w-100 mb-4" type="submit"  id="btnColor">
               Reset Password
             </Button>
           </Form>

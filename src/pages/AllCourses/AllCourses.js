@@ -28,7 +28,6 @@ function AllCourses() {
       );
 
       users.data.training && setEnableId(users.data.training.id);
-
     };
     getCourses();
     console.log("courses = ", courses);
@@ -42,7 +41,7 @@ function AllCourses() {
     const users = await axios.get(`http://localhost:1337/api/users`);
     const filteredUsers = users.data.filter((user) => user.email === currEmail);
     console.log("filteredUsers = ", filteredUsers[0].id);
-    console.log("training = ", training)
+    console.log("training = ", training);
     await axios.put(
       `http://localhost:1337/api/users/${filteredUsers[0].id}?populate=*`,
       {
@@ -84,42 +83,46 @@ function AllCourses() {
                     : val.attributes.name}
                 </h5>
                 <p>{val.attributes.title}</p>
-                {localStorage.getItem("currUserRole") === "Learner" ? enableId == val.id ? (
-                  <Button
-                    variant="success"
-                    onClick={() => {
-                      addTraining(val);
-                    }}
-                    disabled={enableId}
-                  >
-                    Enrolled
-                  </Button>
-                ) : (
-                  <Button 
-                    variant="primary"
-                    onClick={() => {
-                      addTraining(val);
-                    }}
-                    disabled={enableId}
-                  >
-                    Enroll
-                  </Button>
+                {localStorage.getItem("currUserRole") === "Learner" ? (
+                  enableId == val.id ? (
+                    <Button
+                      variant="success"
+                      onClick={() => {
+                        addTraining(val);
+                      }}
+                      disabled={enableId}
+                    >
+                      Enrolled
+                    </Button>
+                  ) : (
+                    <Button
+                      id="btnColor"
+                      onClick={() => {
+                        addTraining(val);
+                      }}
+                      disabled={enableId}
+                    >
+                      Enroll
+                    </Button>
+                  )
                 ) : null}
 
-                <Button variant="primary" style={{marginLeft: "10px"}}> 
+                <Button id="btnColor" style={{ marginLeft: "10px" }}>
                   {role === "Trainer" ? (
                     <a
                       style={{ color: "white", textDecoration: "None" }}
                       target="_blank"
                       href={val.attributes.toc_link_edit}
-                    >Curriculum
+                    >
+                      Curriculum
                     </a>
                   ) : (
                     <a
                       style={{ color: "white", textDecoration: "None" }}
                       target="_blank"
                       href={val.attributes.toc_link_view}
-                    >Curriculum
+                    >
+                      Curriculum
                     </a>
                   )}
                 </Button>

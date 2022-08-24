@@ -22,6 +22,11 @@
   align-items: center;
   margin-right: 50px;
 }
+.left__header > a:hover {
+  color: white;
+  border-bottom: 3px solid rgb(4, 186, 4);
+  font-family: "Roboto", sans-serif;
+}
 
 .left__header > a > img {
   height: 60px;
@@ -53,7 +58,7 @@
     
 }
 .middle__header > ul > li > a:hover {
-  border-bottom: 3px solid green;
+  border-bottom: 3px solid rgb(4, 186, 4);
   text-decoration: none;
   font-family: "Roboto", sans-serif;
 }
