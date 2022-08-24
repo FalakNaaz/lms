@@ -59,13 +59,14 @@ function SidebarCom({ Icon, title }) {
           Messages
         </Link>
       </div>
-
-      <div style={{ display: "flex", padding: "10px 10px" }}>
-        <Link style={{ textDecoration: "none", color: "black" }} to="/allcourses">
-          <SettingsApplicationsIcon style={{ color: "black" }} />
-          Courses
-        </Link>
-      </div>
+      {user.role === "Learner" && (
+        <div style={{ display: "flex", padding: "10px 10px" }}>
+          <Link style={{ textDecoration: "none", color: "black" }} to="/allcourses">
+            <SettingsApplicationsIcon style={{ color: "black" }} />
+            Courses
+          </Link>
+        </div>
+      )}
 
       <div style={{ display: "flex", padding: "10px 10px" }}>
         <div onClick={handleLogout}>

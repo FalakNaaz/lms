@@ -28,7 +28,7 @@ function AllCourses() {
       );
 
       users.data.training && setEnableId(users.data.training.id);
-     
+
     };
     getCourses();
     console.log("courses = ", courses);
@@ -85,7 +85,7 @@ function AllCourses() {
                 </h5>
                 <p>{val.attributes.title}</p>
 
-                {enableId == val.id ? (
+                {localStorage.getItem(currUserRole === "Learner") ? enableId == val.id ? (
                   <Button
                     variant="success"
                     onClick={() => {
@@ -106,7 +106,7 @@ function AllCourses() {
                     {" "}
                     Enroll
                   </Button>
-                )}
+                ) : null}
 
                 <Button variant="primary" style={{ marginLeft: "2vw" }}>
                   {role === "Trainer" ? (

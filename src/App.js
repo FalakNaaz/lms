@@ -78,12 +78,6 @@ const Routing = () => {
             <Course />
           </StudentRoute>
         } />
-      <Route path="/allcourses"
-        element={
-          <StudentRoute>
-            <AllCourses />
-          </StudentRoute>
-        } />
       <Route path="/assessment"
         element={
           <StudentRoute>

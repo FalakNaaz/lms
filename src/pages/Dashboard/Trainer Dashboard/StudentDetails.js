@@ -15,6 +15,8 @@ function StudentDetails() {
   const [studentData, setStudentData] = useState([]);
   const [trainerData, setTrainerData] = useState("");
   const [showEdit, setShowEdit] = useState(false);
+  const [item, setItem] = useState(-1);
+
 
   const toggleEdit = () => {
     setShowEdit(!showEdit);
@@ -25,8 +27,8 @@ function StudentDetails() {
     setStudentData(
       json.data.filter((item) => {
         if (
-          item.role.name === "Learner" &&
-          item.training.name === trainerData
+          item?.role?.name === "Learner" &&
+          item?.training?.name === trainerData
         ) {
           console.warn(item);
           return item;
@@ -48,12 +50,12 @@ function StudentDetails() {
     fetchTrainerData();
     fetchStudentData();
     /* eslint-disable */
-  }, [trainerData]);
+  }, [trainerData,studentData]);
 
   return (
     <TableContainer component={Paper}>
       {showEdit && (
-        <AddNewCourseModal showModal={showEdit} toggle={toggleEdit} />
+        <AddNewCourseModal showModal={showEdit} toggle={toggleEdit} item={item} />
       )}
       <Table>
         <TableHead>
@@ -62,6 +64,7 @@ function StudentDetails() {
             <TableCell>Email</TableCell>
             <TableCell>Username</TableCell>
             <TableCell>Enrolled In</TableCell>
+            <TableCell>Assessment Score</TableCell>
             <TableCell></TableCell>
           </TableRow>
         </TableHead>
@@ -72,8 +75,13 @@ function StudentDetails() {
               <TableCell>{item?.email}</TableCell>
               <TableCell>{item?.username}</TableCell>
               <TableCell>{item?.training?.name}</TableCell>
+              <TableCell>{item?.assessmentScore}</TableCell>
               <TableCell>
-                <Button onClick={toggleEdit}>
+                <Button onClick={()=>{
+                  toggleEdit()
+                  setItem(item.id);
+                }
+                  }>
                   <EditIcon />
                 </Button>
               </TableCell>
