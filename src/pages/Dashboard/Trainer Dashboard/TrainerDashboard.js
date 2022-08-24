@@ -1,22 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { IconButton } from "@material-ui/core";
-import PersonIcon from "@material-ui/icons/Person";
-import TouchAppIcon from "@material-ui/icons/TouchApp";
+import FaceIcon from "@material-ui/icons/Face";
+import QueueIcon from '@material-ui/icons/Queue';
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 import "./TrainerDashboard.css";
 import { useSelector } from "react-redux";
 import SidebarCom from "../../../components/Sidebar/SidebarCom";
 import AddNewCourseModal from "./AddNewCourseModel";
+import axios from "axios";
 
 function TrainerDashboard() {
   const sidebarToggle = useSelector((state) => state.sidebar);
   const [showEdit, setShowEdit] = useState(false);
-  const [item, setItem] = useState(-1);
+  const [item, setItem] = useState("");
+
   const toggleEdit = () => {
     setShowEdit(!showEdit);
   };
+
+  const fetchStudentData = async () => {
+    const json = await axios.get(`http://localhost:1337/api/users/${localStorage.getItem("currUserId")}?populate=*`);
+    setItem(json.data.training.toc_link_edit);
+  };
+
+  useEffect(() => {
+    fetchStudentData();
+  }, [])
   return (
-    <div className="d-flex" style={{ height: "76.65vh" }}>
+    <>
       {sidebarToggle ? <SidebarCom /> : null}
       {showEdit && (
         <AddNewCourseModal
@@ -24,31 +36,53 @@ function TrainerDashboard() {
           toggle={toggleEdit}
         />
       )}
-      <div className="d-flex flex-wrap justify-content-md-between justify-content-md-end">
-        <Link to={`/student-details`} className="CardBody">
-          <div className="">
-            <span className=".shortTitle">Performance</span>
-            <h6>Student</h6>
-          </div>
 
-          <IconButton className="icon_style">
-            <PersonIcon fontSize="large" className="icon_style_card" />
-          </IconButton>
-        </Link>
-      </div>
-      <div className="d-flex flex-wrap justify-content-md-between justify-content-md-end" onClick={toggleEdit}>
-        <Link to={''} className="CardBody">
-          <div className="">
-            <span className='.shortTitle'>Add</span>
-            <h6>Course</h6>
-          </div>
+      <div className="d-flex justify-content-md-evenly align-items-center" style={{ height: "76.65vh" }}>
 
-          <IconButton className="icon_style" >
-            <TouchAppIcon fontSize="large" className='icon_style_card' />
-          </IconButton>
-        </Link>
+        <div className="d-flex flex-wrap justify-content-md-between justify-content-md-end">
+          <Link to={`/student-details`} className="CardBody">
+            <div className="">
+              <span className=".shortTitle">Performance</span>
+              <h6>Student</h6>
+            </div>
+
+            <IconButton className="icon_style">
+              <FaceIcon fontSize="large" className="icon_style_card" />
+            </IconButton>
+          </Link>
+        </div>
+        <div className="d-flex flex-wrap justify-content-md-between justify-content-md-end">
+          <a
+            className="CardBody"
+            style={{ textDecoration: "None" }}
+            target="_blank"
+            href={item}
+          >
+            <div>
+              <span className='.shortTitle'>Course</span>
+              <h6>Curriculum</h6>
+            </div>
+
+            <IconButton className="icon_style" style={{ backgroundColor: "#002B5B" }} >
+              <FormatListBulletedIcon fontSize="large" className='icon_style_card' />
+            </IconButton>
+          </a>
+        </div>
+        <div className="d-flex flex-wrap justify-content-md-between justify-content-md-end" onClick={toggleEdit}>
+          <Link to={''} className="CardBody">
+            <div className="">
+              <span className='.shortTitle'>Add</span>
+              <h6>Course</h6>
+            </div>
+
+            <IconButton className="icon_style" >
+              <QueueIcon fontSize="large" className='icon_style_card' />
+            </IconButton>
+          </Link>
+        </div>
+
       </div>
-    </div>
+    </>
   );
 }
 
