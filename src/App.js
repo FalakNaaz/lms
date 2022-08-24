@@ -31,7 +31,7 @@ const theme = createTheme({
 const Routing = () => {
   return (
     <Routes>
-      <Route path="*" element={<NotFound />} />
+      <Route exact path="*" element={<NotFound />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/profile" element={<Profile />} />

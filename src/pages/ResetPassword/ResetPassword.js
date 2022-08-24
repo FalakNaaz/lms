@@ -35,8 +35,8 @@ function ResetPassword() {
     setLoading(false);
   }
   return (
-    <div className="loginBackground">
-      <Card style={{ maxWidth: "400px", margin: "auto" }}>
+    <div className="lsfrBackground">
+      <Card className="lsfrCard">
         <Card.Body>
           <h2 className="text-center mb-4">Password Reset</h2>
           {error && <Alert variant="danger">{error}</Alert>}
@@ -55,24 +55,12 @@ function ResetPassword() {
               <Form.Control type="text" ref={code} required />
             </Form.Group>
             <br />
-            <Button disabled={loading} className="w-100" type="submit" variant="success">
+            <Button disabled={loading} className="w-100 mb-4" type="submit" variant="success">
               Reset Password
             </Button>
           </Form>
-          <div className="w-100 text-center mt-3">
-            <Link to="/login" style={{ textDecoration: "none" }}>
-              Log In
-            </Link>
-          </div>
         </Card.Body>
       </Card>
-      <div className="w-100 text-center mt-2 btm-txt">
-        Not having an account?
-        <Link to="/signup" style={{ textDecoration: "none" }}>
-          {" "}
-          Sign up Here!
-        </Link>
-      </div>
     </div>
   );
 }

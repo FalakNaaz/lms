@@ -15,7 +15,7 @@ function Profile() {
   useEffect(() => {
     (async () =>
       await dispatch(getProfileData(localStorage.getItem("currUserId"))))();
-  }, []);
+  }, [sidebarToggle]);
   return (
     
     <div className="page-content page-container" id="page-content" style={{height: "90vh"}}>

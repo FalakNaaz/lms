@@ -36,8 +36,8 @@ function SignUp() {
     setLoading(false);
   };
   return (
-    <div className="loginBackground" style={{paddingTop:'10vh'}}>
-      <Card style={{ maxWidth: "400px", margin: "auto" }}>
+    <div className="lsfrBackground" style={{paddingTop:'10vh'}}>
+      <Card className="lsfrCard">
         <Card.Body>
           <Card.Title className="text-center">Sign Up</Card.Title>
           {error && <Alert variant="danger">{error}</Alert>}

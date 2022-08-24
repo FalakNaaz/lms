@@ -20,17 +20,15 @@ function ForgotPassword() {
         email: emailRef.current.value,
       });
       setMessage("An email has been sent with verification code!.");
-      setTimeout(() => {
-        navigate("/reset-password");
-      }, 800);
+      navigate("/reset-password");
     } catch (err) {
       setError("Something went wrong! : " + err.message);
     }
     setLoading(false);
   }
   return (
-    <div className="loginBackground">
-      <Card style={{ maxWidth: "400px", margin: "auto" }}>
+    <div className="lsfrBackground">
+      <Card className="lsfrCard">
         <Card.Body>
           <h2 className="text-center mb-4">Forgot Password</h2>
           {error && <Alert variant="danger">{error}</Alert>}
@@ -41,7 +39,7 @@ function ForgotPassword() {
               <Form.Control type="email" ref={emailRef} required />
             </Form.Group>
             <br />
-            <Button disabled={loading} className="w-100" type="submit" variant="success">
+            <Button disabled={loading} className="w-100 mb-4" type="submit" variant="success">
               Forgot Password
             </Button>
           </Form>
