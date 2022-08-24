@@ -28,17 +28,14 @@ function Login() {
     }, 1000);
   }
   return (
-    <div className="loginBackground">
+    <div className="lsfrBackground">
       {/* <ToastComponent
         setToast={setToast}
         renderToast={toast}
         msg="Login Success"
       /> */}
       <Card
-        style={{
-          maxWidth: "400px",
-          margin: "auto"
-          }}
+        className="lsfrCard"
       >
         <Card.Body>
           <h2 className="text-center mb-4">Log In </h2>
@@ -71,7 +68,7 @@ function Login() {
       style={{fontSize:'20px'}}>
         Not having an account?
         <Link to="/signup" style={{ textDecoration: "none" }}>
-          Sign up Here!
+          {" "}Sign up Here!
         </Link>
       </div>
     </div>
