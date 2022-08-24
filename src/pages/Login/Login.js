@@ -6,6 +6,7 @@ import { login } from "../../redux/actions/LoginActions";
 import { useDispatch } from "react-redux";
 import ToastComponent from "../../components/Toast/ToastComponent";
 import { getRole } from "../../redux/actions/RoleAction";
+
 function Login() {
   const emailRef = useRef();
   const pwdRef = useRef();
@@ -19,11 +20,11 @@ function Login() {
     setLoading(true);
     await dispatch(login(emailRef.current.value, pwdRef.current.value));
     setLoading(false);
-    (async () => await dispatch(getRole()))()
+    (async () => await dispatch(getRole()))();
     setToast(true);
     setTimeout(() => {
       navigate("/");
-      window.location.reload()
+      window.location.reload();
     }, 1000);
   }
   return (
@@ -33,7 +34,14 @@ function Login() {
         renderToast={toast}
         msg="Login Success"
       />
-      <Card style={{ maxWidth: "400px", margin: "auto", marginTop: "150px", backgroundImage: "../../assets/Image" }}>
+      <Card
+        style={{
+          maxWidth: "400px",
+          margin: "auto",
+          marginTop: "150px",
+          backgroundImage: "../../assets/Image",
+        }}
+      >
         <Card.Body>
           <h2 className="text-center mb-4">Log In </h2>
           {loading && (

@@ -2,9 +2,12 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../Profile/Profile.css";
 import { getProfileData } from "../../redux/actions/ProfileAction";
+import SidebarCom from "../../components/Sidebar/SidebarCom";
+
 
 function Profile() {
   const dispatch = useDispatch();
+  const sidebarToggle = useSelector((state) => state.sidebar);
 
   const mycurrentuserdata = useSelector(
     (state) => state.profile.userProfileData
@@ -14,7 +17,9 @@ function Profile() {
       await dispatch(getProfileData(localStorage.getItem("currUserId"))))();
   }, []);
   return (
+    
     <div className="page-content page-container" id="page-content" style={{height: "90vh"}}>
+      {sidebarToggle ? <SidebarCom /> : null}
       <div className="padding">
         <div className="row container d-flex justify-content-center">
           <div className="col-xl-6 col-md-12" style={{height: "90vh", width: "80vw"}}>
@@ -26,7 +31,7 @@ function Profile() {
                       <img
                         src="https://img.icons8.com/bubbles/100/000000/user.png"
                         className="img-radius"
-                        alt="User-Profile-Image"
+                        alt="User-Profile"
                       />
                     </div>
                     <h3 className="f-w-600">{mycurrentuserdata.fullName}</h3>

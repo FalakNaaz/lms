@@ -39,7 +39,7 @@ function SidebarCom({ Icon, title }) {
       </div>
 
       <div style={{ display: "flex", padding: "10px 10px" }}>
-        <Link style={{ textDecoration: "none", color: "black" }} to="">
+        <Link style={{ textDecoration: "none", color: "black" }} to="/profile">
           <PersonIcon style={{ color: "black" }} />
           Profile
         </Link>
@@ -61,7 +61,7 @@ function SidebarCom({ Icon, title }) {
       </div>
 
       <div style={{ display: "flex", padding: "10px 10px" }}>
-        <Link style={{ textDecoration: "none", color: "black" }} to="">
+        <Link style={{ textDecoration: "none", color: "black" }} to="/allcourses">
           <SettingsApplicationsIcon style={{ color: "black" }} />
           Courses
         </Link>

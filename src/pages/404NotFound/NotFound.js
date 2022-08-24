@@ -1,5 +1,5 @@
 import { Button, Typography } from "@material-ui/core";
-
+import { Link } from "react-router-dom";
 import React from "react";
 import Styles from "./Notfound.module.css";
 
@@ -11,7 +11,9 @@ const NotFound = () => {
         404 Not Found
       </Typography>
       <Button className='my-3' variant="contained" color="primary">
-        Back to Home
+        <Link to="/">
+          Back to Home
+        </Link>
       </Button>
     </div>
   );

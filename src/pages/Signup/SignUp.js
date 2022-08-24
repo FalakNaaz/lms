@@ -7,7 +7,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { Alert } from "react-bootstrap";
 import { Signup } from "../../redux/actions/SignupActions";
 import {useDispatch } from "react-redux";
-import axios from "axios";
 
 function SignUp() {
   const emailRef = useRef();
@@ -19,7 +18,6 @@ function SignUp() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [val, setVal] = useState("Student");
 
   const handleSubmit = async (e) => {
     e.preventDefault();

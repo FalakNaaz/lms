@@ -10,7 +10,6 @@ import SidebarCom from "../../components/Sidebar/SidebarCom";
 function Course() {
   const { id } = useParams();
   const currentCourse = useSelector((state) => state.course.course);
-  console.log("in (redux) course component ", currentCourse);
   const dispatch = useDispatch();
   const role = localStorage.getItem("currUserRole");
   const [isReadMore, setIsReadMore] = useState(true);
@@ -21,16 +20,17 @@ function Course() {
 
   useEffect(() => {
     (async () => await dispatch(fetchCourse(id)))();
+    /* eslint-disable */
   }, [sidebarToggle]);
 
   return (
     <>
-    {sidebarToggle ? <SidebarCom /> : null}
+      {sidebarToggle ? <SidebarCom /> : null}
       {currentCourse && (
         <div>
           <h6>Course created at : {currentCourse?.createdAt?.slice(0, 10)}</h6>
           <Container
-            fluid
+            fluid="true"
             className="mt-5"
             style={{ width: "96vw", textAlign: "center" }}
           >

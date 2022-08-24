@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Logout } from "../../redux/actions/LogoutActions";
-import { useNavigate } from "react-router-dom";
 import { Divider, Typography, Paper, Button } from "@material-ui/core";
 import { Container } from "react-bootstrap";
 import { fetchAllCourses } from "../../redux/actions/CoursesAction";
@@ -13,7 +11,6 @@ import ToastComponent from "../../components/Toast/ToastComponent";
 import { getProfileData } from "../../redux/actions/ProfileAction";
 function Dashboard() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const courses = useSelector((state) => state.courses.courses);
   const sidebarToggle = useSelector((state) => state.sidebar);
   const [toast, setToast] = useState(false);
@@ -22,13 +19,14 @@ function Dashboard() {
     const getCourses = async () => {
       await dispatch(fetchAllCourses());
       setToast(true);
-      setTimeout(()=>{
-        setToast(false)
-      },1000)
+      setTimeout(() => {
+        setToast(false);
+      }, 1000);
     };
     getCourses();
-    (async () => await dispatch(getProfileData(localStorage.getItem("currUserId"))))()
-
+    (async () =>
+      await dispatch(getProfileData(localStorage.getItem("currUserId"))))();
+      /* eslint-disable */
   }, []);
   var items = [
     {
@@ -36,28 +34,30 @@ function Dashboard() {
       description:
         "All your favorite course are available at one place, lets take the benefit right now",
       imgSrc:
-        "https://storage.googleapis.com/gweb-uniblog-publish-prod/original_images/DLD_OG_KeywordBlogHeader_1.png",
+      "https://as2.ftcdn.net/v2/jpg/05/18/87/23/1000_F_518872338_ZqBuCYeJ58AIalKfikVfEk6IIYnvpA6S.jpg",
+
+        
     },
     {
       name: "Demo Coding courses are available for free!",
       description:
         "All your coding courses which which will make you best developer",
-      imgSrc:
-        "https://seeromega.com/wp-content/uploads/2020/10/Websites-to-Learn-Coding-Online-for-Free-1.jpg",
+        imgSrc:
+        "https://skillsourcelearning.com/wp-content/uploads/2020/03/Instructor-Led-Training-Classes-01.jpg",
     },
     {
       name: "Corporate Required trainings",
       description:
         "A great place for the corporate partners to make their employee skillful",
       imgSrc:
-        "https://theyellowspot.com/wp-content/uploads/2019/07/corporate-training.jpg",
+        "https://as2.ftcdn.net/v2/jpg/04/49/51/31/1000_F_449513118_nhHdfjILs5JiTvUwHwAlJ64kQLiSfjaW.jpg",
     },
     {
       name: "Instructor-Led live training",
       description:
         "Take the live training session with our Instructor-Led training facility",
-      imgSrc:
-        "https://skillsourcelearning.com/wp-content/uploads/2020/03/Instructor-Led-Training-Classes-01.jpg",
+        imgSrc:"https://as2.ftcdn.net/v2/jpg/04/94/04/53/1000_F_494045336_Z7J94gFOPnrD9vcV4GnGPWR7LWWFpFS2.jpg",
+      
     },
   ];
   function Item(props) {
@@ -75,11 +75,7 @@ function Dashboard() {
   }
   return (
     <div className="dashboard">
-      <ToastComponent
-          setToast={setToast}
-          renderToast={toast}
-          msg="Welcome !"
-        />
+      <ToastComponent setToast={setToast} renderToast={toast} msg="Welcome !" />
       {sidebarToggle ? <SidebarCom /> : null}
       <div className="main__body__dashboard">
         <Carousel className="mt-4">
@@ -96,7 +92,10 @@ function Dashboard() {
             className="d-flex align-items-center p-4 mb-4"
             style={{ width: "94.5vw" }}
           >
-            <Typography variant="h6" style={{ textAlign: "center",fontWeight: 700}}>
+            <Typography
+              variant="h6"
+              style={{ textAlign: "center", fontWeight: 700 }}
+            >
               Popular Courses
             </Typography>
           </Paper>

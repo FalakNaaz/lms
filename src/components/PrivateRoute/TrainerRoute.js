@@ -6,13 +6,13 @@ function TrainerRoute({ children }) {
   if (user) {
     if (user === "Trainer") {
       return children;
-    } else if(user !== "Trainer") {
+    } else if (user !== "Trainer") {
       setTimeout(() => {
         navigate(-1);
       }, 1);
     }
   }
   else
-  return <Navigate to="/login"/>
+    return <Navigate to="/login" />
 }
 export default TrainerRoute;

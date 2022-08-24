@@ -31,9 +31,9 @@ const Header = () => {
       </div>
       <div className="left__header">
         {
-            <Link to="/">
-              <h4>LearniGo.com</h4>
-            </Link>
+          <Link to="/">
+            <h4>LearniGo.com</h4>
+          </Link>
         }
       </div>
       <div
