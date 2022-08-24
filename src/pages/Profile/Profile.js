@@ -24,7 +24,7 @@ function Profile() {
     >
       {sidebarToggle ? <SidebarCom /> : null}
       <div className="padding">
-        <div className="row container d-flex justify-content-center">
+        <div className="row d-flex justify-content-center">
           <div
             className="col-xl-6 col-md-12"
             style={{ height: "90vh", width: "80vw" }}
