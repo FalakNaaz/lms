@@ -4,18 +4,20 @@ import "../Profile/Profile.css";
 import { getProfileData } from "../../redux/actions/ProfileAction";
 import SidebarCom from "../../components/Sidebar/SidebarCom";
 
-function Profile() {
+const Profile = () => {
   const dispatch = useDispatch();
   const sidebarToggle = useSelector((state) => state.sidebar);
 
   const mycurrentuserdata = useSelector(
     (state) => state.profile.userProfileData
   );
+
   useEffect(() => {
     (async () =>
       await dispatch(getProfileData(localStorage.getItem("currUserId"))))();
     /* eslint-disable */
   }, [sidebarToggle]);
+
   return (
     <div
       className="page-content page-container"
@@ -72,30 +74,30 @@ function Profile() {
                     }
                     {
                       localStorage.getItem("currUserRole") === "Trainer" ?
-                      <div className="col-sm-6">
-                            <p className="m-b-10 f-w-600">Your Course</p>
-                            <h6 className="text-muted f-w-400">
-                              {mycurrentuserdata.training?.name}
-                            </h6>
-                          </div>
-                          :
-                          localStorage.getItem("currUserRole") === "Learner"?
-                        <div className="row">
-                          <div className="col-sm-6">
-                            <p className="m-b-10 f-w-600">Your Course</p>
-                            <h6 className="text-muted f-w-400">
-                              {mycurrentuserdata.training?.name}
-                            </h6>
-                          </div>
-                          <div className="col-sm-6">
-                            <p className="m-b-10 f-w-600">You Enrolled on</p>
-                            <h6 className="text-muted f-w-400">
-                              {mycurrentuserdata.training?.updatedAt.slice(0, 10)}
-                            </h6>
-                          </div>
+                        <div className="col-sm-6">
+                          <p className="m-b-10 f-w-600">Your Course</p>
+                          <h6 className="text-muted f-w-400">
+                            {mycurrentuserdata.training?.name}
+                          </h6>
                         </div>
                         :
-                        null
+                        localStorage.getItem("currUserRole") === "Learner" ?
+                          <div className="row">
+                            <div className="col-sm-6">
+                              <p className="m-b-10 f-w-600">Your Course</p>
+                              <h6 className="text-muted f-w-400">
+                                {mycurrentuserdata.training?.name}
+                              </h6>
+                            </div>
+                            <div className="col-sm-6">
+                              <p className="m-b-10 f-w-600">You Enrolled on</p>
+                              <h6 className="text-muted f-w-400">
+                                {mycurrentuserdata.training?.updatedAt.slice(0, 10)}
+                              </h6>
+                            </div>
+                          </div>
+                          :
+                          null
                     }
                     <ul className="social-link list-unstyled m-t-40 m-b-10">
                       <li>

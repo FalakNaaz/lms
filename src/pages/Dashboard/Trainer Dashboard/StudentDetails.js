@@ -12,7 +12,9 @@ import EditMarks from "../../../components/Modal/EditMarks";
 import { Button } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import SidebarCom from "../../../components/Sidebar/SidebarCom";
+
 function StudentDetails() {
+
   const [studentData, setStudentData] = useState([]);
   const [trainerData, setTrainerData] = useState("");
   const [showEdit, setShowEdit] = useState(false);

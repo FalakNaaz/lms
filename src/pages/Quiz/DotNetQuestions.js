@@ -35,7 +35,7 @@ const dotNetQuestions = [
             { answerText: 'Duplexing', isCorrect: false }
         ],
     },
-{
+    {
         questionText: 'Is there any errors in this -> EmployeeMgmt constructor: Public int EmployeeMgmt { emp_id = 100; }?',
         answerOptions: [
             { answerText: 'No errors', isCorrect: false },
@@ -44,7 +44,7 @@ const dotNetQuestions = [
             { answerText: 'Return type', isCorrect: true },
         ],
     },
-{
+    {
         questionText: 'If a class is using an interface, it must?',
         answerOptions: [
             { answerText: 'inherit the properties of the interface', isCorrect: false },
@@ -53,7 +53,7 @@ const dotNetQuestions = [
             { answerText: 'all of the above', isCorrect: true },
         ],
     },
-{
+    {
         questionText: 'What is the output of the code public class B : A { }?',
         answerOptions: [
             { answerText: 'Errors', isCorrect: false },
@@ -62,7 +62,7 @@ const dotNetQuestions = [
             { answerText: 'both b and c', isCorrect: false },
         ],
     },
-{
+    {
         questionText: 'What are the features of an abstract class?',
         answerOptions: [
             { answerText: 'It contain instance variables', isCorrect: false },
@@ -71,7 +71,7 @@ const dotNetQuestions = [
             { answerText: 'all of the above', isCorrect: true },
         ],
     },
-{
+    {
         questionText: 'Sealed Classes cannot be a base class?',
         answerOptions: [
             { answerText: 'Yes', isCorrect: true },
@@ -80,7 +80,7 @@ const dotNetQuestions = [
             { answerText: 'None', isCorrect: false },
         ],
     },
-{
+    {
         questionText: 'Features of Read only variables?',
         answerOptions: [
             { answerText: 'It is allocated at compile time', isCorrect: false },

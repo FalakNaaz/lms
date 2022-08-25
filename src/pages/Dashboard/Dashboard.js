@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Divider, Typography, Paper, Button } from "@material-ui/core";
+import { Divider, Typography, Paper } from "@material-ui/core";
 import { Container } from "react-bootstrap";
 import { fetchAllCourses } from "../../redux/actions/CoursesAction";
 import { Link } from "react-router-dom";
@@ -9,7 +9,8 @@ import SidebarCom from "../../components/Sidebar/SidebarCom";
 import Carousel from "react-material-ui-carousel";
 import ToastComponent from "../../components/Toast/ToastComponent";
 import { getProfileData } from "../../redux/actions/ProfileAction";
-function Dashboard() {
+
+const Dashboard = () => {
   const dispatch = useDispatch();
   const courses = useSelector((state) => state.courses.courses);
   const sidebarToggle = useSelector((state) => state.sidebar);
@@ -23,10 +24,13 @@ function Dashboard() {
         setToast(false);
       }, 1000);
     };
+
     getCourses();
+
     (async () =>
       await dispatch(getProfileData(localStorage.getItem("currUserId"))))();
     /* eslint-disable */
+
   }, []);
   var items = [
     {

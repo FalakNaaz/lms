@@ -10,14 +10,15 @@ export default function App() {
   const sidebarToggle = useSelector((state) => state.sidebar);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
+  {/* State for storing the score of the Learner and post it to the Strapi */}
   const [score, setScore] = useState(0);
   const [currUser, setCurrUser] = useState();
   const [questions, setQuestions] = useState(reactQuestions);
+
   const handleAnswerOptionClick = (isCorrect) => {
     if (isCorrect) {
       setScore(score + 1);
     }
-
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions?.length) {
       setCurrentQuestion(nextQuestion);
@@ -26,12 +27,14 @@ export default function App() {
       setShowScore(true);
     }
   };
+
   const storeScore = async (score) => {
     await axios.put(`http://localhost:1337/api/users/${currUser[0].id}`, {
       assessmentScore: score,
     });
     console.log("score = ", score);
   };
+
   useEffect(() => {
     const getEnrolledCourse = async () => {
       const currUserEmail = localStorage.getItem("currUserEmail");

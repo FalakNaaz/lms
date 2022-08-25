@@ -33,7 +33,7 @@ const reactQuestions = [
             { answerText: 'true', isCorrect: true },
         ],
     },
-{
+    {
         questionText: 'Which keyword creates a constant in JavaScript?',
         answerOptions: [
             { answerText: 'let', isCorrect: false },
@@ -42,7 +42,7 @@ const reactQuestions = [
             { answerText: 'const', isCorrect: true },
         ],
     },
-{
+    {
         questionText: 'A copy of the "real" DOM that is kept in memory is called what?',
         answerOptions: [
             { answerText: 'react DOM', isCorrect: false },
@@ -51,7 +51,7 @@ const reactQuestions = [
             { answerText: 'virtual DOM', isCorrect: true },
         ],
     },
-{
+    {
         questionText: 'Which operator can be used to conditionally render a React component?',
         answerOptions: [
             { answerText: '||', isCorrect: false },
@@ -60,7 +60,7 @@ const reactQuestions = [
             { answerText: '&&', isCorrect: true },
         ],
     },
-{
+    {
         questionText: 'When rendering a list using the JavaScript map() method, what is required for each element rendered?',
         answerOptions: [
             { answerText: 'index', isCorrect: false },
@@ -69,7 +69,7 @@ const reactQuestions = [
             { answerText: 'key', isCorrect: true },
         ],
     },
-{
+    {
         questionText: 'What tool does React use to compile JSX?',
         answerOptions: [
             { answerText: 'React Router', isCorrect: false },
@@ -78,7 +78,7 @@ const reactQuestions = [
             { answerText: 'Babel', isCorrect: true },
         ],
     },
-{
+    {
         questionText: 'Which of the following is NOT a rule for React Hooks?',
         answerOptions: [
             { answerText: 'Hooks can only be called inside React Function Compnents', isCorrect: false },

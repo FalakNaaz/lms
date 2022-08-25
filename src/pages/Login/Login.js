@@ -4,14 +4,12 @@ import { Alert, Card, Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../redux/actions/LoginActions";
 import { useDispatch } from "react-redux";
-// import ToastComponent from "../../components/Toast/ToastComponent";
 import { getRole } from "../../redux/actions/RoleAction";
 
-function Login() {
+const Login = () => {
   const emailRef = useRef();
   const pwdRef = useRef();
   const [loading, setLoading] = useState(false);
-  // const [toast, setToast] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -21,7 +19,6 @@ function Login() {
     await dispatch(login(emailRef.current.value, pwdRef.current.value));
     setLoading(false);
     (async () => await dispatch(getRole()))();
-    // setToast(true);
     setTimeout(() => {
       navigate("/");
       window.location.reload();
@@ -29,11 +26,6 @@ function Login() {
   }
   return (
     <div className="lsfrBackground">
-      {/* <ToastComponent
-        setToast={setToast}
-        renderToast={toast}
-        msg="Login Success"
-      /> */}
       <Card
         className="lsfrCard"
       >
@@ -63,9 +55,9 @@ function Login() {
           </div>
         </Card.Body>
       </Card>
-      <div 
-      className="w-100 text-center mt-2 btm-txt" 
-      style={{fontSize:'20px'}}>
+      <div
+        className="w-100 text-center mt-2 btm-txt"
+        style={{ fontSize: '20px' }}>
         Not having an account?
         <Link to="/signup" style={{ textDecoration: "none" }}>
           {" "}Sign up Here!

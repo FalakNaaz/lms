@@ -16,6 +16,7 @@ function ForgotPassword() {
       setMessage("");
       setError("");
       setLoading(true);
+      {/* Posting email to the forgot-password API */ }
       await axios.post("http://localhost:1337/api/auth/forgot-password", {
         email: emailRef.current.value,
       });

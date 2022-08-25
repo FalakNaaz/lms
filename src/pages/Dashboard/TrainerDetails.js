@@ -17,6 +17,7 @@ function AllStudentDetails() {
     const json = await axios.get("http://localhost:1337/api/users?populate=*");
     setStudentData(json.data.filter((item) => item.role.name === "Trainer"));
   };
+
   useEffect(() => {
     fetchStudentData();
   }, []);
