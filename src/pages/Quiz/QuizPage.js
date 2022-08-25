@@ -12,7 +12,7 @@ export default function App() {
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
   const [currUser, setCurrUser] = useState();
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState(reactQuestions);
   const handleAnswerOptionClick = (isCorrect) => {
     if (isCorrect) {
       setScore(score + 1);
