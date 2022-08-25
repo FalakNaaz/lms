@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function ForgotPassword() {
+  /* eslint-disable */
   const emailRef = useRef();
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
@@ -16,7 +17,7 @@ function ForgotPassword() {
       setMessage("");
       setError("");
       setLoading(true);
-      {/* Posting email to the forgot-password API */ }
+      /* Posting email to the forgot-password API */
       await axios.post("http://localhost:1337/api/auth/forgot-password", {
         email: emailRef.current.value,
       });

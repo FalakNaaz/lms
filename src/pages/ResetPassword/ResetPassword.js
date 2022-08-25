@@ -55,7 +55,12 @@ const ResetPassword = () => {
               <Form.Control type="text" ref={code} required />
             </Form.Group>
             <br />
-            <Button disabled={loading} className="w-100 mb-4" type="submit" id="btnColor">
+            <Button
+              disabled={loading}
+              className="w-100 mb-4"
+              type="submit"
+              id="btnColor"
+            >
               Reset Password
             </Button>
           </Form>
@@ -63,5 +68,5 @@ const ResetPassword = () => {
       </Card>
     </div>
   );
-}
+};
 export default ResetPassword;

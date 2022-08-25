@@ -27,8 +27,14 @@ const SignUp = () => {
     try {
       setError("");
       setLoading(true);
-
-      dispatch(Signup(emailRef.current.value, passwordRef.current.value, usernameRef.current.value, fullnameRef.current.value));
+      dispatch(
+        Signup(
+          emailRef.current.value,
+          passwordRef.current.value,
+          usernameRef.current.value,
+          fullnameRef.current.value
+        )
+      );
       navigate("/login");
     } catch (e) {
       setError(e.message);
@@ -37,7 +43,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="lsfrBackground" style={{ paddingTop: '10vh' }}>
+    <div className="lsfrBackground" style={{ paddingTop: "10vh" }}>
       <Card className="lsfrCard">
         <Card.Body>
           <Card.Title className="text-center">Sign Up</Card.Title>
@@ -73,7 +79,6 @@ const SignUp = () => {
               />
             </Form.Group>
 
-
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control
@@ -96,7 +101,12 @@ const SignUp = () => {
               <Form.Check type="checkbox" label="Remember me" />
             </Form.Group>
             <div className="col-md-12 text-center">
-              <Button disabled={loading} type="submit" className="text-center" id="btnColor">
+              <Button
+                disabled={loading}
+                type="submit"
+                className="text-center"
+                id="btnColor"
+              >
                 Signin
               </Button>
             </div>
@@ -110,6 +120,6 @@ const SignUp = () => {
       </Card>
     </div>
   );
-}
+};
 
 export default SignUp;

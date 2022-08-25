@@ -15,15 +15,19 @@ const AllCourses = () => {
   const dispatch = useDispatch();
   const courses = useSelector((state) => state.courses.courses);
 
-  {/* Fetched the list of users in the useEffect which will be stored before mounting the application. */}
+  /* Fetched the list of users in the useEffect which will be stored before mounting the application. */
 
   useEffect(() => {
     const getCourses = async () => {
       await dispatch(fetchAllCourses());
       let users = await axios.get(`http://localhost:1337/api/users`);
       const currEmail = localStorage.getItem("currUserEmail");
-      const filteredUsers = users.data.filter(user => user.email === currEmail);
-      users = await axios.get(`http://localhost:1337/api/users/${filteredUsers[0].id}?populate=*`);
+      const filteredUsers = users.data.filter(
+        (user) => user.email === currEmail
+      );
+      users = await axios.get(
+        `http://localhost:1337/api/users/${filteredUsers[0].id}?populate=*`
+      );
       users.data.training && setEnableId(users.data.training.id);
     };
 
@@ -31,18 +35,16 @@ const AllCourses = () => {
 
     (async () => await dispatch(getRole()))();
     /* eslint-disable */
-
   }, []);
 
   const addTraining = async (training) => {
-
     const currEmail = localStorage.getItem("currUserEmail");
     const users = await axios.get(`http://localhost:1337/api/users`);
     const filteredUsers = users.data.filter((user) => user.email === currEmail);
-    console.log("filteredUsers = ", filteredUsers[0].id);
-    console.log("training = ", training);
-    await axios.put(`http://localhost:1337/api/users/${filteredUsers[0].id}?populate=*`,
-      { training: training });
+    await axios.put(
+      `http://localhost:1337/api/users/${filteredUsers[0].id}?populate=*`,
+      { training: training }
+    );
     setEnableId(training.id);
   };
 
@@ -86,7 +88,9 @@ const AllCourses = () => {
                   enableId == val.id ? (
                     <Button
                       variant="success"
-                      onClick={() => { addTraining(val) }}
+                      onClick={() => {
+                        addTraining(val);
+                      }}
                       disabled={enableId}
                     >
                       Enrolled
@@ -94,7 +98,9 @@ const AllCourses = () => {
                   ) : (
                     <Button
                       id="btnColor"
-                      onClick={() => { addTraining(val) }}
+                      onClick={() => {
+                        addTraining(val);
+                      }}
                       disabled={enableId}
                     >
                       Enroll
@@ -129,6 +135,6 @@ const AllCourses = () => {
       </div>
     </>
   );
-}
+};
 
 export default AllCourses;

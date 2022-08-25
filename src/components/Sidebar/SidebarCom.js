@@ -1,7 +1,6 @@
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import PersonIcon from "@material-ui/icons/Person";
 import TouchAppIcon from "@material-ui/icons/TouchApp";
-import MessageIcon from "@material-ui/icons/Message";
 import SettingsApplicationsIcon from "@material-ui/icons/SettingsApplications";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { useNavigate } from "react-router-dom";
@@ -17,11 +16,11 @@ function SidebarCom({ Icon, title }) {
   const handleLogout = () => {
     dispatch(Logout());
     navigate("/login");
-    window.location.reload()
+    window.location.reload();
   };
   const user = {
-    role: localStorage.getItem("currUserRole")
-  }
+    role: localStorage.getItem("currUserRole"),
+  };
 
   return (
     <div className="left__sidebar__dashboard">
@@ -30,12 +29,6 @@ function SidebarCom({ Icon, title }) {
           <DashboardIcon style={{ color: "black" }} />
           Dashboard
         </Link>
-
-        {/* {user.role === "Learner" && (
-          <Link style={{ textDecoration: "none", color: "black" }} to="/">
-            <DashboardIcon style={{ color: "black" }} />
-            Dashboard
-          </Link>)} */}
       </div>
 
       <div style={{ display: "flex", padding: "10px 10px" }}>
@@ -46,17 +39,22 @@ function SidebarCom({ Icon, title }) {
       </div>
       {user.role === "Learner" && (
         <div style={{ display: "flex", padding: "10px 10px" }}>
-          <Link style={{ textDecoration: "none", color: "black" }} to="/assessment">
+          <Link
+            style={{ textDecoration: "none", color: "black" }}
+            to="/assessment"
+          >
             <TouchAppIcon style={{ color: "black" }} />
             Assessment
           </Link>
         </div>
       )}
 
-     
       {user.role === "Learner" && (
         <div style={{ display: "flex", padding: "10px 10px" }}>
-          <Link style={{ textDecoration: "none", color: "black" }} to="/allcourses">
+          <Link
+            style={{ textDecoration: "none", color: "black" }}
+            to="/allcourses"
+          >
             <SettingsApplicationsIcon style={{ color: "black" }} />
             Courses
           </Link>

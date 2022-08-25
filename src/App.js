@@ -15,7 +15,7 @@ import QuizPage from "./pages/Quiz/QuizPage";
 import TrainerRoute from "./components/PrivateRoute/TrainerRoute";
 import ClientDashboard from "./pages/Dashboard/Client-Dashboard/ClientDashboard";
 import AllStudentDetails from "./pages/Dashboard/Client-Dashboard/AllStudentDetails";
-import TrainerDetails from './pages/Dashboard/TrainerDetails'
+import TrainerDetails from "./pages/Dashboard/TrainerDetails";
 import ClientRoute from "./components/PrivateRoute/ClientRoute";
 import Profile from "./pages/Profile/Profile";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
@@ -24,15 +24,12 @@ import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 
 const theme = createTheme({
   typography: {
-    fontFamily: [
-      "Merriweather"
-    ]
-  }
-})
+    fontFamily: ["Merriweather"],
+  },
+});
 const Routing = () => {
   return (
     <Routes>
-
       {/* Common Routes */}
       <Route exact path="*" element={<NotFound />} />
       <Route path="/login" element={<Login />} />
@@ -48,23 +45,19 @@ const Routing = () => {
         path="/"
         element={
           <>
-            {
-              localStorage.getItem("currUserRole") === "Learner"
-                ?
-                <StudentRoute>
-                  <Dashboard />
-                </StudentRoute>
-                :
-                localStorage.getItem("currUserRole") === "Trainer"
-                  ?
-                  <TrainerRoute>
-                    <TrainerDashboard />
-                  </TrainerRoute>
-                  :
-                  <ClientRoute>
-                    <ClientDashboard />
-                  </ClientRoute>
-            }
+            {localStorage.getItem("currUserRole") === "Learner" ? (
+              <StudentRoute>
+                <Dashboard />
+              </StudentRoute>
+            ) : localStorage.getItem("currUserRole") === "Trainer" ? (
+              <TrainerRoute>
+                <TrainerDashboard />
+              </TrainerRoute>
+            ) : (
+              <ClientRoute>
+                <ClientDashboard />
+              </ClientRoute>
+            )}
           </>
         }
       />
@@ -77,46 +70,54 @@ const Routing = () => {
         }
       />
 
-      <Route path="/assessment"
+      <Route
+        path="/assessment"
         element={
           <StudentRoute>
             <QuizPage />
           </StudentRoute>
-        } />
+        }
+      />
 
       {/* Routes for Trainer Role */}
 
-      <Route path="/student-details"
+      <Route
+        path="/student-details"
         element={
           <TrainerRoute>
             <StudentDetails />
           </TrainerRoute>
-        } />
+        }
+      />
 
       {/* Routes for Client Role */}
 
-
-      <Route path="/allcourse"
+      <Route
+        path="/allcourse"
         element={
           <ClientRoute>
             <AllCourses />
           </ClientRoute>
-        } />
+        }
+      />
 
-      <Route path="/all-student-details"
+      <Route
+        path="/all-student-details"
         element={
           <ClientRoute>
             <AllStudentDetails />
           </ClientRoute>
-        } />
+        }
+      />
 
-      <Route path="/trainer-details"
+      <Route
+        path="/trainer-details"
         element={
           <ClientRoute>
             <TrainerDetails />
           </ClientRoute>
-        } />
-
+        }
+      />
     </Routes>
   );
 };
@@ -135,6 +136,6 @@ const App = () => {
       </ThemeProvider>
     </div>
   );
-}
+};
 
 export default App;

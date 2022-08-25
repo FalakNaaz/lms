@@ -14,7 +14,7 @@ function AllStudentDetails() {
   const [studentData, setStudentData] = useState([]);
   const sidebarToggle = useSelector((state) => state.sidebar);
 
-  {/* Fetching the users and filter for Learner only. */}
+  /* Fetching the users and filter for Learner only. */
 
   const fetchStudentData = async () => {
     const json = await axios.get("http://localhost:1337/api/users?populate=*");

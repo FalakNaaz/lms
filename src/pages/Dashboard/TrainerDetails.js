@@ -21,8 +21,6 @@ function AllStudentDetails() {
   useEffect(() => {
     fetchStudentData();
   }, []);
-
-  console.log(studentData);
   return (
     <>
       {sidebarToggle ? <SidebarCom /> : null}

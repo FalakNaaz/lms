@@ -6,8 +6,8 @@ import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 import ChatIcon from "@material-ui/icons/Chat";
 import ClearIcon from "@material-ui/icons/Clear";
 import NotesIcon from "@material-ui/icons/Notes";
-import PersonIcon from '@material-ui/icons/Person';
-import MenuIcon from '@material-ui/icons/Menu';
+import PersonIcon from "@material-ui/icons/Person";
+import MenuIcon from "@material-ui/icons/Menu";
 import { useDispatch } from "react-redux/es/exports";
 import SidebarAction from "../../redux/actions/SidebarAction";
 
@@ -18,16 +18,19 @@ const Header = () => {
     setToggle(false);
   };
   const user = {
-    role: localStorage.getItem("currUserRole")
-  }
+    role: localStorage.getItem("currUserRole"),
+  };
 
   const sidebarHandler = () => {
     dispatch(SidebarAction());
-  }
+  };
   return (
     <div className="header">
-      <div >
-        <MenuIcon onClick={sidebarHandler} style={{ fontSize: 40, margin: "0px 40px 8px 30px" }} />
+      <div>
+        <MenuIcon
+          onClick={sidebarHandler}
+          style={{ fontSize: 40, margin: "0px 40px 8px 30px" }}
+        />
       </div>
       <div className="left__header">
         {
@@ -37,8 +40,9 @@ const Header = () => {
         }
       </div>
       <div
-        className={`middle__header ${toggle ? `show__sidebar__nav` : `sidebar__nav`
-          }`}
+        className={`middle__header ${
+          toggle ? `show__sidebar__nav` : `sidebar__nav`
+        }`}
       >
         {user && (
           <ul>
@@ -60,8 +64,7 @@ const Header = () => {
                     Home
                   </NavLink>
                 </li>
-                <li>
-                </li>
+                <li></li>
               </>
             )}
             {user.role === "Learner" && (
@@ -71,32 +74,23 @@ const Header = () => {
                 </NavLink>
               </li>
             )}
-
-            {/* {user.role === "Trainer" ? (
-              <li className="">
-                <Button>Logout</Button>
-              </li>
-            ) : (
-              <li className="logout__button">
-                <Button>Logout</Button>
-              </li>
-            )} */}
           </ul>
         )}
       </div>
       {user ? (
         <div className="right__header">
           <IconButton className="mx-2 ">
-            <NotificationsActiveIcon  style={{color: "white"}}/>
+            <NotificationsActiveIcon style={{ color: "white" }} />
           </IconButton>
           <IconButton className="mx-2">
-            <ChatIcon style={{color: "white"}}/>
+            <ChatIcon style={{ color: "white" }} />
           </IconButton>
           <Link className="mx-4" to="/profile">
             <Avatar>
-              {localStorage.getItem("currUserEmail")?.charAt(0).toUpperCase() ?? (
-                <PersonIcon />
-              )}
+              {localStorage
+                .getItem("currUserEmail")
+                ?.charAt(0)
+                .toUpperCase() ?? <PersonIcon />}
             </Avatar>
           </Link>
         </div>

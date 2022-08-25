@@ -30,7 +30,6 @@ const Dashboard = () => {
     (async () =>
       await dispatch(getProfileData(localStorage.getItem("currUserId"))))();
     /* eslint-disable */
-
   }, []);
   var items = [
     {
@@ -125,9 +124,6 @@ const Dashboard = () => {
                           : val.attributes.name}
                       </h5>
                       <p>{val.attributes.title}</p>
-                      {/* <Button color="primary" variant="contained">
-                        Enroll
-                      </Button> */}
                     </div>
                   </div>
                 );
@@ -137,6 +133,6 @@ const Dashboard = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Dashboard;

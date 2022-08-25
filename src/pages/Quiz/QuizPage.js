@@ -10,7 +10,7 @@ export default function App() {
   const sidebarToggle = useSelector((state) => state.sidebar);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
-  {/* State for storing the score of the Learner and post it to the Strapi */}
+  /* State for storing the score of the Learner and post it to the Strapi */
   const [score, setScore] = useState(0);
   const [currUser, setCurrUser] = useState();
   const [questions, setQuestions] = useState(reactQuestions);
@@ -32,7 +32,6 @@ export default function App() {
     await axios.put(`http://localhost:1337/api/users/${currUser[0].id}`, {
       assessmentScore: score,
     });
-    console.log("score = ", score);
   };
 
   useEffect(() => {
@@ -43,7 +42,6 @@ export default function App() {
         (user) => user.email === currUserEmail
       );
       setCurrUser(filteredUsers);
-      console.log("filteredUsers = ", filteredUsers);
       const response = await axios.get(
         `http://localhost:1337/api/users/${filteredUsers[0].id}?populate=*`
       );
