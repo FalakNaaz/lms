@@ -3,7 +3,7 @@ import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function ResetPassword() {
+const ResetPassword = () => {
   const passRef = useRef();
   const confirmPassRef = useRef();
   const code = useRef();
@@ -55,7 +55,7 @@ function ResetPassword() {
               <Form.Control type="text" ref={code} required />
             </Form.Group>
             <br />
-            <Button disabled={loading} className="w-100 mb-4" type="submit"  id="btnColor">
+            <Button disabled={loading} className="w-100 mb-4" type="submit" id="btnColor">
               Reset Password
             </Button>
           </Form>

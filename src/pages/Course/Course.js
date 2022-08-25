@@ -8,7 +8,7 @@ import { Container, Paper, Typography } from "@material-ui/core";
 import SidebarCom from "../../components/Sidebar/SidebarCom";
 import axios from "axios";
 
-function Course() {
+const Course = () => {
   const { id } = useParams();
   const currentCourse = useSelector((state) => state.course.course);
   const dispatch = useDispatch();

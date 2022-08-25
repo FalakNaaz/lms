@@ -3,6 +3,8 @@ import { Modal, Form, Button } from 'react-bootstrap'
 import axios from 'axios';
 
 function AddNewCourseModal({ showModal, toggle }) {
+
+    {/* Created useRef constants to store the value from Form.Control */}
     const courseNameRef = useRef();
     const courseTitleRef = useRef();
     const courseDescRef = useRef();
@@ -10,6 +12,8 @@ function AddNewCourseModal({ showModal, toggle }) {
 
 
     const handleSubmit = async () => {
+
+        {/* Adding/Posting new Course to the Strapi */}
         try {
             await axios.post(`http://localhost:1337/api/trainings`, {
                 "data": {

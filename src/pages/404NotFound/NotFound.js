@@ -1,7 +1,11 @@
 import { Button, Typography } from "@material-ui/core";
 import { useNavigate} from "react-router-dom";
 import React from "react";
+
+// CSS styling file for NotFound Component
 import Styles from "./Notfound.module.css";
+
+{/*If no route found then 404 Error. */}
 
 const NotFound = () => {
   const navigate = useNavigate();

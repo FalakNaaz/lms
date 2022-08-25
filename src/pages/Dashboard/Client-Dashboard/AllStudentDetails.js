@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Paper from "@material-ui/core/Paper";
+import SidebarCom from "../../../components/Sidebar/SidebarCom";
+import { useSelector } from "react-redux";
 import TableContainer from "@material-ui/core/TableContainer";
 import Table from "@material-ui/core/Table";
 import TableHead from "@material-ui/core/TableHead";
 import TableBody from "@material-ui/core/TableBody";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
-import axios from "axios";
-import Paper from "@material-ui/core/Paper";
-import SidebarCom from "../../../components/Sidebar/SidebarCom";
-import { useSelector } from "react-redux";
 
 function AllStudentDetails() {
   const [studentData, setStudentData] = useState([]);
   const sidebarToggle = useSelector((state) => state.sidebar);
+
+  {/* Fetching the users and filter for Learner only. */}
 
   const fetchStudentData = async () => {
     const json = await axios.get("http://localhost:1337/api/users?populate=*");

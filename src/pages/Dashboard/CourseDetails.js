@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
+{/* Material Ui Table */ }
 import TableContainer from "@material-ui/core/TableContainer";
 import Table from "@material-ui/core/Table";
 import TableHead from "@material-ui/core/TableHead";
 import TableBody from "@material-ui/core/TableBody";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
-import axios from "axios";
 import Paper from "@material-ui/core/Paper";
+import axios from "axios";
 
 function CourseDetails() {
   const [courseData, setCourseData] = useState([]);
@@ -15,6 +16,7 @@ function CourseDetails() {
     const json = await axios.get("http://localhost:1337/api/trainings");
     setCourseData(json.data.data.map((item) => item.attributes.name));
   };
+
   useEffect(() => {
     fetchCourseData();
   }, []);

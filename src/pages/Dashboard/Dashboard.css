@@ -13,6 +13,7 @@
   border: 1px solid gray;
   transition: all 0.3s ease-in;
 }
+
 .course__Card {
   display: flex;
   flex-direction: column;
@@ -28,6 +29,7 @@
   position: relative;
   width: 100%;
 }
+
 .image {
   width: 15vw;
   height: 30vh;
@@ -49,6 +51,7 @@
   transition: 0.3s ease;
   padding: 20px;
 }
+
 .container:hover .overlay {
   transform: scale(0.88);
   overflow: hidden;

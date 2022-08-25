@@ -9,82 +9,84 @@ const dotNetQuestions = [
         ],
     },
     {
-        questionText: 'What command is used to start the React local development server?',
+        questionText: 'A variable which is declared inside a method is called a________variable?',
         answerOptions: [
-            { answerText: 'npm build', isCorrect: false },
-            { answerText: 'npm start', isCorrect: true },
-            { answerText: 'npm serve', isCorrect: false },
-            { answerText: 'npm run dev', isCorrect: false },
+            { answerText: 'serial', isCorrect: false },
+            { answerText: 'local', isCorrect: true },
+            { answerText: 'private', isCorrect: false },
+            { answerText: 'static', isCorrect: false },
         ],
     },
     {
-        questionText: 'What is the default local host port that a React development server uses?',
+        questionText: 'Feature of a local variable?',
         answerOptions: [
-            { answerText: '5000', isCorrect: false },
-            { answerText: '3500', isCorrect: false },
-            { answerText: '3000', isCorrect: true },
-            { answerText: '8080', isCorrect: false },
+            { answerText: 'It can be used anywhere in the program', isCorrect: false },
+            { answerText: 'It must accept a class', isCorrect: false },
+            { answerText: 'It must be declared within a method', isCorrect: true },
+            { answerText: 'It represent a class object', isCorrect: false },
         ],
     },
     {
-        questionText: 'To develop and run React code, Node.js is required.',
+        questionText: 'Two methods with the same name but with different parameters?',
         answerOptions: [
-            { answerText: 'false', isCorrect: false },
-            { answerText: 'true', isCorrect: true },
+            { answerText: 'Loading', isCorrect: false },
+            { answerText: 'Overloading', isCorrect: true },
+            { answerText: 'Multiplexing', isCorrect: false },
+            { answerText: 'Duplexing', isCorrect: false }
         ],
     },
-{
-        questionText: 'Which keyword creates a constant in JavaScript?',
+    {
+        questionText: 'Is there any errors in this -> EmployeeMgmt constructor: Public int EmployeeMgmt { emp_id = 100; }?',
         answerOptions: [
-            { answerText: 'let', isCorrect: false },
-            { answerText: 'var', isCorrect: false },
-            { answerText: 'constant', isCorrect: false },
-            { answerText: 'const', isCorrect: true },
+            { answerText: 'No errors', isCorrect: false },
+            { answerText: 'Formal parameters', isCorrect: false },
+            { answerText: 'Name', isCorrect: false },
+            { answerText: 'Return type', isCorrect: true },
         ],
     },
-{
-        questionText: 'A copy of the "real" DOM that is kept in memory is called what?',
+    {
+        questionText: 'If a class is using an interface, it must?',
         answerOptions: [
-            { answerText: 'react DOM', isCorrect: false },
-            { answerText: 'shadow DOM', isCorrect: false },
-            { answerText: 'DOM', isCorrect: false },
-            { answerText: 'virtual DOM', isCorrect: true },
+            { answerText: 'inherit the properties of the interface', isCorrect: false },
+            { answerText: 'contain the same methods as the interface', isCorrect: false },
+            { answerText: 'create an interface object', isCorrect: false },
+            { answerText: 'all of the above', isCorrect: true },
         ],
     },
-{
-        questionText: 'Which operator can be used to conditionally render a React component?',
+    {
+        questionText: 'What is the output of the code public class B : A { }?',
         answerOptions: [
-            { answerText: '||', isCorrect: false },
-            { answerText: '::', isCorrect: false },
-            { answerText: '??', isCorrect: false },
-            { answerText: '&&', isCorrect: true },
+            { answerText: 'Errors', isCorrect: false },
+            { answerText: 'It defines a class that inherits the public methods of A only', isCorrect: false },
+            { answerText: 'It defines a class that inherits all the methods of A but the private members cannot be accessed', isCorrect: true },
+            { answerText: 'both b and c', isCorrect: false },
         ],
     },
-{
-        questionText: 'When rendering a list using the JavaScript map() method, what is required for each element rendered?',
+    {
+        questionText: 'What are the features of an abstract class?',
         answerOptions: [
-            { answerText: 'index', isCorrect: false },
-            { answerText: 'id', isCorrect: false },
-            { answerText: 'data', isCorrect: false },
-            { answerText: 'key', isCorrect: true },
+            { answerText: 'It contain instance variables', isCorrect: false },
+            { answerText: 'It contain constructors', isCorrect: false },
+            { answerText: 'It may extend another class', isCorrect: false },
+            { answerText: 'all of the above', isCorrect: true },
         ],
     },
-{
-        questionText: 'What tool does React use to compile JSX?',
+    {
+        questionText: 'Sealed Classes cannot be a base class?',
         answerOptions: [
-            { answerText: 'React Router', isCorrect: false },
-            { answerText: 'JSX Compiler', isCorrect: false },
-            { answerText: 'React DOM', isCorrect: false },
-            { answerText: 'Babel', isCorrect: true },
+            { answerText: 'Yes', isCorrect: true },
+            { answerText: 'No', isCorrect: false },
+            { answerText: 'Both', isCorrect: false },
+            { answerText: 'None', isCorrect: false },
         ],
     },
-{
-        questionText: 'Which of the following is NOT a rule for React Hooks?',
+    {
+        questionText: 'Features of Read only variables?',
         answerOptions: [
-            { answerText: 'Hooks can only be called inside React Function Compnents', isCorrect: false },
-            { answerText: 'Hooks cannnot be conditional', isCorrect: false },
-            { answerText: 'Hooks can only be called at the top level of the component', isCorrect: false },
-            { answerText: 'Hooks can be called inside class and functional component', isCorrect: true },
+            { answerText: 'It is allocated at compile time', isCorrect: false },
+            { answerText: 'It is allocated at runtime', isCorrect: false },
+            { answerText: 'All of these', isCorrect: false },
+            { answerText: 'Declaration and initialization is separated', isCorrect: true },
         ],
     },
 ];

@@ -8,7 +8,7 @@ import { Alert } from "react-bootstrap";
 import { Signup } from "../../redux/actions/SignupActions";
 import { useDispatch } from "react-redux";
 
-function SignUp() {
+const SignUp = () => {
   const emailRef = useRef();
   const usernameRef = useRef();
   const fullnameRef = useRef();
@@ -35,8 +35,9 @@ function SignUp() {
     }
     setLoading(false);
   };
+
   return (
-    <div className="lsfrBackground" style={{paddingTop:'10vh'}}>
+    <div className="lsfrBackground" style={{ paddingTop: '10vh' }}>
       <Card className="lsfrCard">
         <Card.Body>
           <Card.Title className="text-center">Sign Up</Card.Title>
@@ -95,7 +96,7 @@ function SignUp() {
               <Form.Check type="checkbox" label="Remember me" />
             </Form.Group>
             <div className="col-md-12 text-center">
-              <Button disabled={loading} type="submit" className="text-center"  id="btnColor">
+              <Button disabled={loading} type="submit" className="text-center" id="btnColor">
                 Signin
               </Button>
             </div>

@@ -1,15 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { IconButton } from "@material-ui/core";
-import PersonIcon from "@material-ui/icons/Person";
-import FaceIcon from '@material-ui/icons/Face';
-import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import "./ClientDashboard.css";
 import { useSelector } from "react-redux";
 import SidebarCom from "../../../components/Sidebar/SidebarCom";
+import PersonIcon from "@material-ui/icons/Person";
+import FaceIcon from '@material-ui/icons/Face';
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 
 function ClientDashboard() {
+
   const sidebarToggle = useSelector((state) => state.sidebar);
+
   return (
     <>
       {sidebarToggle ? <SidebarCom /> : null}

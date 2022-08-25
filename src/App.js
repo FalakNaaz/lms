@@ -21,6 +21,7 @@ import Profile from "./pages/Profile/Profile";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
+
 const theme = createTheme({
   typography: {
     fontFamily: [
@@ -31,6 +32,8 @@ const theme = createTheme({
 const Routing = () => {
   return (
     <Routes>
+
+      {/* Common Routes */}
       <Route exact path="*" element={<NotFound />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
@@ -73,7 +76,7 @@ const Routing = () => {
           </StudentRoute>
         }
       />
-      
+
       <Route path="/assessment"
         element={
           <StudentRoute>
@@ -83,12 +86,6 @@ const Routing = () => {
 
       {/* Routes for Trainer Role */}
 
-      {/* <Route path="/trainer-dashboard"
-        element={
-          <TrainerRoute>
-            <TrainerDashboard />
-          </TrainerRoute>
-        } /> */}
       <Route path="/student-details"
         element={
           <TrainerRoute>
@@ -105,18 +102,14 @@ const Routing = () => {
             <AllCourses />
           </ClientRoute>
         } />
-      {/* <Route path="/cd"
-        element={
-          <ClientRoute>
-            <ClientDashboard />
-          </ClientRoute>
-        } /> */}
+
       <Route path="/all-student-details"
         element={
           <ClientRoute>
             <AllStudentDetails />
           </ClientRoute>
         } />
+
       <Route path="/trainer-details"
         element={
           <ClientRoute>
@@ -128,7 +121,7 @@ const Routing = () => {
   );
 };
 
-function App() {
+const App = () => {
   let loggedIn = localStorage.getItem("currUser");
 
   return (

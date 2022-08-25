@@ -53,12 +53,7 @@ function SidebarCom({ Icon, title }) {
         </div>
       )}
 
-      <div style={{ display: "flex", padding: "10px 10px" }}>
-        <Link style={{ textDecoration: "none", color: "black" }} to="">
-          <MessageIcon style={{ color: "black" }} />
-          Messages
-        </Link>
-      </div>
+     
       {user.role === "Learner" && (
         <div style={{ display: "flex", padding: "10px 10px" }}>
           <Link style={{ textDecoration: "none", color: "black" }} to="/allcourses">
