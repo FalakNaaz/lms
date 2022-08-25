@@ -79,8 +79,8 @@ export default function App() {
               </div>
             </div>
             <div className="answer-section">
-              {questions[currentQuestion]?.answerOptions.map((answerOption) => (
-                <button
+              {questions[currentQuestion]?.answerOptions.map((answerOption, index) => (
+                <button key={index}
                   onClick={() =>
                     handleAnswerOptionClick(answerOption?.isCorrect)
                   }
