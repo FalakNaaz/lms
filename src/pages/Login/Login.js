@@ -52,7 +52,7 @@ function Login() {
               <Form.Control type="password" ref={pwdRef} required />
             </Form.Group>
             <br />
-            <Button variant="success" disabled={loading} className="w-100" type="submit">
+            <Button disabled={loading} className="w-100" type="submit" id="btnColor">
               Log In
             </Button>
           </Form>

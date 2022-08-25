@@ -8,7 +8,7 @@ import TableCell from "@material-ui/core/TableCell";
 import axios from "axios";
 import EditIcon from "@material-ui/icons/Edit";
 import Paper from "@material-ui/core/Paper";
-import AddNewCourseModal from "../../../components/Modal/AddNewCourseModal";
+import EditMarks from "../../../components/Modal/EditMarks";
 import { Button } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import SidebarCom from "../../../components/Sidebar/SidebarCom";
@@ -60,7 +60,7 @@ function StudentDetails() {
 
       <TableContainer component={Paper} style={{ minHeight: "70vh" }}>
         {showEdit && (
-          <AddNewCourseModal
+          <EditMarks
             showModal={showEdit}
             toggle={toggleEdit}
             item={item}

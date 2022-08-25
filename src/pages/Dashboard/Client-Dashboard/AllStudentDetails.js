@@ -35,6 +35,7 @@ function AllStudentDetails() {
               <TableCell>Email</TableCell>
               <TableCell>Username</TableCell>
               <TableCell>Enrolled In</TableCell>
+              <TableCell>Assessment Score</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -44,6 +45,7 @@ function AllStudentDetails() {
                 <TableCell>{item.email}</TableCell>
                 <TableCell>{item.username}</TableCell>
                 <TableCell>{item.training?.name}</TableCell>
+                <TableCell>{item?.assessmentScore}</TableCell>
               </TableRow>
             ))}
           </TableBody>

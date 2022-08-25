@@ -64,23 +64,39 @@ function Profile() {
                         </h6>
                       </div>
                     </div>
-                    <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">
-                      Course Information
-                    </h6>
-                    <div className="row">
+                    {
+                      localStorage.getItem("currUserRole") === "Learner" &&
+                      <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">
+                        Course Information
+                      </h6>
+                    }
+                    {
+                      localStorage.getItem("currUserRole") === "Trainer" ?
                       <div className="col-sm-6">
-                        <p className="m-b-10 f-w-600">Your Course</p>
-                        <h6 className="text-muted f-w-400">
-                          {mycurrentuserdata.training?.name}
-                        </h6>
-                      </div>
-                      <div className="col-sm-6">
-                        <p className="m-b-10 f-w-600">You Enrolled on</p>
-                        <h6 className="text-muted f-w-400">
-                          {mycurrentuserdata.training?.updatedAt.slice(0, 10)}
-                        </h6>
-                      </div>
-                    </div>
+                            <p className="m-b-10 f-w-600">Your Course</p>
+                            <h6 className="text-muted f-w-400">
+                              {mycurrentuserdata.training?.name}
+                            </h6>
+                          </div>
+                          :
+                          localStorage.getItem("currUserRole") === "Learner"?
+                        <div className="row">
+                          <div className="col-sm-6">
+                            <p className="m-b-10 f-w-600">Your Course</p>
+                            <h6 className="text-muted f-w-400">
+                              {mycurrentuserdata.training?.name}
+                            </h6>
+                          </div>
+                          <div className="col-sm-6">
+                            <p className="m-b-10 f-w-600">You Enrolled on</p>
+                            <h6 className="text-muted f-w-400">
+                              {mycurrentuserdata.training?.updatedAt.slice(0, 10)}
+                            </h6>
+                          </div>
+                        </div>
+                        :
+                        null
+                    }
                     <ul className="social-link list-unstyled m-t-40 m-b-10">
                       <li>
                         <a

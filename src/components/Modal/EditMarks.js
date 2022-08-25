@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { Modal, Form, Button } from 'react-bootstrap'
 import axios from 'axios';
 
-function AddNewCourseModal({ showModal, toggle, item }) {
+function EditMarks({ showModal, toggle, item }) {
     const numberRef = useRef();
     const handleSubmit = async () => {
         if (numberRef.current.value >= 0 && numberRef.current.value <=100) {
@@ -34,4 +34,4 @@ function AddNewCourseModal({ showModal, toggle, item }) {
     )
 }
 
-export default AddNewCourseModal
+export default EditMarks

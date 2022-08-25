@@ -12,7 +12,7 @@ function Course() {
   const { id } = useParams();
   const currentCourse = useSelector((state) => state.course.course);
   const dispatch = useDispatch();
-  const currUserId  =localStorage.getItem("currUserId")
+  const currUserId = localStorage.getItem("currUserId");
   const role = localStorage.getItem("currUserRole");
   const [isReadMore, setIsReadMore] = useState(true);
   const [enableId, setEnableId] = useState(0);
@@ -24,32 +24,30 @@ function Course() {
   useEffect(() => {
     (async () => await dispatch(fetchCourse(id)))();
 
-   const checkForEnrolledCourse = async () => {
-    const  users = await axios.get(
-      `http://localhost:1337/api/users/${currUserId}?populate=*`
-    );
+    const checkForEnrolledCourse = async () => {
+      const users = await axios.get(
+        `http://localhost:1337/api/users/${currUserId}?populate=*`
+      );
 
-    users.data.training && setEnableId(users.data.training.id);
-   }
-   checkForEnrolledCourse();
+      users.data.training && setEnableId(users.data.training.id);
+    };
+    checkForEnrolledCourse();
 
     /* eslint-disable */
   }, [sidebarToggle]);
 
-
-  
-  const addTraining = async() => {
+  const addTraining = async () => {
     await axios.put(
       `http://localhost:1337/api/users/${currUserId}?populate=*`,
       {
         training: {
           id: id,
-          attributes: currentCourse
-        }
+          attributes: currentCourse,
+        },
       }
     );
     setEnableId(id);
-  }
+  };
   return (
     <>
       {sidebarToggle ? <SidebarCom /> : null}
@@ -83,34 +81,33 @@ function Course() {
                       {isReadMore ? "...read more" : " show less"}
                     </span>
                   </p>
-                  {role === "Learner" && (
-                      enableId == id ? (
-                        <Button
-                          variant="success"
-                          style={{ width: "30%", marginTop: "30px" }}
-                          onClick={() => {
-                            addTraining();
-                          }}
-                          disabled={enableId}
-                        >
-                          Enrolled in this course
-                        </Button>
-                      ) : (
-                        <Button
-                          variant="primary"
-                          style={{ width: "30%", marginTop: "30px" }}
-                          onClick={() => {
-                            addTraining();
-                          }}
-                          disabled={enableId}
-                        >
-                          {" "}
-                          Enroll to this course
-                        </Button>
-                      )
-                  )}
+                  {role === "Learner" &&
+                    (enableId == id ? (
+                      <Button
+                        variant="success"
+                        style={{ width: "30%", marginTop: "30px" }}
+                        onClick={() => {
+                          addTraining();
+                        }}
+                        disabled={enableId}
+                      >
+                        Enrolled in this course
+                      </Button>
+                    ) : (
+                      <Button
+                        id="btnColor"
+                        style={{ width: "30%", marginTop: "30px" }}
+                        onClick={() => {
+                          addTraining();
+                        }}
+                        disabled={enableId}
+                      >
+                        {" "}
+                        Enroll to this course
+                      </Button>
+                    ))}
                   <Button
-                    variant="primary"
+                    id="btnColor"
                     style={{
                       marginLeft: "2vw",
                       width: "30%",
